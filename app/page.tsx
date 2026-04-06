@@ -1,6 +1,7 @@
 "use client"
 import { useEffect } from "react"
 import Image from "next/image"
+import Link from "next/link" // Importante para la navegación rápida
 import { Shield, Bot, ShoppingCart } from "lucide-react"
 
 export default function Home() {
@@ -77,40 +78,24 @@ export default function Home() {
   return (
     <>
       {/* FONDO LLUVIA DIAGONAL DE LOGOS */}
-<div style={{position:"fixed", top:0, left:0, width:"100%", height:"100%", zIndex:0, pointerEvents:"none", overflow:"hidden"}}>
-  {[...Array(40)].map((_,i) => (
-    <div key={i} style={{
-      position: "absolute",
-      left: `${(i * 7.3) % 110 - 10}%`,
-      top: `${(i * 13.7) % 120 - 20}%`,
-      opacity: 0.04 + (i % 5) * 0.015,
-      transform: `rotate(-35deg) scale(${0.4 + (i % 4) * 0.15})`,
-      animation: `rain-logo ${8 + (i % 6) * 2}s linear ${(i * 0.4) % 6}s infinite`,
-    }}>
-      <img src="/logo.png" alt="" width={240} height={120} style={{objectFit:"contain"}} />
-    </div>
-  ))}
-</div>
+      <div style={{position:"fixed", top:0, left:0, width:"100%", height:"100%", zIndex:0, pointerEvents:"none", overflow:"hidden"}}>
+        {[...Array(40)].map((_,i) => (
+          <div key={i} style={{
+            position: "absolute",
+            left: `${(i * 7.3) % 110 - 10}%`,
+            top: `${(i * 13.7) % 120 - 20}%`,
+            opacity: 0.04 + (i % 5) * 0.015,
+            transform: `rotate(-35deg) scale(${0.4 + (i % 4) * 0.15})`,
+            animation: `rain-logo ${8 + (i % 6) * 2}s linear ${(i * 0.4) % 6}s infinite`,
+          }}>
+            <img src="/logo.png" alt="" width={240} height={120} style={{objectFit:"contain"}} />
+          </div>
+        ))}
+      </div>
+
       <div className="content">
-
-        {/* NAV */}
-        <nav style={{borderBottom: "1px solid #1E3A5F", backdropFilter: "blur(12px)", background: "rgba(13,27,42,0.85)", position: "sticky", top: 0, zIndex: 50}}
-          className="flex items-center justify-between px-8 py-4">
-          <div className="flex items-center gap-3">
-            <Image src="/logo.png" alt="BALUMTech" width={140} height={60} style={{objectFit: "contain"}} />
-          </div>
-          <div className="flex gap-8 text-sm">
-            {["servicios","tienda","portfolio","contacto"].map(s => (
-              <a key={s} href={`#${s}`} className="nav-link capitalize">{s}</a>
-            ))}
-          </div>
-          <a href="#contacto" className="px-4 py-2 text-sm rounded-lg" style={{background: "#1E3A5F", color: "#60C8FF", border: "1px solid #2B7FE0", transition: "all 0.3s"}}>
-            Cotizar proyecto
-          </a>
-        </nav>
-
         {/* HERO */}
-        <section className="flex flex-col items-center text-center px-8 py-24 gap-6">
+        <section className="flex flex-col items-center text-center px-8 py-32 gap-6">
           <div className="animate-fade-up delay-100 text-xs font-semibold px-4 py-2 rounded-full"
             style={{background: "#0F2136", color: "#60C8FF", border: "1px solid #1E3A5F"}}>
             Digital Diffusion · Networks · Telecom · Security · AI · IT
@@ -126,7 +111,7 @@ export default function Home() {
 
           <div className="animate-fade-up delay-400 flex gap-4 mt-2">
             <a href="#servicios" className="btn-primary">Ver servicios</a>
-            <a href="#tienda" className="btn-outline">Explorar tienda</a>
+            <Link href="/tienda" className="btn-outline">Explorar tienda</Link>
           </div>
 
           <div className="animate-fade-up delay-500 flex gap-12 mt-6">
@@ -175,150 +160,54 @@ export default function Home() {
             </div>
           </div>
         </section>
-        
 
-        {/* KITS */}
-<section id="tienda" className="px-8 py-20" style={{background:"#0A1520"}}>
-  <div className="text-center mb-12">
-    <div className="section-label">Tienda</div>
-    <h2 className="observe text-3xl font-bold">Kits más vendidos</h2>
-    <p className="mt-3 text-sm" style={{color:"#8A9BB0"}}>Armados y listos para usar. Enviamos a todo el país.</p>
-  </div>
-  <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 max-w-6xl mx-auto">
-    {[
-      {
-        name:"Kit Gamer Entry",
-        nivel:"Entry",
-        nivelColor:"#4ADE80",
-        nivelBg:"#0A3020",
-        price:"$280.000",
-        badge:"🖥️ PC Gamer",
-        specs:["CPU Intel Core i5","8GB RAM DDR4","SSD 480GB","Gabinete + Fuente 500W"],
-        extra:"Ideal para gaming casual y trabajo"
-      },
-      {
-        name:"Kit Gamer Mid",
-        nivel:"Mid",
-        nivelColor:"#60C8FF",
-        nivelBg:"#0D2137",
-        price:"$680.000",
-        badge:"🖥️ PC Gamer",
-        specs:["AMD Ryzen 5","16GB RAM DDR4","RTX 3060 12GB","SSD 1TB NVMe"],
-        extra:"Para gaming en 1080p/1440p fluido"
-      },
-      {
-        name:"Kit CCTV Hogar 4",
-        nivel:"Básico",
-        nivelColor:"#FBBF24",
-        nivelBg:"#1A1200",
-        price:"$195.000",
-        badge:"📷 Seguridad",
-        specs:["4 Cámaras HD 1080p","DVR 4 canales","Disco 1TB incluido","Visión nocturna"],
-        extra:"Cubre hogar completo o local pequeño"
-      },
-      {
-        name:"Kit CCTV Empresa 8",
-        nivel:"Pro",
-        nivelColor:"#C084FC",
-        nivelBg:"#1A0A2E",
-        price:"$420.000",
-        badge:"📷 Seguridad",
-        specs:["8 Cámaras IP Full HD","NVR 8 canales","Acceso remoto 24/7","Instalación incluida"],
-        extra:"Ideal para empresas y depósitos"
-      },
-    ]
-    .map((k,i) => (
-      <div key={i} className="observe kit-card flex flex-col" style={{animationDelay:`${i*0.1}s`}}>
-        
-
-        {/* Header */}
-        <div className="p-4 flex items-center justify-between" style={{borderBottom:"1px solid #1E3A5F"}}>
-          <span className="text-xs font-semibold px-3 py-1 rounded-full" style={{background:"#0D1B2A", color:"#8A9BB0", border:"1px solid #1E3A5F"}}>{k.badge}</span>
-          <span className="text-xs font-bold px-3 py-1 rounded-full" style={{background:k.nivelBg, color:k.nivelColor}}>{k.nivel}</span>
-        </div>
-
-        {/* Body */}
-        <div className="p-5 flex flex-col gap-4 flex-1">
-          <h3 className="font-bold text-base">{k.name}</h3>
-
-          {/* Specs */}
-          <ul className="flex flex-col gap-2">
-            {k.specs.map((spec,j) => (
-              <li key={j} className="flex items-center gap-2 text-xs" style={{color:"#C4D4E8"}}>
-                <span style={{color:k.nivelColor, fontSize:14}}>✓</span>
-                {spec}
-              </li>
-            ))}
-          </ul>
-
-          <p className="text-xs italic mt-auto" style={{color:"#4A7090"}}>{k.extra}</p>
-        </div>
-
-        {/* Footer */}
-        <div className="p-4 flex items-center justify-between" style={{borderTop:"1px solid #1E3A5F"}}>
-          <div>
-            <div className="text-xs" style={{color:"#4A7090"}}>Precio</div>
-            <div className="text-lg font-bold" style={{color:"#60C8FF"}}>{k.price}</div>
+        {/* KITS PREVIEW (Opcional, redirige a la tienda) */}
+        <section className="px-8 py-20" style={{background:"#0A1520"}}>
+          <div className="text-center mb-12">
+            <div className="section-label">Tienda</div>
+            <h2 className="observe text-3xl font-bold">Equipamiento Destacado</h2>
+            <p className="mt-3 text-sm" style={{color:"#8A9BB0"}}>Kits armados y listos para usar en Sarmiento y la región.</p>
           </div>
-          <a href="#contacto" className="text-xs px-4 py-2 rounded-lg font-semibold"
-            style={{background:"#185FA5", color:"#fff", transition:"all 0.3s"}}>
-            Consultar
-          </a>
-        </div>
-
-      </div>
-    ))}
-  </div>
-</section>
-{/* MARCAS */}
-<section className="py-16 px-8" style={{background:"#060F18", borderTop:"1px solid #1E3A5F"}}>
-  <div className="text-center mb-10">
-    <div className="section-label">Trabajamos con</div>
-    <h2 className="text-2xl font-bold">Marcas líderes del mercado</h2>
-  </div>
-  <div className="carousel-wrapper">
-    <div className="carousel-track" style={{animationDuration:"30s"}}>
-      {[...Array(2)].map((_,repeat) =>
-        [
-          {name:"Hikvision", url:"https://smartlink.pk/wp-content/uploads/2021/12/Hikvision-logo2.png"},
-          {name:"Dahua", url:"https://upload.wikimedia.org/wikipedia/commons/thumb/f/f5/Dahua_Technology_logo.svg/1920px-Dahua_Technology_logo.svg.png?_=20210324132609"},
-          {name:"TP-Link", url:"https://upload.wikimedia.org/wikipedia/commons/thumb/a/a7/Tp-Link_logo_2016.png/1920px-Tp-Link_logo_2016.png"},
-          {name:"Fortinet", url:"https://upload.wikimedia.org/wikipedia/commons/thumb/6/62/Fortinet_logo.svg/1920px-Fortinet_logo.svg.png?_=20210503171524"},
-          {name:"HP", url:"https://upload.wikimedia.org/wikipedia/commons/thumb/a/ad/HP_logo_2012.svg/250px-HP_logo_2012.svg.png"},
-          {name:"Lenovo", url:"https://upload.wikimedia.org/wikipedia/commons/thumb/0/03/Lenovo_Global_Corporate_Logo.png/1920px-Lenovo_Global_Corporate_Logo.png"},
-          {name:"Dell", url:"https://upload.wikimedia.org/wikipedia/commons/8/82/Dell_Logo.png"},
-          {name:"ASUS", url:"https://upload.wikimedia.org/wikipedia/commons/thumb/b/b0/ASUS_Corporate_Logo.svg/1280px-ASUS_Corporate_Logo.svg.png"},
-          {name:"n8n", url:"https://upload.wikimedia.org/wikipedia/commons/thumb/5/53/N8n-logo-new.svg/1280px-N8n-logo-new.svg.png?_=20230204003316"},
-          {name:"AMD", url:"https://upload.wikimedia.org/wikipedia/commons/thumb/2/20/AMD_logo_pre-2013.svg/1920px-AMD_logo_pre-2013.svg.png"},
-          {name:"Intel", url:"https://upload.wikimedia.org/wikipedia/commons/thumb/7/7d/Intel_logo_%282006-2020%29.svg/1920px-Intel_logo_%282006-2020%29.svg.png"},
-          {name:"NVIDIA", url:"https://upload.wikimedia.org/wikipedia/sco/thumb/2/21/Nvidia_logo.svg/960px-Nvidia_logo.svg.png?_=20150924223142"},
-        ].map((m,i) => (
-          <div key={`${repeat}-${i}`}
-            className="flex-shrink-0 flex items-center justify-center px-6"
-            style={{width:160, height:80, background:"#0F2136", borderRadius:12, border:"1px solid #1E3A5F", transition:"all 0.3s"}}
-            onMouseEnter={e => {
-              e.currentTarget.style.borderColor="#60C8FF"
-              e.currentTarget.style.boxShadow="0 0 20px rgba(96,200,255,0.2)"
-            }}
-            onMouseLeave={e => {
-              e.currentTarget.style.borderColor="#1E3A5F"
-              e.currentTarget.style.boxShadow="none"
-            }}
-          >
-            <img
-              src={m.url}
-              alt={m.name}
-              style={{maxWidth:100, maxHeight:50, objectFit:"contain", filter:"grayscale(100%) brightness(1.8)", transition:"filter 0.3s"}}
-              onMouseEnter={e => e.currentTarget.style.filter="grayscale(0%) brightness(1)"}
-              onMouseLeave={e => e.currentTarget.style.filter="grayscale(100%) brightness(1.8)"}
-              onError={e => e.currentTarget.style.display="none"}
-            />
+          <div className="flex justify-center">
+             <Link href="/tienda" className="btn-primary">Ver catálogo completo de productos</Link>
           </div>
-        ))
-      )}
-    </div>
-  </div>
-</section>
+        </section>
+
+        {/* MARCAS */}
+        <section className="py-16 px-8" style={{background:"#060F18", borderTop:"1px solid #1E3A5F"}}>
+          <div className="text-center mb-10">
+            <div className="section-label">Trabajamos con</div>
+            <h2 className="text-2xl font-bold">Marcas líderes del mercado</h2>
+          </div>
+          <div className="carousel-wrapper">
+            <div className="carousel-track" style={{animationDuration:"30s"}}>
+              {[...Array(2)].map((_,repeat) =>
+                [
+                  {name:"Hikvision", url:"https://smartlink.pk/wp-content/uploads/2021/12/Hikvision-logo2.png"},
+                  {name:"Dahua", url:"https://upload.wikimedia.org/wikipedia/commons/thumb/f/f5/Dahua_Technology_logo.svg/1920px-Dahua_Technology_logo.svg.png?_=20210324132609"},
+                  {name:"TP-Link", url:"https://upload.wikimedia.org/wikipedia/commons/thumb/a/a7/Tp-Link_logo_2016.png/1920px-Tp-Link_logo_2016.png"},
+                  {name:"Fortinet", url:"https://upload.wikimedia.org/wikipedia/commons/thumb/6/62/Fortinet_logo.svg/1920px-Fortinet_logo.svg.png?_=20210503171524"},
+                  {name:"HP", url:"https://upload.wikimedia.org/wikipedia/commons/thumb/a/ad/HP_logo_2012.svg/250px-HP_logo_2012.svg.png"},
+                  {name:"Lenovo", url:"https://upload.wikimedia.org/wikipedia/commons/thumb/0/03/Lenovo_Global_Corporate_Logo.png/1920px-Lenovo_Global_Corporate_Logo.png"},
+                  {name:"Dell", url:"https://upload.wikimedia.org/wikipedia/commons/8/82/Dell_Logo.png"},
+                  {name:"ASUS", url:"https://upload.wikimedia.org/wikipedia/commons/thumb/b/b0/ASUS_Corporate_Logo.svg/1280px-ASUS_Corporate_Logo.svg.png"},
+                  {name:"n8n", url:"https://upload.wikimedia.org/wikipedia/commons/thumb/5/53/N8n-logo-new.svg/1280px-N8n-logo-new.svg.png?_=20230204003316"},
+                  {name:"AMD", url:"https://upload.wikimedia.org/wikipedia/commons/thumb/2/20/AMD_logo_pre-2013.svg/1920px-AMD_logo_pre-2013.svg.png"},
+                  {name:"Intel", url:"https://upload.wikimedia.org/wikipedia/commons/thumb/7/7d/Intel_logo_%282006-2020%29.svg/1920px-Intel_logo_%282006-2020%29.svg.png"},
+                  {name:"NVIDIA", url:"https://upload.wikimedia.org/wikipedia/sco/thumb/2/21/Nvidia_logo.svg/960px-Nvidia_logo.svg.png?_=20150924223142"},
+                ].map((m,i) => (
+                  <div key={`${repeat}-${i}`}
+                    className="flex-shrink-0 flex items-center justify-center px-6"
+                    style={{width:160, height:80, background:"#0F2136", borderRadius:12, border:"1px solid #1E3A5F"}}
+                  >
+                    <img src={m.url} alt={m.name} style={{maxWidth:100, maxHeight:50, objectFit:"contain", filter:"grayscale(100%) brightness(1.8)"}} />
+                  </div>
+                ))
+              )}
+            </div>
+          </div>
+        </section>
+
         {/* CTA */}
         <section id="contacto" className="px-8 py-24 text-center" style={{background:"#060F18"}}>
           <div className="observe">
@@ -343,7 +232,6 @@ export default function Home() {
             <a href="#" className="hover:text-white transition-colors">Términos</a>
           </div>
         </footer>
-
       </div>
     </>
   )
