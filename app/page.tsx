@@ -179,16 +179,17 @@ export default function Home() {
           </div>
         </section>
 
-        {/* FOOTER & CTA - ESPACIADO ORIGINAL */}
-        <section id="contacto" className="px-6 py-32 text-center border-t border-[#1E3A5F]/30">
-          <div className="max-w-2xl mx-auto bg-gradient-to-b from-[#0D1B2A] p-12 rounded-[3rem] border border-[#1E3A5F]">
-            <h2 className="text-4xl font-bold mb-6">¿Impulsamos tu proyecto?</h2>
-            <p className="text-[#8A9BB0] mb-10">Consultoría técnica para optimizar tu infraestructura en Sarmiento.</p>
-            <div className="flex gap-4 justify-center">
-              <a href="https://wa.me/5492974XXXXXX" className="px-10 py-4 bg-[#1E3A5F] text-[#60C8FF] rounded-xl font-bold">WhatsApp</a>
-              <a href="mailto:contacto@balumtech.com" className="px-10 py-4 border border-[#1E3A5F] text-white rounded-xl font-bold">Email</a>
+        {/* FOOTER */}
+        <footer className="px-8 py-12 flex flex-col md:flex-row justify-between items-center text-[10px] gap-8 border-t border-[#1E3A5F]/30 bg-[#060F18] text-[#4A7090] uppercase tracking-widest">
+            <div className="flex flex-col items-center md:items-start gap-2">
+              <span className="font-bold text-white text-sm">BALUMTech</span>
+              <span>Sarmiento, Chubut — Argentina</span>
             </div>
-          </div>
+            <div className="flex gap-8 font-bold">
+              <a href="#" className="hover:text-[#60C8FF]">Privacidad</a>
+              <a href="#" className="hover:text-[#60C8FF]">Términos</a>
+              <span>© 2026</span>
+            </div>
         </footer>
       </div>
     </>
