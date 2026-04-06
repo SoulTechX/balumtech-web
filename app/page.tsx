@@ -68,15 +68,14 @@ export default function Home() {
 
   return (
     <>
-      {/* ESTILOS GLOBALES PARA EL CARRUSEL (SOLUCIÓN ANTI-STOP MÓVIL Y RESPONSIVIDAD) */}
       <style jsx global>{`
         @keyframes scrollServicios {
           0% { transform: translateX(0); }
-          100% { transform: translateX(calc(-280px * ${servicios.length} - 1.5rem * ${servicios.length})); }
+          100% { transform: translateX(calc(-300px * ${servicios.length} - 1.5rem * ${servicios.length})); }
         }
         @keyframes scrollMarcas {
           0% { transform: translateX(0); }
-          100% { transform: translateX(calc(-160px * ${marcas.length} - 1.5rem * ${marcas.length})); }
+          100% { transform: translateX(calc(-180px * ${marcas.length} - 1.5rem * ${marcas.length})); }
         }
         .carousel-track-servicios {
           display: flex;
@@ -88,9 +87,9 @@ export default function Home() {
           display: flex;
           gap: 1.5rem;
           width: max-content;
-          animation: scrollMarcas 45s linear infinite;
+          animation: scrollMarcas 40s linear infinite;
         }
-        /* ELIMINAR PAUSA AL TOCAR O HACER HOVER EN MÓVILES */
+        /* ESTO EVITA QUE SE DETENGA EN MÓVIL */
         .carousel-wrapper:hover .carousel-track-servicios,
         .carousel-wrapper:active .carousel-track-servicios,
         .carousel-wrapper:hover .carousel-track-marcas,
@@ -98,7 +97,8 @@ export default function Home() {
           animation-play-state: running !important;
         }
         .carousel-card {
-          width: 280px;
+          width: 300px !important;
+          height: 380px !important;
           flex-shrink: 0;
           background: #0D1B2A;
           border-radius: 1.25rem;
@@ -108,13 +108,12 @@ export default function Home() {
           gap: 1rem;
         }
         .marca-card {
-          width: 160px;
-          height: 80px;
+          width: 180px !important;
+          height: 90px !important;
           flex-shrink: 0;
           display: flex;
-          items-center: center;
+          align-items: center;
           justify-content: center;
-          padding: 1rem;
           background: #0F2136;
           border-radius: 0.75rem;
           border: 1px solid #1E3A5F;
@@ -123,14 +122,8 @@ export default function Home() {
           0% { transform: rotate(-35deg) translateY(-100px); }
           100% { transform: rotate(-35deg) translateY(1000px); }
         }
-        /* AJUSTES RESPONSIVOS ADICIONALES */
-        @media (max-width: 768px) {
-          .carousel-card { width: 260px; padding: 1.25rem; }
-          .marca-card { width: 140px; height: 70px; }
-        }
       `}</style>
 
-      {/* FONDO LLUVIA LOGOS */}
       <div style={{position:"fixed", top:0, left:0, width:"100%", height:"100%", zIndex:0, pointerEvents:"none", overflow:"hidden"}}>
         {[...Array(20)].map((_,i) => (
           <div key={i} style={{
@@ -139,62 +132,49 @@ export default function Home() {
             top: `${(i * 17.7) % 120 - 10}%`,
             opacity: 0.03,
             transform: `rotate(-35deg) scale(${0.4 + (i % 3) * 0.2})`,
-            animation: `rain-logo ${12 + (i % 5) * 3}s linear infinite`,
+            animation: `rain-logo ${15 + (i % 5) * 3}s linear infinite`,
           }}>
             <img src="/logo.png" alt="" width={180} height={90} style={{objectFit:"contain"}} />
           </div>
         ))}
       </div>
 
-      <div className="content relative z-10">
+      <div className="content relative z-10" style={{background: "transparent"}}>
         {/* HERO */}
-        <section className="flex flex-col items-center text-center px-6 py-24 md:py-32 gap-6">
+        <section className="flex flex-col items-center text-center px-6 py-20 md:py-32 gap-6">
           <div className="animate-fade-up text-[10px] md:text-xs font-semibold px-4 py-2 rounded-full"
             style={{background: "#0F2136", color: "#60C8FF", border: "1px solid #1E3A5F"}}>
             Digital Diffusion · Networks · Telecom · Security · AI · IT
           </div>
-
           <h1 className="animate-fade-up text-4xl md:text-6xl font-bold leading-tight max-w-4xl">
             Soluciones tech del <span style={{color: "#60C8FF"}}>futuro,</span> hoy.
           </h1>
-
-          <p className="animate-fade-up text-base md:text-lg max-w-xl" style={{color: "#8A9BB0"}}>
+          <p className="animate-fade-up text-base md:text-lg max-w-xl text-[#8A9BB0]">
             Agentes de inteligencia artificial, ciberseguridad y equipamiento informático. Todo en un solo lugar en Sarmiento.
           </p>
-
           <div className="animate-fade-up flex flex-col md:flex-row gap-4 mt-2 w-full md:w-auto">
             <a href="#servicios" className="px-8 py-4 bg-[#1E3A5F] text-[#60C8FF] rounded-xl font-bold border border-[#2B7FE0] text-center">Ver servicios</a>
             <Link href="/tienda" className="px-8 py-4 border border-[#1E3A5F] text-white rounded-xl font-bold hover:bg-[#0D1B2A] text-center">Explorar tienda</Link>
           </div>
-
-          <div className="animate-fade-up flex gap-8 md:gap-12 mt-6">
-            {[{n:"+50",l:"Proyectos"},{n:"3",l:"Verticales"},{n:"24/7",l:"Soporte"}].map(s => (
-              <div key={s.l} className="text-center">
-                <div className="text-2xl md:text-3xl font-bold" style={{color: "#60C8FF"}}>{s.n}</div>
-                <div className="text-[10px] md:text-sm mt-1" style={{color: "#8A9BB0"}}>{s.l}</div>
-              </div>
-            ))}
-          </div>
         </section>
 
-        {/* SERVICIOS CARRUSEL */}
+        {/* SERVICIOS */}
         <section id="servicios" className="py-20 overflow-hidden">
           <div className="text-center mb-12 px-8">
-            <div className="section-label inline-block px-3 py-1 text-[10px] font-bold rounded bg-[#1E3A5F] text-[#60C8FF] mb-4 uppercaseObserve">Nuestros servicios</div>
-            <h2 className="observe text-3xl font-bold">Todo lo que necesitás en tech</h2>
+            <div className="section-label inline-block px-3 py-1 text-[10px] font-bold rounded bg-[#1E3A5F] text-[#60C8FF] mb-4 uppercase">Nuestros servicios</div>
+            <h2 className="text-3xl font-bold">Todo lo que necesitás en tech</h2>
           </div>
-
           <div className="carousel-wrapper w-full overflow-hidden">
             <div className="carousel-track-servicios">
               {[...Array(3)].map((_, repeat) =>
                 servicios.map((s, i) => (
-                  <div key={`${repeat}-${i}`} className="carousel-cardObserve" style={{border: s.border}}>
+                  <div key={`${repeat}-${i}`} className="carousel-card" style={{border: s.border}}>
                     <div className="w-12 h-12 rounded-xl flex items-center justify-center bg-[#060F18]">
                       {s.icon}
                     </div>
                     <span className="text-[10px] font-semibold px-3 py-1 rounded-md w-fit" style={s.badgeStyle}>{s.badge}</span>
                     <h3 className="text-lg font-semibold">{s.title}</h3>
-                    <p className="text-xs leading-relaxed" style={{color:"#8A9BB0"}}>{s.desc}</p>
+                    <p className="text-xs leading-relaxed text-[#8A9BB0]">{s.desc}</p>
                     <div className="flex flex-wrap gap-2 mt-auto">
                       {s.tags.map(t => <span key={t} className="text-[9px] px-2 py-1 bg-[#1E3A5F]/30 text-[#60C8FF] rounded">{t}</span>)}
                     </div>
@@ -205,39 +185,18 @@ export default function Home() {
           </div>
         </section>
 
-        {/* TIENDA PREVIEW */}
-        <section className="px-6 py-20" style={{background:"#0A1520", borderTop:"1px solid #1E3A5F"}}>
-          <div className="text-center mb-12">
-            <div className="section-label inline-block px-3 py-1 text-[10px] font-bold rounded bg-[#1E3A5F] text-[#60C8FF] mb-4 uppercaseObserve">Tienda</div>
-            <h2 className="observe text-3xl font-bold">Equipamiento Destacado</h2>
-            <p className="mt-3 text-sm text-[#8A9BB0]">Kits armados y listos para usar en Sarmiento y la región.</p>
-          </div>
-          <div className="flex justify-center">
-             <Link href="/tienda" className="px-8 py-4 bg-[#1E3A5F] text-[#60C8FF] rounded-xl font-bold border border-[#2B7FE0] hover:scale-105 transition-transform text-center">
-               Ver catálogo completo
-             </Link>
-          </div>
-        </section>
-
-        {/* MARCAS CARRUSEL */}
-        <section className="py-20 overflow-hidden" style={{background:"#060F18", borderTop:"1px solid #1E3A5F"}}>
+        {/* MARCAS */}
+        <section className="py-20 overflow-hidden" style={{borderTop:"1px solid #1E3A5F"}}>
           <div className="text-center mb-12 px-8">
-            <div className="section-label inline-block px-3 py-1 text-[10px] font-bold rounded bg-[#1E3A5F] text-[#60C8FF] mb-4 uppercaseObserve">Trabajamos con</div>
-            <h2 className="observe text-2xl font-bold">Marcas líderes del mercado</h2>
+             <div className="section-label inline-block px-3 py-1 text-[10px] font-bold rounded bg-[#1E3A5F] text-[#60C8FF] mb-4 uppercase">Partners</div>
+            <h2 className="text-2xl font-bold">Marcas líderes</h2>
           </div>
-
           <div className="carousel-wrapper w-full overflow-hidden">
             <div className="carousel-track-marcas">
               {[...Array(3)].map((_, repeat) =>
                 marcas.map((m, i) => (
-                  <div key={`${repeat}-${i}`} className="marca-cardObserve flex items-center justify-center">
-                    <img 
-                      src={m.url} 
-                      alt={m.name} 
-                      style={{maxWidth:"80%", maxHeight:"60%", objectFit:"contain", filter:"grayscale(100%) brightness(1.8)", transition:"filter 0.3s"}} 
-                      onMouseEnter={e => e.currentTarget.style.filter="grayscale(0%) brightness(1)"}
-                      onMouseLeave={e => e.currentTarget.style.filter="grayscale(100%) brightness(1.8)"}
-                    />
+                  <div key={`${repeat}-${i}`} className="marca-card">
+                    <img src={m.url} alt={m.name} style={{maxWidth:"70%", maxHeight:"50%", objectFit:"contain", filter:"grayscale(100%) brightness(1.5)"}} />
                   </div>
                 ))
               )}
@@ -245,25 +204,21 @@ export default function Home() {
           </div>
         </section>
 
-        {/* CTA FINAL */}
+        {/* CTA */}
         <section id="contacto" className="px-6 py-24 text-center bg-[#060F18] border-t border-[#1E3A5F]">
-          <h2 className="observe text-3xl font-bold mb-4">¿Tenés un proyecto en mente?</h2>
-          <p className="mb-8 text-[#8A9BB0]">Contanos qué necesitás y te armamos una propuesta a medida.</p>
-          <div className="flex gap-4 justify-center flex-wrap">
-            <a href="https://wa.me/5492974XXXXXX" className="px-8 py-3 bg-[#1E3A5F] text-[#60C8FF] rounded-lg font-bold border border-[#2B7FE0] text-center">WhatsApp</a>
-            <a href="mailto:contacto@balumtech.com" className="px-8 py-3 border border-[#1E3A5F] text-white rounded-lg font-bold text-center">Email</a>
+          <h2 className="text-3xl font-bold mb-4">¿Tenés un proyecto en mente?</h2>
+          <div className="flex gap-4 justify-center flex-wrap mt-8">
+            <a href="https://wa.me/5492974XXXXXX" className="px-8 py-3 bg-[#1E3A5F] text-[#60C8FF] rounded-lg font-bold border border-[#2B7FE0]">WhatsApp</a>
+            <a href="mailto:contacto@balumtech.com" className="px-8 py-3 border border-[#1E3A5F] text-white rounded-lg font-bold">Email</a>
           </div>
         </section>
 
         {/* FOOTER */}
         <footer className="px-8 py-10 flex flex-col md:flex-row justify-between items-center text-[10px] gap-6 border-t border-[#1E3A5F] bg-[#060F18] text-[#4A7090]">
-          <div className="flex flex-col items-center md:items-start gap-2">
-            <img src="/logo.png" alt="BALUMTech" width={120} height={50} style={{opacity: 0.8}} />
-            <span>© 2026 BALUMTech — Soluciones Tecnológicas en Sarmiento.</span>
-          </div>
-          <div className="flex gap-6 uppercase tracking-widest font-bold">
-            <a href="#" className="hover:text-white transition-colors">Privacidad</a>
-            <a href="#" className="hover:text-white transition-colors">Términos</a>
+           <span>© 2026 BALUMTech — Sarmiento, Chubut.</span>
+           <div className="flex gap-6 uppercase font-bold">
+            <a href="#" className="hover:text-white">Privacidad</a>
+            <a href="#" className="hover:text-white">Términos</a>
           </div>
         </footer>
       </div>
