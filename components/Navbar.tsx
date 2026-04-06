@@ -12,7 +12,9 @@ export default function Navbar() {
       </div>
       <div className="flex gap-8 text-sm">
         <Link href="/#servicios" className="nav-link capitalize">servicios</Link>
-        <Link href="/tienda" className="nav-link capitalize">tienda</Link>
+        <Link href="/tienda" className="hover:text-[#60C8FF] transition-colors">
+  Tienda
+</Link>
         <Link href="/#contacto" className="nav-link capitalize">contacto</Link>
       </div>
       <Link href="/#contacto" className="px-4 py-2 text-sm rounded-lg" style={{background: "#1E3A5F", color: "#60C8FF", border: "1px solid #2B7FE0", transition: "all 0.3s"}}>
