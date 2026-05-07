@@ -15,28 +15,43 @@ export default function CursorParticles() {
   useEffect(() => {
     let particleId = 0;
 
-    const handleMouseMove = (e: MouseEvent) => {
-      // Solo crear partículas 1 de cada 2 veces para no saturar
+    const createParticle = (clientX: number, clientY: number) => {
       if (Math.random() > 0.5) return;
 
       const newParticle: Particle = {
         id: particleId++,
-        x: e.clientX,
-        y: e.clientY,
-        size: Math.random() * 6 + 2, // 2px a 8px
-        color: `hsl(${Math.random() * 60 + 200}, 100%, 60%)`, // Tonos azules/celestes
+        x: clientX,
+        y: clientY,
+        size: Math.random() * 6 + 2, 
+        color: `hsl(${Math.random() * 60 + 200}, 100%, 60%)`, 
       };
 
       setParticles((prev) => [...prev, newParticle]);
 
-      // Eliminar la partícula después de la animación (800ms)
       setTimeout(() => {
         setParticles((prev) => prev.filter((p) => p.id !== newParticle.id));
       }, 800);
     };
 
+    const handleMouseMove = (e: MouseEvent) => {
+      createParticle(e.clientX, e.clientY);
+    };
+
+    const handleTouchMove = (e: TouchEvent) => {
+      if (e.touches.length > 0) {
+        createParticle(e.touches[0].clientX, e.touches[0].clientY);
+      }
+    };
+
     window.addEventListener("mousemove", handleMouseMove);
-    return () => window.removeEventListener("mousemove", handleMouseMove);
+    window.addEventListener("touchmove", handleTouchMove, { passive: true });
+    window.addEventListener("touchstart", handleTouchMove, { passive: true });
+    
+    return () => {
+      window.removeEventListener("mousemove", handleMouseMove);
+      window.removeEventListener("touchmove", handleTouchMove);
+      window.removeEventListener("touchstart", handleTouchMove);
+    };
   }, []);
 
   return (
