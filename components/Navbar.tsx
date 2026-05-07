@@ -50,11 +50,17 @@ export default function Navbar() {
           ))}
         </div>
 
-        {/* CTA BUTTON (desktop) */}
-        <div className="flex-1 flex justify-end">
+        {/* CTA BUTTON & MOBILE EXTENSIONS */}
+        <div className="flex-1 flex justify-end items-center gap-4 pr-2">
+          {/* TIENDA (Visible solo en mobile) */}
+          <Link href="/tienda" className="md:hidden text-[11px] font-black uppercase text-blue-400 hover:text-white transition-colors">
+            Tienda
+          </Link>
+
+          {/* CONTACTAR (Visible solo en desktop) */}
           <Link 
             href="#contacto" 
-            className="hidden md:inline-flex px-4 py-1.5 text-[10px] font-black rounded-lg bg-blue-600 hover:bg-blue-500 text-white transition-all shadow-[0_0_20px_rgba(37,99,235,0.3)] uppercase tracking-wider"
+            className="hidden md:inline-flex px-5 py-2 text-[10px] font-black rounded-lg bg-blue-600 hover:bg-blue-500 text-white transition-all shadow-[0_0_20px_rgba(37,99,235,0.3)] uppercase tracking-wider"
           >
             Contactar
           </Link>

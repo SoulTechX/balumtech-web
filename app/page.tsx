@@ -41,10 +41,10 @@ export default function Home() {
   return (
     <div className="min-h-screen bg-[var(--bg-base)] text-zinc-50 font-sans antialiased overflow-x-hidden relative">
 
-      {/* FONDOS AURA */}
+      {/* AURA BACKGROUNDS */}
       <div className="fixed inset-0 z-0 pointer-events-none overflow-hidden">
-        <div className="absolute top-[-20%] left-[-10%] w-[60vw] h-[60vw] bg-blue-600/10 blur-[150px] rounded-full mix-blend-screen" />
-        <div className="absolute bottom-[-20%] right-[-10%] w-[60vw] h-[60vw] bg-indigo-500/10 blur-[150px] rounded-full mix-blend-screen" />
+        <div className="absolute top-[-5%] right-[-10%] w-[80vw] md:w-[500px] h-[80vw] md:h-[500px] bg-blue-600/30 md:bg-blue-600/20 blur-[100px] md:blur-[120px] rounded-full mix-blend-screen" />
+        <div className="absolute bottom-[-5%] left-[-10%] w-[90vw] md:w-[600px] h-[90vw] md:h-[600px] bg-indigo-500/25 md:bg-indigo-500/10 blur-[120px] md:blur-[150px] rounded-full mix-blend-screen" />
       </div>
 
       {/* HERO SECTION */}
