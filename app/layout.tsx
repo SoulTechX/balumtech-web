@@ -3,6 +3,7 @@ import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 // Importamos el Navbar que crearemos en el siguiente paso
 import Navbar from "@/components/Navbar"; 
+import CursorParticles from "@/components/CursorParticles";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -30,6 +31,7 @@ export default function RootLayout({
       className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col text-white">
+        <CursorParticles />
         {/* El Navbar vive aquí, arriba de todas las páginas */}
         <Navbar />
         {children}
@@ -39,7 +41,7 @@ export default function RootLayout({
           href="https://wa.me/5492974779978" 
           target="_blank" 
           rel="noopener noreferrer"
-          className="fixed bottom-6 left-6 z-[100] bg-[#25D366] text-white p-4 rounded-full shadow-[0_0_20px_rgba(37,211,102,0.5)] hover:scale-110 hover:shadow-[0_0_30px_rgba(37,211,102,0.8)] transition-all flex items-center justify-center group"
+          className="fixed bottom-6 right-6 z-[100] bg-[#25D366] text-white p-4 rounded-full shadow-[0_0_20px_rgba(37,211,102,0.5)] hover:scale-110 hover:shadow-[0_0_30px_rgba(37,211,102,0.8)] transition-all flex items-center justify-center group"
           aria-label="Contactar por WhatsApp"
         >
           <svg viewBox="0 0 24 24" width="28" height="28" fill="currentColor">

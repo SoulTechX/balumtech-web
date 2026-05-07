@@ -253,7 +253,7 @@ export default function TiendaPage() {
       {/* Botón Flotante Carrito */}
       <button 
         onClick={() => setIsCartOpen(true)}
-        className="fixed bottom-6 right-6 z-50 bg-blue-600 hover:bg-blue-500 text-white p-4 rounded-full shadow-[0_0_30px_rgba(37,99,235,0.4)] transition-all hover:scale-110 flex items-center justify-center"
+        className="fixed bottom-24 right-6 z-50 bg-blue-600 hover:bg-blue-500 text-white p-4 rounded-full shadow-[0_0_30px_rgba(37,99,235,0.4)] transition-all hover:scale-110 flex items-center justify-center"
       >
         <ShoppingCart size={24} />
         {cartItemsCount > 0 && (

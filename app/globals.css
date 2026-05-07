@@ -71,6 +71,15 @@ html {
   to { opacity: 1; transform: translateY(0); }
 }
 
+@keyframes particleFade {
+  0% { transform: scale(1) translate(0, 0); opacity: 0.8; }
+  100% { transform: scale(0) translate(0, 20px); opacity: 0; }
+}
+
+.animate-particle {
+  animation: particleFade 0.8s ease-out forwards;
+}
+
 /* ============================
    GLASS PANEL SYSTEM
    ============================ */
