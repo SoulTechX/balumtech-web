@@ -16,7 +16,7 @@ export default function Navbar() {
   return (
     <>
       <nav 
-        className="fixed top-4 left-1/2 -translate-x-1/2 w-[95%] max-w-6xl z-50 flex items-center justify-between px-6 py-2 rounded-2xl transition-all duration-500 shadow-2xl"
+        className="absolute top-4 left-1/2 -translate-x-1/2 w-[95%] max-w-6xl z-50 flex items-center justify-between px-6 py-2 rounded-2xl transition-all duration-500 shadow-2xl"
         style={{ 
           backdropFilter: "blur(20px)", 
           background: "rgba(10, 25, 47, 0.7)", 
