@@ -80,6 +80,15 @@ html {
   animation: particleFade 0.8s ease-out forwards;
 }
 
+@keyframes bounceSlow {
+  0%, 100% { transform: translateY(-5%); }
+  50% { transform: translateY(5%); }
+}
+
+.animate-bounce-slow {
+  animation: bounceSlow 3s ease-in-out infinite;
+}
+
 /* ============================
    GLASS PANEL SYSTEM
    ============================ */
