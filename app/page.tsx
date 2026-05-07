@@ -2,7 +2,7 @@
 import { useEffect } from "react"
 import Link from "next/link"
 import Image from "next/image"
-import { Shield, Bot, ShoppingCart, ArrowRight, Terminal, Cpu, Zap, Mail, MapPin, Phone, MessageCircle } from "lucide-react"
+import { Shield, Bot, ShoppingCart, ArrowRight, Terminal, Cpu, Zap, Mail, MapPin, Phone, MessageCircle, ShieldCheck, Users } from "lucide-react"
 
 export default function Home() {
   useEffect(() => {
@@ -133,6 +133,69 @@ export default function Home() {
                 <p className="mt-1 text-green-400">Status: ALL SYSTEMS ONLINE.</p>
              </div>
           </div>
+        </div>
+      </section>
+
+      {/* QUIENES SOMOS SECTION */}
+      <section id="nosotros" className="py-24 px-6 md:px-8 relative z-10 border-t border-white/[0.05]">
+        <div className="max-w-6xl mx-auto flex flex-col lg:flex-row gap-16 items-center">
+          
+          {/* Texto principal */}
+          <div className="flex-1 space-y-8">
+            <div>
+              <h3 className="text-[10px] uppercase tracking-[0.3em] font-black text-blue-500 mb-2">Nuestra Historia</h3>
+              <h2 className="text-4xl md:text-5xl font-black tracking-tighter text-white">De Sarmiento al mundo.</h2>
+            </div>
+            
+            <div className="space-y-6 text-zinc-400 font-medium leading-relaxed">
+              <p>
+                <strong className="text-white">BALUMTech</strong> nació en Sarmiento, Chubut, de algo simple: años trabajando en el rubro y la decisión de construir algo propio. No desde una oficina en Buenos Aires mirando la Patagonia en un mapa, sino desde adentro, conociendo de primera mano los desafíos reales de operar tecnología en el sur del país.
+              </p>
+              <p>
+                Somos un equipo de 3 profesionales con más de 5 años resolviendo infraestructura crítica: redes que aguantan el viento y la distancia, sistemas de seguridad que funcionan sin excusas y automatizaciones que le devuelven tiempo a las personas que los usan.
+              </p>
+              <p>
+                Trabajamos con las mismas marcas y estándares que usan las empresas más exigentes del mundo — <span className="text-zinc-200">Cisco, Ubiquiti, Nvidia, Dahua</span> — porque creemos que la escala geográfica no debería ser una limitación tecnológica.
+              </p>
+              <p className="text-blue-400 font-semibold pt-4">
+                Si tenés un proyecto, un problema o simplemente querés entender qué solución necesitás, hablamos.
+              </p>
+            </div>
+          </div>
+
+          {/* Tarjetas de Data (Glassmorphism) */}
+          <div className="w-full lg:w-[450px] flex flex-col gap-4">
+            <div className="glass-panel p-8 rounded-[2rem] flex items-center gap-6 hover:bg-white/[0.04] transition-all group">
+              <div className="w-14 h-14 bg-blue-600/10 border border-blue-500/20 text-blue-400 rounded-2xl flex items-center justify-center shrink-0 group-hover:scale-110 transition-transform">
+                <MapPin size={24} />
+              </div>
+              <div>
+                <h4 className="text-white font-bold text-lg mb-1">Base de Operaciones</h4>
+                <p className="text-zinc-400 text-sm">Sarmiento, Chubut (Patagonia)</p>
+              </div>
+            </div>
+
+            <div className="glass-panel p-8 rounded-[2rem] flex items-center gap-6 hover:bg-white/[0.04] transition-all group">
+              <div className="w-14 h-14 bg-green-500/10 border border-green-500/20 text-green-400 rounded-2xl flex items-center justify-center shrink-0 group-hover:scale-110 transition-transform">
+                <ShieldCheck size={24} />
+              </div>
+              <div>
+                <h4 className="text-white font-bold text-lg mb-1">Infraestructura Crítica</h4>
+                <p className="text-zinc-400 text-sm">+5 años resolviendo desafíos reales</p>
+              </div>
+            </div>
+            
+            <div className="glass-panel p-8 rounded-[2rem] flex items-center gap-6 hover:bg-white/[0.04] transition-all group">
+              <div className="w-14 h-14 bg-purple-500/10 border border-purple-500/20 text-purple-400 rounded-2xl flex items-center justify-center shrink-0 group-hover:scale-110 transition-transform">
+                <Users size={24} />
+              </div>
+              <div>
+                <h4 className="text-white font-bold text-lg mb-1">Equipo Especializado</h4>
+                <p className="text-zinc-400 text-sm">3 profesionales de alto rendimiento</p>
+              </div>
+            </div>
+          </div>
+
         </div>
       </section>
 
