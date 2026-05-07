@@ -2,10 +2,15 @@
 import { useState } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
+import { usePathname } from 'next/navigation';
 import { Menu, X } from 'lucide-react';
 
 export default function Navbar() {
   const [menuOpen, setMenuOpen] = useState(false);
+  const pathname = usePathname();
+
+  // Ocultar Navbar en la página de tienda
+  if (pathname === '/tienda') return null;
 
   const navItems = [
     { label: "INICIO", href: "/" },
