@@ -1,10 +1,10 @@
 "use client"
-import { useState, useMemo } from "react";
+import { useState, useMemo, useEffect } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { 
-  ArrowLeft, MessageCircle, Bot, Shield, Cpu, Monitor, Wifi, Search, 
-  SlidersHorizontal, Zap, Server, Camera, Router, Truck, Star, 
-  ChevronDown, X, Filter, Package
+  ArrowLeft, MessageCircle, Search, Truck, Star, 
+  ChevronDown, X, Filter, Package, ShoppingCart, Plus, Minus, Trash2
 } from "lucide-react";
 
 // ─── TIPOS ───────────────────────────────────────────
@@ -19,12 +19,17 @@ interface Producto {
   badge: string;
   badgeType: "nuevo" | "stock" | "pedido" | "pro";
   desc: string;
-  icon: React.ReactNode;
+  image: string;
   categoria: string;
   envioGratis: boolean;
   rating: number;
   reviews: number;
   gradient: string;
+}
+
+interface CartItem {
+  product: Producto;
+  quantity: number;
 }
 
 // ─── DATOS DE PRODUCTOS ──────────────────────────────
@@ -37,7 +42,7 @@ const productos: Producto[] = [
     price: null, priceLabel: "Consultar", currency: "ARS",
     badge: "Especialidad", badgeType: "nuevo",
     desc: "Automatización completa de leads, agenda y seguimiento para inmobiliarias y corredores. Incluye configuración personalizada.",
-    icon: <Bot size={48} />, categoria: "IA", envioGratis: false,
+    image: "/productos/prod-1.png", categoria: "IA", envioGratis: false,
     rating: 5, reviews: 12, gradient: "from-blue-600/20 via-indigo-600/10 to-transparent"
   },
   { 
@@ -45,7 +50,7 @@ const productos: Producto[] = [
     price: null, priceLabel: "Consultar", currency: "ARS",
     badge: "Pro", badgeType: "pro",
     desc: "Análisis profundo, optimización de rendimiento y limpieza de workflows existentes. Reducí costos y errores.",
-    icon: <SlidersHorizontal size={48} />, categoria: "IA", envioGratis: false,
+    image: "/productos/prod-2.png", categoria: "IA", envioGratis: false,
     rating: 4.8, reviews: 8, gradient: "from-purple-600/20 via-purple-600/5 to-transparent"
   },
   { 
@@ -53,7 +58,7 @@ const productos: Producto[] = [
     price: null, priceLabel: "Consultar", currency: "ARS",
     badge: "Nuevo", badgeType: "nuevo",
     desc: "Asistente virtual con IA generativa para atención 24/7. Aprende de tu negocio y responde como un humano.",
-    icon: <MessageCircle size={48} />, categoria: "IA", envioGratis: false,
+    image: "/productos/prod-3.png", categoria: "IA", envioGratis: false,
     rating: 4.9, reviews: 6, gradient: "from-cyan-600/20 via-blue-600/5 to-transparent"
   },
   { 
@@ -61,130 +66,115 @@ const productos: Producto[] = [
     price: null, priceLabel: "Consultar", currency: "ARS",
     badge: "Pro", badgeType: "pro",
     desc: "Generación automática de informes con datos actualizados. Integración con Google Sheets, CRMs y ERPs.",
-    icon: <Zap size={48} />, categoria: "IA", envioGratis: false,
+    image: "/productos/prod-4.png", categoria: "IA", envioGratis: false,
     rating: 4.7, reviews: 4, gradient: "from-yellow-500/15 via-orange-500/5 to-transparent"
   },
 
   // Seguridad Electrónica
   { 
-    id: 5, name: "Kit CCTV Hogar 4 Cámaras Dahua — Visión Nocturna + App Móvil", 
+    id: 5, name: "Kit CCTV Hogar 4 Cámaras Dahua — Visión Nocturna", 
     price: 285000, priceLabel: "$285.000", currency: "ARS",
     cuotas: 12, cuotasPrecio: "$28.420",
-    badge: "Stock disponible", badgeType: "stock",
+    badge: "Stock", badgeType: "stock",
     desc: "4 cámaras Dahua 2MP con visión nocturna, DVR 4ch, disco 1TB, cables y fuentes. Incluye instalación básica.",
-    icon: <Camera size={48} />, categoria: "Seguridad", envioGratis: true,
+    image: "/productos/prod-5.png", categoria: "Seguridad", envioGratis: true,
     rating: 4.9, reviews: 23, gradient: "from-green-600/20 via-emerald-600/5 to-transparent"
   },
   { 
-    id: 6, name: "Kit CCTV Empresa 8 Cámaras Profesional — Analytics de Movimiento", 
+    id: 6, name: "Kit CCTV Empresa 8 Cámaras Profesional — Analytics", 
     price: 520000, priceLabel: "$520.000", currency: "ARS",
     cuotas: 12, cuotasPrecio: "$51.840",
-    badge: "Stock disponible", badgeType: "stock",
+    badge: "Stock", badgeType: "stock",
     desc: "8 cámaras Hikvision 4MP, NVR 8ch con analytics, disco 2TB. Alertas inteligentes y acceso remoto.",
-    icon: <Camera size={48} />, categoria: "Seguridad", envioGratis: true,
+    image: "/productos/prod-6.png", categoria: "Seguridad", envioGratis: true,
     rating: 5, reviews: 15, gradient: "from-green-600/20 via-teal-600/5 to-transparent"
   },
   { 
     id: 7, name: "Control de Accesos Biométrico — Cerradura Inteligente", 
     price: 180000, priceLabel: "$180.000", currency: "ARS",
     cuotas: 6, cuotasPrecio: "$33.000",
-    badge: "Instalación incluida", badgeType: "stock",
-    desc: "Cerraduras inteligentes con lector biométrico, código PIN y control desde el celular. Ideal oficinas.",
-    icon: <Shield size={48} />, categoria: "Seguridad", envioGratis: true,
+    badge: "Instalación", badgeType: "stock",
+    desc: "Cerraduras inteligentes con lector biométrico, código PIN y control celular.",
+    image: "https://images.unsplash.com/photo-1555949963-aa79dcee981c?q=80&w=800&auto=format&fit=crop", categoria: "Seguridad", envioGratis: true,
     rating: 4.6, reviews: 9, gradient: "from-emerald-600/15 via-green-600/5 to-transparent"
   },
 
   // Redes & Conectividad
   { 
-    id: 8, name: "Nodo de Red Pro — Access Point Ubiquiti + Cableado Cat6", 
+    id: 8, name: "Nodo de Red Pro — Access Point Ubiquiti + Cableado", 
     price: 145000, priceLabel: "$145.000", currency: "ARS",
     cuotas: 6, cuotasPrecio: "$26.620",
-    badge: "Instalación incluida", badgeType: "stock",
-    desc: "Mejora de cobertura Wi-Fi con access point Ubiquiti empresarial y cableado estructurado categoría 6.",
-    icon: <Wifi size={48} />, categoria: "Redes", envioGratis: true,
+    badge: "Instalación", badgeType: "stock",
+    desc: "Mejora de cobertura Wi-Fi con AP Ubiquiti empresarial y cableado estructurado Cat 6.",
+    image: "https://images.unsplash.com/photo-1544197150-b99a580bb7a8?q=80&w=800&auto=format&fit=crop", categoria: "Redes", envioGratis: true,
     rating: 4.8, reviews: 18, gradient: "from-sky-600/20 via-blue-600/5 to-transparent"
   },
   { 
     id: 9, name: "Red Mesh Empresarial — Conectividad Industrial", 
     price: null, priceLabel: "Consultar", currency: "ARS",
     badge: "Proyecto", badgeType: "pedido",
-    desc: "Solución de conectividad robusta para yacimientos, campos petroleros y plantas industriales. Diseño a medida.",
-    icon: <Router size={48} />, categoria: "Redes", envioGratis: false,
+    desc: "Solución de conectividad robusta para yacimientos y plantas. Diseño a medida.",
+    image: "https://images.unsplash.com/photo-1558494949-ef010cbdcc31?q=80&w=800&auto=format&fit=crop", categoria: "Redes", envioGratis: false,
     rating: 5, reviews: 7, gradient: "from-orange-500/15 via-amber-500/5 to-transparent"
   },
   { 
     id: 10, name: "VPN & Firewall Corporativo — Cisco / MikroTik", 
     price: null, priceLabel: "Consultar", currency: "ARS",
     badge: "Pro", badgeType: "pro",
-    desc: "Infraestructura de seguridad perimetral para oficinas distribuidas. VPN site-to-site y firewall avanzado.",
-    icon: <Server size={48} />, categoria: "Redes", envioGratis: false,
+    desc: "Seguridad perimetral para oficinas distribuidas. VPN site-to-site.",
+    image: "https://images.unsplash.com/photo-1550751827-4bd374c3f58b?q=80&w=800&auto=format&fit=crop", categoria: "Redes", envioGratis: false,
     rating: 4.9, reviews: 5, gradient: "from-red-500/15 via-rose-500/5 to-transparent"
   },
 
   // Hardware & Workstations
   { 
-    id: 11, name: "PC BALUM v1 Gamer — Ryzen 7 + RTX 4060 + 32GB RAM", 
+    id: 11, name: "PC BALUM v1 Gamer — Ryzen 7 + RTX 4060", 
     price: 820000, priceLabel: "$820.000", currency: "ARS",
     cuotas: 12, cuotasPrecio: "$81.780",
     badge: "A pedido", badgeType: "pedido",
-    desc: "PC gamer de alto rendimiento armada en Sarmiento. Ryzen 7 7700X, RTX 4060 8GB, 32GB DDR5, SSD 1TB NVMe.",
-    icon: <Monitor size={48} />, categoria: "Hardware", envioGratis: true,
+    desc: "Ryzen 7 7700X, RTX 4060 8GB, 32GB DDR5, SSD 1TB NVMe. Armada en Sarmiento.",
+    image: "https://images.unsplash.com/photo-1587202372634-32705e3bf49c?q=80&w=800&auto=format&fit=crop", categoria: "Hardware", envioGratis: true,
     rating: 5, reviews: 11, gradient: "from-violet-600/20 via-purple-600/5 to-transparent"
   },
   { 
-    id: 12, name: "Workstation Diseño / IA — Renderizado 3D Profesional", 
+    id: 12, name: "Workstation Diseño / IA — Renderizado 3D", 
     price: 1200000, priceLabel: "$1.200.000", currency: "ARS",
     cuotas: 12, cuotasPrecio: "$119.640",
     badge: "A pedido", badgeType: "pedido",
-    desc: "Estación de trabajo para renderizado 3D, entrenamiento de IA y diseño gráfico. Xeon + RTX 4080 + 64GB ECC.",
-    icon: <Cpu size={48} />, categoria: "Hardware", envioGratis: true,
+    desc: "Xeon + RTX 4080 + 64GB ECC. Optimizada para IA y renderizado profesional.",
+    image: "https://images.unsplash.com/photo-1525547719571-a2d4ac8945e2?q=80&w=800&auto=format&fit=crop", categoria: "Hardware", envioGratis: true,
     rating: 5, reviews: 3, gradient: "from-pink-500/15 via-rose-500/5 to-transparent"
   },
   { 
-    id: 13, name: "Servidor NAS Empresarial — Almacenamiento RAID Seguro", 
+    id: 13, name: "Servidor NAS Empresarial — Synology RAID", 
     price: 650000, priceLabel: "$650.000", currency: "ARS",
     cuotas: 12, cuotasPrecio: "$64.840",
     badge: "A pedido", badgeType: "pedido",
-    desc: "Servidor NAS Synology con RAID 5, 4 bahías, acceso remoto seguro y respaldo automático en la nube.",
-    icon: <Server size={48} />, categoria: "Hardware", envioGratis: true,
+    desc: "NAS Synology RAID 5, 4 bahías, acceso remoto seguro y respaldo en nube.",
+    image: "https://images.unsplash.com/photo-1558494949-ef010cbdcc31?q=80&w=800&auto=format&fit=crop", categoria: "Hardware", envioGratis: true,
     rating: 4.7, reviews: 6, gradient: "from-slate-500/15 via-gray-500/5 to-transparent"
   },
 ];
 
-const categorias = [
-  { name: "Todos", icon: <Package size={16} /> },
-  { name: "IA", icon: <Bot size={16} /> },
-  { name: "Seguridad", icon: <Shield size={16} /> },
-  { name: "Redes", icon: <Wifi size={16} /> },
-  { name: "Hardware", icon: <Monitor size={16} /> },
-];
+const categorias = ["Todos", "IA", "Seguridad", "Redes", "Hardware"];
 
 type SortOption = "relevancia" | "menor" | "mayor";
 
-// ─── COMPONENTE DE ESTRELLAS ─────────────────────────
+// ─── COMPONENTES AUXILIARES ─────────────────────────
 function Stars({ rating, reviews }: { rating: number; reviews: number }) {
   return (
     <div className="product-rating">
       {[1, 2, 3, 4, 5].map((i) => (
-        <Star 
-          key={i} 
-          size={12} 
-          className={i <= Math.floor(rating) ? "text-blue-400 fill-blue-400" : "text-zinc-700"} 
-        />
+        <Star key={i} size={12} className={i <= Math.floor(rating) ? "text-blue-400 fill-blue-400" : "text-zinc-700"} />
       ))}
       <span className="text-[11px] text-zinc-500 ml-1">({reviews})</span>
     </div>
   );
 }
 
-// ─── COMPONENTE DE BADGE ─────────────────────────────
 function Badge({ text, type }: { text: string; type: string }) {
   const cls = type === "nuevo" ? "badge-nuevo" : type === "stock" ? "badge-stock" : type === "pedido" ? "badge-pedido" : "badge-pro";
-  return (
-    <span className={`${cls} text-[10px] font-bold uppercase tracking-wider px-2.5 py-1 rounded-md`}>
-      {text}
-    </span>
-  );
+  return <span className={`${cls} text-[10px] font-bold uppercase tracking-wider px-2.5 py-1 rounded-md shadow-lg`}>{text}</span>;
 }
 
 // ─── PÁGINA PRINCIPAL ────────────────────────────────
@@ -194,51 +184,161 @@ export default function TiendaPage() {
   const [sort, setSort] = useState<SortOption>("relevancia");
   const [soloEnvioGratis, setSoloEnvioGratis] = useState(false);
   const [sidebarOpen, setSidebarOpen] = useState(false);
+  
+  // Estado del Carrito
+  const [cart, setCart] = useState<CartItem[]>([]);
+  const [isCartOpen, setIsCartOpen] = useState(false);
 
+  // Funciones del Carrito
+  const addToCart = (product: Producto) => {
+    setCart(prev => {
+      const existing = prev.find(item => item.product.id === product.id);
+      if (existing) {
+        return prev.map(item => item.product.id === product.id ? { ...item, quantity: item.quantity + 1 } : item);
+      }
+      return [...prev, { product, quantity: 1 }];
+    });
+    setIsCartOpen(true);
+  };
+
+  const updateQuantity = (id: number, delta: number) => {
+    setCart(prev => prev.map(item => {
+      if (item.product.id === id) {
+        const newQ = item.quantity + delta;
+        return newQ > 0 ? { ...item, quantity: newQ } : item;
+      }
+      return item;
+    }));
+  };
+
+  const removeFromCart = (id: number) => setCart(prev => prev.filter(item => item.product.id !== id));
+
+  const totalCart = cart.reduce((acc, item) => acc + ((item.product.price || 0) * item.quantity), 0);
+  const cartItemsCount = cart.reduce((acc, item) => acc + item.quantity, 0);
+
+  const handleCheckout = () => {
+    let msg = "Hola BALUMTech, quiero hacer el siguiente pedido:\n\n";
+    cart.forEach(item => {
+      msg += `▪ ${item.quantity}x ${item.product.name} - ${item.product.price ? `$${(item.product.price * item.quantity).toLocaleString('es-AR')}` : '(A cotizar)'}\n`;
+    });
+    if (totalCart > 0) {
+      msg += `\n*TOTAL ESTIMADO: $${totalCart.toLocaleString('es-AR')}*`;
+    }
+    msg += "\n\n¿Me pueden confirmar stock y opciones de pago?";
+    window.open(`https://wa.me/${waNumber}?text=${encodeURIComponent(msg)}`, "_blank");
+  };
+
+  // Filtrado de Productos
   const productosFiltrados = useMemo(() => {
     let result = productos.filter((p) => {
       const matchCategoria = filtro === "Todos" || p.categoria === filtro;
-      const matchBusqueda = p.name.toLowerCase().includes(busqueda.toLowerCase()) || 
-                            p.desc.toLowerCase().includes(busqueda.toLowerCase());
+      const matchBusqueda = p.name.toLowerCase().includes(busqueda.toLowerCase()) || p.desc.toLowerCase().includes(busqueda.toLowerCase());
       const matchEnvio = !soloEnvioGratis || p.envioGratis;
       return matchCategoria && matchBusqueda && matchEnvio;
     });
 
-    if (sort === "menor") {
-      result = [...result].sort((a, b) => (a.price ?? Infinity) - (b.price ?? Infinity));
-    } else if (sort === "mayor") {
-      result = [...result].sort((a, b) => (b.price ?? 0) - (a.price ?? 0));
-    }
-
+    if (sort === "menor") result = [...result].sort((a, b) => (a.price ?? Infinity) - (b.price ?? Infinity));
+    else if (sort === "mayor") result = [...result].sort((a, b) => (b.price ?? 0) - (a.price ?? 0));
     return result;
   }, [filtro, busqueda, sort, soloEnvioGratis]);
 
   const categoryCounts = useMemo(() => {
     const counts: Record<string, number> = { Todos: productos.length };
-    productos.forEach(p => {
-      counts[p.categoria] = (counts[p.categoria] || 0) + 1;
-    });
+    productos.forEach(p => { counts[p.categoria] = (counts[p.categoria] || 0) + 1; });
     return counts;
   }, []);
 
   return (
-    <div className="min-h-screen bg-[var(--bg-base)] relative">
+    <div className="min-h-screen bg-[var(--bg-base)] relative overflow-x-hidden">
+      {/* Botón Flotante Carrito */}
+      <button 
+        onClick={() => setIsCartOpen(true)}
+        className="fixed bottom-6 right-6 z-50 bg-blue-600 hover:bg-blue-500 text-white p-4 rounded-full shadow-[0_0_30px_rgba(37,99,235,0.4)] transition-all hover:scale-110 flex items-center justify-center"
+      >
+        <ShoppingCart size={24} />
+        {cartItemsCount > 0 && (
+          <span className="absolute -top-2 -right-2 bg-red-500 text-white text-[10px] font-bold w-6 h-6 flex items-center justify-center rounded-full border-2 border-[var(--bg-base)]">
+            {cartItemsCount}
+          </span>
+        )}
+      </button>
+
+      {/* Drawer Carrito */}
+      {isCartOpen && (
+        <div className="fixed inset-0 z-[60] flex justify-end">
+          <div className="absolute inset-0 bg-black/60 backdrop-blur-sm" onClick={() => setIsCartOpen(false)} />
+          <div className="relative w-full max-w-md bg-[var(--bg-base)] border-l border-white/10 shadow-2xl h-full flex flex-col transform transition-transform duration-300">
+            <div className="p-6 border-b border-white/10 flex items-center justify-between bg-white/[0.02]">
+              <h2 className="text-xl font-bold flex items-center gap-2"><ShoppingCart size={20} className="text-blue-400" /> Mi Pedido</h2>
+              <button onClick={() => setIsCartOpen(false)} className="text-zinc-400 hover:text-white bg-white/5 p-2 rounded-lg"><X size={20} /></button>
+            </div>
+            
+            <div className="flex-1 overflow-y-auto p-6 space-y-4">
+              {cart.length === 0 ? (
+                <div className="h-full flex flex-col items-center justify-center text-zinc-500 space-y-4">
+                  <Package size={64} className="opacity-20" />
+                  <p>Tu carrito está vacío</p>
+                  <button onClick={() => setIsCartOpen(false)} className="text-blue-400 hover:text-blue-300 text-sm font-semibold">Explorar tienda</button>
+                </div>
+              ) : (
+                cart.map((item) => (
+                  <div key={item.product.id} className="flex gap-4 bg-white/5 p-4 rounded-xl border border-white/5 relative group">
+                    <button onClick={() => removeFromCart(item.product.id)} className="absolute top-2 right-2 text-zinc-500 hover:text-red-400 opacity-0 group-hover:opacity-100 transition-opacity">
+                      <Trash2 size={16} />
+                    </button>
+                    <div className="w-16 h-16 rounded-lg bg-black overflow-hidden relative flex-shrink-0">
+                      <Image src={item.product.image} alt={item.product.name} fill className="object-cover opacity-80" />
+                    </div>
+                    <div className="flex-1">
+                      <h4 className="text-sm font-bold text-white line-clamp-2 leading-tight">{item.product.name}</h4>
+                      <p className="text-blue-400 font-black text-sm mt-1">{item.product.priceLabel}</p>
+                      <div className="flex items-center gap-3 mt-2 bg-black/40 w-fit rounded-lg border border-white/10">
+                        <button onClick={() => updateQuantity(item.product.id, -1)} className="p-1.5 text-zinc-400 hover:text-white"><Minus size={12} /></button>
+                        <span className="text-xs font-bold w-4 text-center">{item.quantity}</span>
+                        <button onClick={() => updateQuantity(item.product.id, 1)} className="p-1.5 text-zinc-400 hover:text-white"><Plus size={12} /></button>
+                      </div>
+                    </div>
+                  </div>
+                ))
+              )}
+            </div>
+
+            {cart.length > 0 && (
+              <div className="p-6 border-t border-white/10 bg-white/[0.02]">
+                <div className="flex justify-between items-end mb-6">
+                  <span className="text-zinc-400 text-sm font-medium">Total Estimado</span>
+                  <div className="text-right">
+                    <span className="block text-2xl font-black text-white">${totalCart.toLocaleString('es-AR')}</span>
+                    <span className="text-[10px] text-zinc-500">+ items a cotizar</span>
+                  </div>
+                </div>
+                <button 
+                  onClick={handleCheckout}
+                  className="w-full py-4 bg-green-600 hover:bg-green-500 text-white rounded-xl font-bold flex items-center justify-center gap-2 transition-all shadow-[0_0_20px_rgba(22,163,74,0.3)]"
+                >
+                  <MessageCircle size={18} /> Enviar pedido por WhatsApp
+                </button>
+              </div>
+            )}
+          </div>
+        </div>
+      )}
+
       {/* FONDOS AURA */}
       <div className="fixed inset-0 z-0 pointer-events-none overflow-hidden">
         <div className="absolute top-[-30%] right-[-20%] w-[50vw] h-[50vw] bg-blue-600/8 blur-[150px] rounded-full mix-blend-screen" />
         <div className="absolute bottom-[-20%] left-[-10%] w-[40vw] h-[40vw] bg-indigo-500/8 blur-[120px] rounded-full mix-blend-screen" />
       </div>
 
-      <main className="relative z-10 pt-28 pb-20 px-4 md:px-6">
+      <main className="relative z-10 pt-10 pb-20 px-4 md:px-6">
         <div className="max-w-[1400px] mx-auto">
 
           {/* HEADER */}
           <header className="mb-8">
-            <Link href="/" className="inline-flex items-center gap-2 text-zinc-500 hover:text-blue-400 transition-colors text-sm mb-4">
-              <ArrowLeft size={16} /> Volver al inicio
+            <Link href="/" className="inline-flex items-center gap-2 text-zinc-500 hover:text-blue-400 transition-colors text-sm mb-6 bg-white/5 px-4 py-2 rounded-lg border border-white/10">
+              <ArrowLeft size={16} /> Volver al sitio principal
             </Link>
             
-            {/* BARRA DE BÚSQUEDA PRINCIPAL (estilo ML) */}
             <div className="flex flex-col md:flex-row gap-4 items-start md:items-center">
               <div className="relative flex-1 w-full max-w-2xl">
                 <Search size={18} className="absolute left-4 top-1/2 -translate-y-1/2 text-zinc-500" />
@@ -255,8 +355,6 @@ export default function TiendaPage() {
                   </button>
                 )}
               </div>
-              
-              {/* Botón filtros mobile */}
               <button 
                 onClick={() => setSidebarOpen(!sidebarOpen)} 
                 className="lg:hidden flex items-center gap-2 px-4 py-3 rounded-xl border border-white/10 text-zinc-400 hover:text-white hover:border-white/20 transition-all text-sm font-medium"
@@ -264,186 +362,103 @@ export default function TiendaPage() {
                 <Filter size={16} /> Filtros
               </button>
             </div>
-
-            {/* Breadcrumb */}
-            <div className="flex items-center gap-2 mt-4 text-xs text-zinc-600">
-              <Link href="/" className="hover:text-blue-400 transition-colors">Inicio</Link>
-              <ChevronDown size={12} className="-rotate-90" />
-              <span className="text-zinc-400">Tienda</span>
-              {filtro !== "Todos" && (
-                <>
-                  <ChevronDown size={12} className="-rotate-90" />
-                  <span className="text-blue-400">{filtro}</span>
-                </>
-              )}
-            </div>
           </header>
 
           {/* LAYOUT: SIDEBAR + PRODUCTOS */}
           <div className="tienda-layout">
             
-            {/* ─── SIDEBAR ─── */}
+            {/* SIDEBAR */}
             <aside className={`tienda-sidebar glass-panel rounded-2xl p-5 ${sidebarOpen ? "block" : "hidden"} lg:block`}>
-              
-              {/* Categorías */}
               <div className="sidebar-section">
                 <h4>Categorías</h4>
                 {categorias.map((cat) => (
                   <button
-                    key={cat.name}
-                    onClick={() => { setFiltro(cat.name); setSidebarOpen(false); }}
-                    className={`sidebar-option ${filtro === cat.name ? "active" : ""}`}
+                    key={cat}
+                    onClick={() => { setFiltro(cat); setSidebarOpen(false); }}
+                    className={`sidebar-option ${filtro === cat ? "active" : ""}`}
                   >
-                    {cat.icon}
-                    <span>{cat.name}</span>
-                    <span className="count">{categoryCounts[cat.name] || 0}</span>
+                    <span>{cat}</span>
+                    <span className="count">{categoryCounts[cat] || 0}</span>
                   </button>
                 ))}
               </div>
 
-              {/* Envío */}
               <div className="sidebar-section">
                 <h4>Envío</h4>
-                <button
-                  onClick={() => setSoloEnvioGratis(!soloEnvioGratis)}
-                  className={`sidebar-option ${soloEnvioGratis ? "active" : ""}`}
-                >
-                  <Truck size={16} />
-                  <span>Envío gratis</span>
+                <button onClick={() => setSoloEnvioGratis(!soloEnvioGratis)} className={`sidebar-option ${soloEnvioGratis ? "active" : ""}`}>
+                  <Truck size={16} /> <span>Envío gratis</span>
                 </button>
-              </div>
-
-              {/* Condición */}
-              <div className="sidebar-section">
-                <h4>Disponibilidad</h4>
-                <button
-                  onClick={() => setFiltro("Todos")}
-                  className={`sidebar-option ${filtro === "Todos" ? "active" : ""}`}
-                >
-                  <Package size={16} />
-                  <span>Ver todos</span>
-                  <span className="count">{productos.length}</span>
-                </button>
-              </div>
-
-              {/* Info */}
-              <div className="mt-6 p-4 rounded-xl bg-blue-500/5 border border-blue-500/10">
-                <p className="text-[11px] text-blue-400 font-semibold mb-1">💬 ¿Necesitás ayuda?</p>
-                <p className="text-[11px] text-zinc-500 leading-relaxed">Escribinos por WhatsApp y te asesoramos con tu compra.</p>
-                <a 
-                  href={`https://wa.me/${waNumber}?text=${encodeURIComponent("Hola BALUMTech, necesito ayuda con una compra.")}`} 
-                  target="_blank" 
-                  rel="noopener noreferrer"
-                  className="inline-flex items-center gap-1 text-[11px] text-blue-400 hover:text-blue-300 font-semibold mt-2 transition-colors"
-                >
-                  <MessageCircle size={12} /> Chatear ahora
-                </a>
               </div>
             </aside>
 
-            {/* ─── PRODUCTOS ─── */}
+            {/* PRODUCTOS */}
             <div>
-              {/* Sort bar */}
               <div className="sort-bar">
                 <span className="text-sm text-zinc-400">
-                  <strong className="text-white">{productosFiltrados.length}</strong> resultado{productosFiltrados.length !== 1 ? "s" : ""}
+                  <strong className="text-white">{productosFiltrados.length}</strong> resultados
                 </span>
                 <div className="sort-options">
                   <span className="text-xs text-zinc-600 mr-2 self-center">Ordenar:</span>
                   {([
-                    { key: "relevancia" as SortOption, label: "Más relevantes" },
-                    { key: "menor" as SortOption, label: "Menor precio" },
-                    { key: "mayor" as SortOption, label: "Mayor precio" },
-                  ]).map(s => (
-                    <button 
-                      key={s.key} 
-                      onClick={() => setSort(s.key)}
-                      className={`sort-btn ${sort === s.key ? "active" : ""}`}
-                    >
+                    { key: "relevancia", label: "Más relevantes" },
+                    { key: "menor", label: "Menor precio" },
+                    { key: "mayor", label: "Mayor precio" },
+                  ] as const).map(s => (
+                    <button key={s.key} onClick={() => setSort(s.key)} className={`sort-btn ${sort === s.key ? "active" : ""}`}>
                       {s.label}
                     </button>
                   ))}
                 </div>
               </div>
 
-              {/* Grid de productos */}
               {productosFiltrados.length === 0 ? (
                 <div className="glass-panel rounded-2xl p-16 text-center mt-8">
                   <Search size={48} className="text-zinc-700 mx-auto mb-4" />
-                  <p className="text-zinc-400 text-lg font-medium">No hay resultados para tu búsqueda</p>
-                  <p className="text-zinc-600 text-sm mt-2">Probá con otras palabras o revisá los filtros</p>
-                  <button onClick={() => { setBusqueda(""); setFiltro("Todos"); setSoloEnvioGratis(false); }} className="mt-6 text-blue-400 hover:text-blue-300 text-sm font-semibold transition-colors">
+                  <p className="text-zinc-400 text-lg font-medium">No hay resultados</p>
+                  <button onClick={() => { setBusqueda(""); setFiltro("Todos"); setSoloEnvioGratis(false); }} className="mt-6 text-blue-400 hover:text-blue-300 text-sm font-semibold">
                     Limpiar filtros
                   </button>
                 </div>
               ) : (
                 <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-5">
                   {productosFiltrados.map((prod) => (
-                    <a
-                      key={prod.id}
-                      href={`https://wa.me/${waNumber}?text=${encodeURIComponent(`Hola BALUMTech, me interesa "${prod.name}" (${prod.priceLabel}). ¿Podrían darme más información?`)}`}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="product-card-ml group"
-                    >
-                      {/* Imagen / Icono Area */}
-                      <div className={`product-image-area bg-gradient-to-br ${prod.gradient} bg-[#0a0a0a]`}>
-                        <div className="text-zinc-600 group-hover:text-blue-400/60 transition-colors duration-500 group-hover:scale-110 transition-transform">
-                          {prod.icon}
-                        </div>
-                        {/* Badge flotante */}
-                        <div className="absolute top-3 left-3">
-                          <Badge text={prod.badge} type={prod.badgeType} />
-                        </div>
+                    <div key={prod.id} className="product-card-ml group relative flex flex-col justify-between h-full">
+                      <div className={`product-image-area bg-gradient-to-br ${prod.gradient} bg-[#0a0a0a] relative`}>
+                        <Image 
+                          src={prod.image} 
+                          alt={prod.name} 
+                          fill
+                          className="object-cover opacity-60 group-hover:opacity-100 transition-all duration-500 mix-blend-screen"
+                        />
+                        <div className="absolute top-3 left-3 z-10"><Badge text={prod.badge} type={prod.badgeType} /></div>
                         {prod.envioGratis && (
-                          <div className="absolute top-3 right-3">
-                            <span className="bg-green-500/15 text-green-400 text-[9px] font-bold uppercase tracking-wider px-2 py-1 rounded-md border border-green-500/20 flex items-center gap-1">
+                          <div className="absolute top-3 right-3 z-10">
+                            <span className="bg-green-500/20 backdrop-blur-md text-green-400 text-[10px] font-bold uppercase px-2 py-1 rounded border border-green-500/30 flex items-center gap-1">
                               <Truck size={10} /> Gratis
                             </span>
                           </div>
                         )}
                       </div>
 
-                      {/* Body */}
-                      <div className="product-body">
+                      <div className="product-body flex-1 flex flex-col">
                         <div className="product-price">{prod.priceLabel}</div>
-                        {prod.cuotas && (
-                          <div className="product-installments">
-                            en {prod.cuotas}x {prod.cuotasPrecio}
-                          </div>
-                        )}
-                        <p className="product-name">{prod.name}</p>
-                        {prod.envioGratis && (
-                          <div className="product-shipping">
-                            <Truck size={12} /> Envío gratis a Sarmiento
-                          </div>
-                        )}
+                        {prod.cuotas && <div className="product-installments">en {prod.cuotas}x {prod.cuotasPrecio}</div>}
+                        <p className="product-name flex-1">{prod.name}</p>
                         <Stars rating={prod.rating} reviews={prod.reviews} />
+                        
+                        <button 
+                          onClick={(e) => { e.preventDefault(); addToCart(prod); }}
+                          className="mt-4 w-full py-2.5 bg-blue-600/10 hover:bg-blue-600 text-blue-400 hover:text-white border border-blue-500/30 hover:border-transparent rounded-xl text-sm font-bold transition-all flex items-center justify-center gap-2"
+                        >
+                          <ShoppingCart size={16} /> Agregar al carrito
+                        </button>
                       </div>
-                    </a>
+                    </div>
                   ))}
                 </div>
               )}
             </div>
           </div>
-
-          {/* CTA FINAL */}
-          <section className="mt-20 glass-panel rounded-[2rem] p-10 md:p-16 text-center relative overflow-hidden">
-            <div className="absolute top-0 left-0 w-full h-[1px] bg-gradient-to-r from-transparent via-blue-500/30 to-transparent" />
-            <h3 className="text-3xl md:text-4xl font-black tracking-tighter text-white mb-4">¿No encontrás lo que buscás?</h3>
-            <p className="text-zinc-400 mb-8 max-w-lg mx-auto font-medium">
-              Armamos presupuestos personalizados. Contanos qué necesitás y te asesoramos sin compromiso.
-            </p>
-            <a
-              href={`https://wa.me/${waNumber}?text=${encodeURIComponent("Hola BALUMTech, quiero un presupuesto personalizado para mi proyecto.")}`}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="px-8 py-4 bg-zinc-100 text-black rounded-xl font-bold tracking-tight hover:bg-white hover:scale-105 transition-all inline-flex items-center gap-2 group shadow-xl shadow-white/10"
-            >
-              <MessageCircle size={18} /> Pedir Presupuesto
-            </a>
-          </section>
-
         </div>
       </main>
     </div>
