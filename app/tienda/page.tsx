@@ -1,7 +1,22 @@
-import React from 'react';
+import Link from "next/link";
+import { ArrowLeft, MessageCircle } from "lucide-react";
 
-// Datos organizados por el modelo de negocio BALUMTech
-const categorias = [
+interface Producto {
+  id: number;
+  name: string;
+  price: string;
+  badge: string;
+  desc: string;
+}
+
+interface Categoria {
+  titulo: string;
+  productos: Producto[];
+}
+
+const waNumber = "5492974779978";
+
+const categorias: Categoria[] = [
   {
     titulo: "IA & Automatización",
     productos: [
@@ -26,12 +41,15 @@ const categorias = [
 
 export default function TiendaPage() {
   return (
-    <main className="content pt-28 pb-20 px-6 min-h-screen">
+    <main className="relative z-10 pt-28 pb-20 px-6 min-h-screen">
       <div className="max-w-7xl mx-auto">
         <header className="mb-16">
-          <span className="section-label">Catálogo Oficial</span>
+          <Link href="/" className="inline-flex items-center gap-2 text-zinc-500 hover:text-blue-400 transition-colors text-sm mb-6">
+            <ArrowLeft size={16} /> Volver al inicio
+          </Link>
+          <span className="section-label block">Catálogo Oficial</span>
           <h1 className="text-5xl font-bold glow-text mt-2">Tienda BALUMTech</h1>
-          <p className="text-[#8A9BB0] mt-4 max-w-2xl text-lg">
+          <p className="text-zinc-500 mt-4 max-w-2xl text-lg">
             Equipamiento técnico seleccionado con soporte local. 
             Entrega directa en Sarmiento y Comodoro Rivadavia.
           </p>
@@ -39,7 +57,7 @@ export default function TiendaPage() {
 
         {categorias.map((cat, idx) => (
           <section key={idx} className="mb-20">
-            <h2 className="text-2xl font-semibold border-l-4 border-[#60C8FF] pl-4 mb-8">
+            <h2 className="text-2xl font-semibold border-l-4 border-blue-500 pl-4 mb-8">
               {cat.titulo}
             </h2>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -48,13 +66,18 @@ export default function TiendaPage() {
                   <div>
                     <span className="tag mb-4 inline-block">{prod.badge}</span>
                     <h3 className="text-xl font-bold mb-2">{prod.name}</h3>
-                    <p className="text-[#8A9BB0] text-sm mb-6">{prod.desc}</p>
+                    <p className="text-zinc-500 text-sm mb-6">{prod.desc}</p>
                   </div>
                   <div className="flex items-center justify-between mt-4">
-                    <span className="text-2xl font-bold text-[#60C8FF]">{prod.price}</span>
-                    <button className="btn-outline !py-2 !px-4 text-sm">
-                      Consultar
-                    </button>
+                    <span className="text-2xl font-bold text-blue-400">{prod.price}</span>
+                    <a
+                      href={`https://wa.me/${waNumber}?text=${encodeURIComponent(`Hola BALUMTech, me interesa "${prod.name}" (${prod.price}). ¿Podrían darme más información?`)}`}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="btn-outline !py-2 !px-4 text-sm inline-flex items-center gap-2"
+                    >
+                      <MessageCircle size={14} /> Consultar
+                    </a>
                   </div>
                 </div>
               ))}

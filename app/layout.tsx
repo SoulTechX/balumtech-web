@@ -29,7 +29,7 @@ export default function RootLayout({
       lang="es"
       className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
     >
-      <body className="min-h-full flex flex-col bg-[#060F18] text-white">
+      <body className="min-h-full flex flex-col text-white">
         {/* El Navbar vive aquí, arriba de todas las páginas */}
         <Navbar />
         {children}
