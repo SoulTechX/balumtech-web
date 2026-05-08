@@ -77,7 +77,7 @@ const productos: Producto[] = [
     cuotas: 12, cuotasPrecio: "$28.420",
     badge: "Stock", badgeType: "stock",
     desc: "4 cámaras Dahua 2MP con visión nocturna, DVR 4ch, disco 1TB, cables y fuentes. Incluye instalación básica.",
-    image: "https://mastecnologia.com.ar/images/productos/97479.png", categoria: "Seguridad", envioGratis: true,
+    image: "/productos/cctv-hogar-4.png", categoria: "Seguridad", envioGratis: true,
     rating: 4.9, reviews: 23, gradient: "from-green-600/20 via-emerald-600/5 to-transparent"
   },
   { 
@@ -86,7 +86,7 @@ const productos: Producto[] = [
     cuotas: 12, cuotasPrecio: "$51.840",
     badge: "Stock", badgeType: "stock",
     desc: "8 cámaras Hikvision 4MP, NVR 8ch con analytics, disco 2TB. Alertas inteligentes y acceso remoto.",
-    image: "https://mastecnologia.com.ar/images/productos/97320.png", categoria: "Seguridad", envioGratis: true,
+    image: "/productos/cctv-empresa-8.png", categoria: "Seguridad", envioGratis: true,
     rating: 5, reviews: 15, gradient: "from-green-600/20 via-teal-600/5 to-transparent"
   },
   { 
@@ -133,7 +133,7 @@ const productos: Producto[] = [
     cuotas: 12, cuotasPrecio: "$81.780",
     badge: "A pedido", badgeType: "pedido",
     desc: "Ryzen 7 7700X, RTX 4060 8GB, 32GB DDR5, SSD 1TB NVMe. Armada en Sarmiento.",
-    image: "https://mastecnologia.com.ar/images/productos/97268.png", categoria: "Hardware", envioGratis: true,
+    image: "/productos/pc-gamer-v1.png", categoria: "Hardware", envioGratis: true,
     rating: 5, reviews: 11, gradient: "from-violet-600/20 via-purple-600/5 to-transparent"
   },
   { 
@@ -142,7 +142,7 @@ const productos: Producto[] = [
     cuotas: 12, cuotasPrecio: "$119.640",
     badge: "A pedido", badgeType: "pedido",
     desc: "Xeon + RTX 4080 + 64GB ECC. Optimizada para IA y renderizado profesional.",
-    image: "https://mastecnologia.com.ar/images/productos/97270.png", categoria: "Hardware", envioGratis: true,
+    image: "/productos/workstation-diseno.jpg", categoria: "Hardware", envioGratis: true,
     rating: 5, reviews: 3, gradient: "from-pink-500/15 via-rose-500/5 to-transparent"
   },
   { 
@@ -151,7 +151,7 @@ const productos: Producto[] = [
     cuotas: 12, cuotasPrecio: "$64.840",
     badge: "A pedido", badgeType: "pedido",
     desc: "NAS Synology RAID 5, 4 bahías, acceso remoto seguro y respaldo en nube.",
-    image: "https://mastecnologia.com.ar/images/productos/97260.png", categoria: "Hardware", envioGratis: true,
+    image: "/productos/nas-qnap.png", categoria: "Hardware", envioGratis: true,
     rating: 4.7, reviews: 6, gradient: "from-slate-500/15 via-gray-500/5 to-transparent"
   },
 ];
