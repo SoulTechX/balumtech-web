@@ -10,6 +10,7 @@ import {
 // ─── TIPOS ───────────────────────────────────────────
 interface Producto {
   id: number;
+  slug: string;
   name: string;
   price: number | null;
   priceLabel: string;
@@ -38,7 +39,7 @@ const waNumber = "5492974779978";
 const productos: Producto[] = [
   // IA & Automatización
   { 
-    id: 1, name: "Agente IA Inmobiliario — Automatización 24/7 con n8n", 
+    id: 1, slug: "agente-ia-inmobiliario", name: "Agente IA Inmobiliario — Automatización 24/7 con n8n", 
     price: null, priceLabel: "Consultar", currency: "ARS",
     badge: "Especialidad", badgeType: "nuevo",
     desc: "Automatización completa de leads, agenda y seguimiento para inmobiliarias y corredores. Incluye configuración personalizada.",
@@ -46,7 +47,7 @@ const productos: Producto[] = [
     rating: 5, reviews: 12, gradient: "from-blue-600/20 via-indigo-600/10 to-transparent"
   },
   { 
-    id: 2, name: "Auditoría y Optimización de Flujos n8n / Make", 
+    id: 2, slug: "auditoria-n8n-make", name: "Auditoría y Optimización de Flujos n8n / Make", 
     price: null, priceLabel: "Consultar", currency: "ARS",
     badge: "Pro", badgeType: "pro",
     desc: "Análisis profundo, optimización de rendimiento y limpieza de workflows existentes. Reducí costos y errores.",
@@ -54,7 +55,7 @@ const productos: Producto[] = [
     rating: 4.8, reviews: 8, gradient: "from-purple-600/20 via-purple-600/5 to-transparent"
   },
   { 
-    id: 3, name: "Chatbot IA Empresarial — Atención al Cliente Inteligente", 
+    id: 3, slug: "chatbot-ia-empresarial", name: "Chatbot IA Empresarial — Atención al Cliente Inteligente", 
     price: null, priceLabel: "Consultar", currency: "ARS",
     badge: "Nuevo", badgeType: "nuevo",
     desc: "Asistente virtual con IA generativa para atención 24/7. Aprende de tu negocio y responde como un humano.",
@@ -62,7 +63,7 @@ const productos: Producto[] = [
     rating: 4.9, reviews: 6, gradient: "from-cyan-600/20 via-blue-600/5 to-transparent"
   },
   { 
-    id: 4, name: "Automatización de Reportes con IA — Datos en Tiempo Real", 
+    id: 4, slug: "automatizacion-reportes-ia", name: "Automatización de Reportes con IA — Datos en Tiempo Real", 
     price: null, priceLabel: "Consultar", currency: "ARS",
     badge: "Pro", badgeType: "pro",
     desc: "Generación automática de informes con datos actualizados. Integración con Google Sheets, CRMs y ERPs.",
@@ -72,7 +73,7 @@ const productos: Producto[] = [
 
   // Seguridad Electrónica
   { 
-    id: 5, name: "Kit CCTV Hogar 4 Cámaras Dahua — Visión Nocturna", 
+    id: 5, slug: "kit-cctv-hogar-4-camaras", name: "Kit CCTV Hogar 4 Cámaras Dahua — Visión Nocturna", 
     price: 285000, priceLabel: "$285.000", currency: "ARS",
     cuotas: 12, cuotasPrecio: "$28.420",
     badge: "Stock", badgeType: "stock",
@@ -81,7 +82,7 @@ const productos: Producto[] = [
     rating: 4.9, reviews: 23, gradient: "from-green-600/20 via-emerald-600/5 to-transparent"
   },
   { 
-    id: 6, name: "Kit CCTV Empresa 8 Cámaras Profesional — Analytics", 
+    id: 6, slug: "kit-cctv-empresa-8-camaras", name: "Kit CCTV Empresa 8 Cámaras Profesional — Analytics", 
     price: 520000, priceLabel: "$520.000", currency: "ARS",
     cuotas: 12, cuotasPrecio: "$51.840",
     badge: "Stock", badgeType: "stock",
@@ -90,7 +91,7 @@ const productos: Producto[] = [
     rating: 5, reviews: 15, gradient: "from-green-600/20 via-teal-600/5 to-transparent"
   },
   { 
-    id: 7, name: "Control de Accesos Biométrico — Cerradura Inteligente", 
+    id: 7, slug: "control-accesos-biometrico", name: "Control de Accesos Biométrico — Cerradura Inteligente", 
     price: 180000, priceLabel: "$180.000", currency: "ARS",
     cuotas: 6, cuotasPrecio: "$33.000",
     badge: "Instalación", badgeType: "stock",
@@ -101,7 +102,7 @@ const productos: Producto[] = [
 
   // Redes & Conectividad
   { 
-    id: 8, name: "Nodo de Red Pro — Access Point Ubiquiti + Cableado", 
+    id: 8, slug: "nodo-red-pro-ubiquiti", name: "Nodo de Red Pro — Access Point Ubiquiti + Cableado", 
     price: 145000, priceLabel: "$145.000", currency: "ARS",
     cuotas: 6, cuotasPrecio: "$26.620",
     badge: "Instalación", badgeType: "stock",
@@ -110,7 +111,7 @@ const productos: Producto[] = [
     rating: 4.8, reviews: 18, gradient: "from-sky-600/20 via-blue-600/5 to-transparent"
   },
   { 
-    id: 9, name: "Red Mesh Empresarial — Conectividad Industrial", 
+    id: 9, slug: "red-mesh-empresarial", name: "Red Mesh Empresarial — Conectividad Industrial", 
     price: null, priceLabel: "Consultar", currency: "ARS",
     badge: "Proyecto", badgeType: "pedido",
     desc: "Solución de conectividad robusta para yacimientos y plantas. Diseño a medida.",
@@ -118,7 +119,7 @@ const productos: Producto[] = [
     rating: 5, reviews: 7, gradient: "from-orange-500/15 via-amber-500/5 to-transparent"
   },
   { 
-    id: 10, name: "VPN & Firewall Corporativo — Cisco / MikroTik", 
+    id: 10, slug: "vpn-firewall-corporativo", name: "VPN & Firewall Corporativo — Cisco / MikroTik", 
     price: null, priceLabel: "Consultar", currency: "ARS",
     badge: "Pro", badgeType: "pro",
     desc: "Seguridad perimetral para oficinas distribuidas. VPN site-to-site.",
@@ -128,7 +129,7 @@ const productos: Producto[] = [
 
   // Hardware & Workstations
   { 
-    id: 11, name: "PC BALUM v1 Gamer — Ryzen 7 + RTX 4060", 
+    id: 11, slug: "pc-balum-v1-gamer", name: "PC BALUM v1 Gamer — Ryzen 7 + RTX 4060", 
     price: 820000, priceLabel: "$820.000", currency: "ARS",
     cuotas: 12, cuotasPrecio: "$81.780",
     badge: "A pedido", badgeType: "pedido",
@@ -137,7 +138,7 @@ const productos: Producto[] = [
     rating: 5, reviews: 11, gradient: "from-violet-600/20 via-purple-600/5 to-transparent"
   },
   { 
-    id: 12, name: "Workstation Diseño / IA — Renderizado 3D", 
+    id: 12, slug: "workstation-diseno-ia", name: "Workstation Diseño / IA — Renderizado 3D", 
     price: 1200000, priceLabel: "$1.200.000", currency: "ARS",
     cuotas: 12, cuotasPrecio: "$119.640",
     badge: "A pedido", badgeType: "pedido",
@@ -146,7 +147,7 @@ const productos: Producto[] = [
     rating: 5, reviews: 3, gradient: "from-pink-500/15 via-rose-500/5 to-transparent"
   },
   { 
-    id: 13, name: "Servidor NAS Empresarial — Synology RAID", 
+    id: 13, slug: "servidor-nas-synology", name: "Servidor NAS Empresarial — Synology RAID", 
     price: 650000, priceLabel: "$650.000", currency: "ARS",
     cuotas: 12, cuotasPrecio: "$64.840",
     badge: "A pedido", badgeType: "pedido",
@@ -423,27 +424,31 @@ export default function TiendaPage() {
                 <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-5">
                   {productosFiltrados.map((prod) => (
                     <div key={prod.id} className="product-card-ml group relative flex flex-col justify-between h-full">
-                      <div className={`product-image-area bg-gradient-to-br ${prod.gradient} bg-[#0a0a0a] relative`}>
-                        <Image 
-                          src={prod.image} 
-                          alt={prod.name} 
-                          fill
-                          className="object-cover opacity-60 group-hover:opacity-100 transition-all duration-500 mix-blend-screen"
-                        />
-                        <div className="absolute top-3 left-3 z-10"><Badge text={prod.badge} type={prod.badgeType} /></div>
-                        {prod.envioGratis && (
-                          <div className="absolute top-3 right-3 z-10">
-                            <span className="bg-green-500/20 backdrop-blur-md text-green-400 text-[10px] font-bold uppercase px-2 py-1 rounded border border-green-500/30 flex items-center gap-1">
-                              <Truck size={10} /> Gratis
-                            </span>
-                          </div>
-                        )}
-                      </div>
+                      <Link href={`/tienda/${prod.slug}`} className="block relative">
+                        <div className={`product-image-area bg-gradient-to-br ${prod.gradient} bg-[#0a0a0a] relative`}>
+                          <Image 
+                            src={prod.image} 
+                            alt={prod.name} 
+                            fill
+                            className="object-cover opacity-60 group-hover:opacity-100 transition-all duration-500 mix-blend-screen"
+                          />
+                          <div className="absolute top-3 left-3 z-10"><Badge text={prod.badge} type={prod.badgeType} /></div>
+                          {prod.envioGratis && (
+                            <div className="absolute top-3 right-3 z-10">
+                              <span className="bg-green-500/20 backdrop-blur-md text-green-400 text-[10px] font-bold uppercase px-2 py-1 rounded border border-green-500/30 flex items-center gap-1">
+                                <Truck size={10} /> Gratis
+                              </span>
+                            </div>
+                          )}
+                        </div>
+                      </Link>
 
                       <div className="product-body flex-1 flex flex-col">
                         <div className="product-price">{prod.priceLabel}</div>
                         {prod.cuotas && <div className="product-installments">en {prod.cuotas}x {prod.cuotasPrecio}</div>}
-                        <p className="product-name flex-1">{prod.name}</p>
+                        <Link href={`/tienda/${prod.slug}`} className="hover:text-blue-400 transition-colors">
+                          <p className="product-name flex-1">{prod.name}</p>
+                        </Link>
                         <Stars rating={prod.rating} reviews={prod.reviews} />
                         
                         <button 
