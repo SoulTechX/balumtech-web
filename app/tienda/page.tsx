@@ -95,7 +95,7 @@ const productos: Producto[] = [
     cuotas: 6, cuotasPrecio: "$33.000",
     badge: "Instalación", badgeType: "stock",
     desc: "Cerraduras inteligentes con lector biométrico, código PIN y control celular.",
-    image: "https://mastecnologia.com.ar/images/productos/97416.png", categoria: "Seguridad", envioGratis: true,
+    image: "/productos/acceso-biometrico.png", categoria: "Seguridad", envioGratis: true,
     rating: 4.6, reviews: 9, gradient: "from-emerald-600/15 via-green-600/5 to-transparent"
   },
 
@@ -106,7 +106,7 @@ const productos: Producto[] = [
     cuotas: 6, cuotasPrecio: "$26.620",
     badge: "Instalación", badgeType: "stock",
     desc: "Mejora de cobertura Wi-Fi con AP Ubiquiti empresarial y cableado estructurado Cat 6.",
-    image: "https://mastecnologia.com.ar/images/productos/14076.png", categoria: "Redes", envioGratis: true,
+    image: "/productos/nodo-red-pro.png", categoria: "Redes", envioGratis: true,
     rating: 4.8, reviews: 18, gradient: "from-sky-600/20 via-blue-600/5 to-transparent"
   },
   { 
