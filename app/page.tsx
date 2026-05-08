@@ -143,55 +143,79 @@ export default function Home() {
           {/* Texto principal */}
           <div className="flex-1 space-y-8">
             <div>
-              <h3 className="text-[10px] uppercase tracking-[0.3em] font-black text-blue-500 mb-2">Nuestra Historia</h3>
-              <h2 className="text-4xl md:text-5xl font-black tracking-tighter text-white">De Sarmiento al mundo.</h2>
+              <h3 className="text-[10px] uppercase tracking-[0.3em] font-black text-blue-500 mb-2">quiénes somos</h3>
+              <h2 className="text-4xl md:text-5xl font-black tracking-tighter text-white leading-tight">
+                Construido<br/>desde <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-indigo-500">Patagonia.</span>
+              </h2>
             </div>
             
             <div className="space-y-6 text-zinc-400 font-medium leading-relaxed">
               <p>
-                <strong className="text-white">BALUMTech</strong> nació en Sarmiento, Chubut, de algo simple: años trabajando en el rubro y la decisión de construir algo propio. No desde una oficina en Buenos Aires mirando la Patagonia en un mapa, sino desde adentro, conociendo de primera mano los desafíos reales de operar tecnología en el sur del país.
+                <strong className="text-white">BALUMTech</strong> nació en Sarmiento, Chubut, de algo simple: <strong className="text-zinc-200">años trabajando en el rubro y la decisión de construir algo propio.</strong> No desde una oficina en Buenos Aires mirando la Patagonia en un mapa, sino desde adentro.
               </p>
               <p>
-                Somos un equipo de 3 profesionales con más de 5 años resolviendo infraestructura crítica: redes que aguantan el viento y la distancia, sistemas de seguridad que funcionan sin excusas y automatizaciones que le devuelven tiempo a las personas que los usan.
+                Somos un equipo que resuelve infraestructura crítica con los mismos estándares que usan las empresas más exigentes — porque la escala geográfica no debería ser una limitación tecnológica.
               </p>
-              <p>
-                Trabajamos con las mismas marcas y estándares que usan las empresas más exigentes del mundo — <span className="text-zinc-200">Cisco, Ubiquiti, Nvidia, Dahua</span> — porque creemos que la escala geográfica no debería ser una limitación tecnológica.
-              </p>
-              <p className="text-blue-400 font-semibold pt-4">
-                Si tenés un proyecto, un problema o simplemente querés entender qué solución necesitás, hablamos.
-              </p>
+            </div>
+
+            {/* Stats */}
+            <div className="flex flex-wrap gap-8 pt-6 border-t border-white/5">
+              <div className="flex flex-col">
+                <div className="text-3xl md:text-4xl font-black text-white mb-1">5+</div>
+                <div className="text-[10px] text-zinc-500 uppercase tracking-widest font-bold">Años activos</div>
+              </div>
+              <div className="flex flex-col">
+                <div className="text-3xl md:text-4xl font-black text-white mb-1">3</div>
+                <div className="text-[10px] text-zinc-500 uppercase tracking-widest font-bold">Especialistas</div>
+              </div>
+              <div className="flex flex-col">
+                <div className="text-3xl md:text-4xl font-black text-blue-500 mb-1">∞</div>
+                <div className="text-[10px] text-blue-500/70 uppercase tracking-widest font-bold">Soporte</div>
+              </div>
             </div>
           </div>
 
-          {/* Tarjetas de Data (Glassmorphism) */}
-          <div className="w-full lg:w-[450px] flex flex-col gap-4">
-            <div className="glass-panel p-8 rounded-[2rem] flex items-center gap-6 hover:bg-white/[0.04] transition-all group">
-              <div className="w-14 h-14 bg-blue-600/10 border border-blue-500/20 text-blue-400 rounded-2xl flex items-center justify-center shrink-0 group-hover:scale-110 transition-transform">
-                <MapPin size={24} />
+          {/* Terminal */}
+          <div className="w-full lg:w-[500px]">
+            <div className="bg-[#050505] border border-white/10 rounded-2xl overflow-hidden shadow-2xl relative group">
+              {/* Glow effect on hover */}
+              <div className="absolute inset-0 bg-gradient-to-b from-blue-500/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
+              
+              <div className="bg-white/[0.02] border-b border-white/5 px-4 py-3 flex items-center gap-2">
+                <div className="flex gap-1.5">
+                  <div className="w-3 h-3 rounded-full bg-red-500/80"></div>
+                  <div className="w-3 h-3 rounded-full bg-yellow-500/80"></div>
+                  <div className="w-3 h-3 rounded-full bg-green-500/80"></div>
+                </div>
+                <span className="ml-2 text-[10px] text-zinc-500 font-mono tracking-wider">balum_TECH@root — team.sh</span>
               </div>
-              <div>
-                <h4 className="text-white font-bold text-lg mb-1">Base de Operaciones</h4>
-                <p className="text-zinc-400 text-sm">Sarmiento, Chubut (Patagonia)</p>
-              </div>
-            </div>
-
-            <div className="glass-panel p-8 rounded-[2rem] flex items-center gap-6 hover:bg-white/[0.04] transition-all group">
-              <div className="w-14 h-14 bg-green-500/10 border border-green-500/20 text-green-400 rounded-2xl flex items-center justify-center shrink-0 group-hover:scale-110 transition-transform">
-                <ShieldCheck size={24} />
-              </div>
-              <div>
-                <h4 className="text-white font-bold text-lg mb-1">Infraestructura Crítica</h4>
-                <p className="text-zinc-400 text-sm">+5 años resolviendo desafíos reales</p>
-              </div>
-            </div>
-            
-            <div className="glass-panel p-8 rounded-[2rem] flex items-center gap-6 hover:bg-white/[0.04] transition-all group">
-              <div className="w-14 h-14 bg-purple-500/10 border border-purple-500/20 text-purple-400 rounded-2xl flex items-center justify-center shrink-0 group-hover:scale-110 transition-transform">
-                <Users size={24} />
-              </div>
-              <div>
-                <h4 className="text-white font-bold text-lg mb-1">Equipo Especializado</h4>
-                <p className="text-zinc-400 text-sm">3 profesionales de alto rendimiento</p>
+              
+              <div className="p-6 md:p-8 font-mono text-xs md:text-sm text-zinc-400 space-y-2.5 overflow-x-auto">
+                <div>
+                  <span className="text-blue-400">$ </span>
+                  <span className="text-white">./team --info</span>
+                </div>
+                <br/>
+                <div className="flex"><span className="w-28 text-zinc-500">location</span><span className="text-zinc-200">Sarmiento, Chubut 🇦🇷</span></div>
+                <div className="flex"><span className="w-28 text-zinc-500">uptime</span><span className="text-zinc-200">+5 años en producción</span></div>
+                <div className="flex"><span className="w-28 text-zinc-500">team_size</span><span className="text-zinc-200">3 especialistas</span></div>
+                <div className="flex"><span className="w-28 text-zinc-500">stack</span><span className="text-zinc-200">IA · Redes · CCTV · HW</span></div>
+                <br/>
+                <div>
+                  <span className="text-blue-400">$ </span>
+                  <span className="text-white">./core --values</span>
+                </div>
+                <br/>
+                <div className="flex"><span className="text-zinc-500 mr-3">[01]</span><span className="text-zinc-200">Infraestructura sin excusas</span></div>
+                <div className="flex"><span className="text-zinc-500 mr-3">[02]</span><span className="text-zinc-200">Soporte real, no tickets</span></div>
+                <div className="flex"><span className="text-zinc-500 mr-3">[03]</span><span className="text-zinc-200">Tecnología de escala global</span></div>
+                <div className="flex"><span className="text-zinc-500 mr-3">[04]</span><span className="text-zinc-200">Construido para el sur</span></div>
+                <br/>
+                <div className="flex items-center gap-2">
+                  <span className="text-blue-400">$ </span>
+                  <span className="text-green-400">STATUS: ALL SYSTEMS ONLINE</span>
+                  <span className="w-2 h-4 bg-zinc-400 animate-pulse inline-block"></span>
+                </div>
               </div>
             </div>
           </div>
