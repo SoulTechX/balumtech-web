@@ -2,7 +2,6 @@ import { products } from "@/lib/products";
 import Image from "next/image";
 import { notFound } from "next/navigation";
 import { Check, Terminal as TerminalIcon, ShoppingCart, Truck, Star, ArrowLeft } from "lucide-react";
-import Navbar from "@/components/Navbar";
 import Link from "next/link";
 
 export async function generateStaticParams() {
@@ -38,8 +37,6 @@ export default async function ProductPage({ params }: { params: Promise<{ slug: 
 
   return (
     <main className="min-h-screen bg-[#050505] text-zinc-300 font-sans selection:bg-blue-500/30">
-      <Navbar />
-
       <div className="max-w-6xl mx-auto px-6 pt-32 pb-24">
         
         {/* Breadcrumb */}
