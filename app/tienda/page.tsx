@@ -77,7 +77,7 @@ const productos: Producto[] = [
     cuotas: 12, cuotasPrecio: "$28.420",
     badge: "Stock", badgeType: "stock",
     desc: "4 cámaras Dahua 2MP con visión nocturna, DVR 4ch, disco 1TB, cables y fuentes. Incluye instalación básica.",
-    image: "/productos/prod-5.png", categoria: "Seguridad", envioGratis: true,
+    image: "https://mastecnologia.com.ar/images/productos/97479.png", categoria: "Seguridad", envioGratis: true,
     rating: 4.9, reviews: 23, gradient: "from-green-600/20 via-emerald-600/5 to-transparent"
   },
   { 
@@ -86,7 +86,7 @@ const productos: Producto[] = [
     cuotas: 12, cuotasPrecio: "$51.840",
     badge: "Stock", badgeType: "stock",
     desc: "8 cámaras Hikvision 4MP, NVR 8ch con analytics, disco 2TB. Alertas inteligentes y acceso remoto.",
-    image: "/productos/prod-6.png", categoria: "Seguridad", envioGratis: true,
+    image: "https://mastecnologia.com.ar/images/productos/97320.png", categoria: "Seguridad", envioGratis: true,
     rating: 5, reviews: 15, gradient: "from-green-600/20 via-teal-600/5 to-transparent"
   },
   { 
@@ -95,7 +95,7 @@ const productos: Producto[] = [
     cuotas: 6, cuotasPrecio: "$33.000",
     badge: "Instalación", badgeType: "stock",
     desc: "Cerraduras inteligentes con lector biométrico, código PIN y control celular.",
-    image: "https://images.unsplash.com/photo-1555949963-aa79dcee981c?q=80&w=800&auto=format&fit=crop", categoria: "Seguridad", envioGratis: true,
+    image: "https://mastecnologia.com.ar/images/productos/97416.png", categoria: "Seguridad", envioGratis: true,
     rating: 4.6, reviews: 9, gradient: "from-emerald-600/15 via-green-600/5 to-transparent"
   },
 
@@ -106,7 +106,7 @@ const productos: Producto[] = [
     cuotas: 6, cuotasPrecio: "$26.620",
     badge: "Instalación", badgeType: "stock",
     desc: "Mejora de cobertura Wi-Fi con AP Ubiquiti empresarial y cableado estructurado Cat 6.",
-    image: "https://images.unsplash.com/photo-1544197150-b99a580bb7a8?q=80&w=800&auto=format&fit=crop", categoria: "Redes", envioGratis: true,
+    image: "https://mastecnologia.com.ar/images/productos/14076.png", categoria: "Redes", envioGratis: true,
     rating: 4.8, reviews: 18, gradient: "from-sky-600/20 via-blue-600/5 to-transparent"
   },
   { 
@@ -114,7 +114,7 @@ const productos: Producto[] = [
     price: null, priceLabel: "Consultar", currency: "ARS",
     badge: "Proyecto", badgeType: "pedido",
     desc: "Solución de conectividad robusta para yacimientos y plantas. Diseño a medida.",
-    image: "https://images.unsplash.com/photo-1558494949-ef010cbdcc31?q=80&w=800&auto=format&fit=crop", categoria: "Redes", envioGratis: false,
+    image: "https://mastecnologia.com.ar/images/productos/14095.png", categoria: "Redes", envioGratis: false,
     rating: 5, reviews: 7, gradient: "from-orange-500/15 via-amber-500/5 to-transparent"
   },
   { 
@@ -122,7 +122,7 @@ const productos: Producto[] = [
     price: null, priceLabel: "Consultar", currency: "ARS",
     badge: "Pro", badgeType: "pro",
     desc: "Seguridad perimetral para oficinas distribuidas. VPN site-to-site.",
-    image: "https://images.unsplash.com/photo-1550751827-4bd374c3f58b?q=80&w=800&auto=format&fit=crop", categoria: "Redes", envioGratis: false,
+    image: "https://mastecnologia.com.ar/images/productos/14177.png", categoria: "Redes", envioGratis: false,
     rating: 4.9, reviews: 5, gradient: "from-red-500/15 via-rose-500/5 to-transparent"
   },
 
@@ -133,7 +133,7 @@ const productos: Producto[] = [
     cuotas: 12, cuotasPrecio: "$81.780",
     badge: "A pedido", badgeType: "pedido",
     desc: "Ryzen 7 7700X, RTX 4060 8GB, 32GB DDR5, SSD 1TB NVMe. Armada en Sarmiento.",
-    image: "https://images.unsplash.com/photo-1587202372634-32705e3bf49c?q=80&w=800&auto=format&fit=crop", categoria: "Hardware", envioGratis: true,
+    image: "https://mastecnologia.com.ar/images/productos/97268.png", categoria: "Hardware", envioGratis: true,
     rating: 5, reviews: 11, gradient: "from-violet-600/20 via-purple-600/5 to-transparent"
   },
   { 
@@ -142,7 +142,7 @@ const productos: Producto[] = [
     cuotas: 12, cuotasPrecio: "$119.640",
     badge: "A pedido", badgeType: "pedido",
     desc: "Xeon + RTX 4080 + 64GB ECC. Optimizada para IA y renderizado profesional.",
-    image: "https://images.unsplash.com/photo-1525547719571-a2d4ac8945e2?q=80&w=800&auto=format&fit=crop", categoria: "Hardware", envioGratis: true,
+    image: "https://mastecnologia.com.ar/images/productos/97270.png", categoria: "Hardware", envioGratis: true,
     rating: 5, reviews: 3, gradient: "from-pink-500/15 via-rose-500/5 to-transparent"
   },
   { 
@@ -151,7 +151,7 @@ const productos: Producto[] = [
     cuotas: 12, cuotasPrecio: "$64.840",
     badge: "A pedido", badgeType: "pedido",
     desc: "NAS Synology RAID 5, 4 bahías, acceso remoto seguro y respaldo en nube.",
-    image: "https://images.unsplash.com/photo-1558494949-ef010cbdcc31?q=80&w=800&auto=format&fit=crop", categoria: "Hardware", envioGratis: true,
+    image: "https://mastecnologia.com.ar/images/productos/97260.png", categoria: "Hardware", envioGratis: true,
     rating: 4.7, reviews: 6, gradient: "from-slate-500/15 via-gray-500/5 to-transparent"
   },
 ];
