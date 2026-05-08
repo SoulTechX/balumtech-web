@@ -9,8 +9,8 @@ export default function Navbar() {
   const [menuOpen, setMenuOpen] = useState(false);
   const pathname = usePathname();
 
-  // Ocultar Navbar en la página de tienda
-  if (pathname === '/tienda') return null;
+  // Ocultar Navbar en la página de tienda y en los detalles de productos
+  if (pathname.startsWith('/tienda')) return null;
 
   const navItems = [
     { label: "INICIO", href: "/" },
