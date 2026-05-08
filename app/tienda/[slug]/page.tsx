@@ -11,8 +11,9 @@ export async function generateStaticParams() {
   }));
 }
 
-export default function ProductPage({ params }: { params: { slug: string } }) {
-  const product = products.find((p) => p.slug === params.slug);
+export default async function ProductPage({ params }: { params: Promise<{ slug: string }> }) {
+  const resolvedParams = await params;
+  const product = products.find((p) => p.slug === resolvedParams.slug);
 
   if (!product) {
     notFound();
