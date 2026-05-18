@@ -1,0 +1,1215 @@
+[
+  {
+    "id": 1,
+    "slug": "agente-ia-inmobiliario",
+    "name": "Agente IA Inmobiliario — Automatización 24/7 con n8n",
+    "price": null,
+    "priceLabel": "Consultar",
+    "currency": "ARS",
+    "badge": "Especialidad",
+    "badgeType": "nuevo",
+    "desc": "Automatización completa de leads, agenda y seguimiento para inmobiliarias y corredores. Incluye configuración personalizada.",
+    "image": "/productos/prod-1.png",
+    "categoria": "IA",
+    "envioGratis": false,
+    "rating": 5,
+    "reviews": 12,
+    "gradient": "from-blue-600/20 via-indigo-600/10 to-transparent",
+    "envio": "Implementación 100% remota",
+    "stock": "Disponible",
+    "heroSpecs": [
+      {
+        "key": "Plataforma",
+        "value": "n8n Cloud / Self-hosted"
+      },
+      {
+        "key": "Disponibilidad",
+        "value": "24/7 sin intervención humana"
+      },
+      {
+        "key": "Canales",
+        "value": "WhatsApp, email, web chat"
+      },
+      {
+        "key": "Idioma",
+        "value": "Español nativo"
+      },
+      {
+        "key": "Implementación",
+        "value": "7 a 14 días hábiles"
+      },
+      {
+        "key": "Soporte post",
+        "value": "30 días incluidos"
+      }
+    ],
+    "incluye": [
+      "Diseño y configuración completa del agente IA",
+      "Integración con hasta 2 portales inmobiliarios",
+      "Conexión a CRM o Google Sheets para gestión de leads",
+      "Flujo de calificación automática de clientes potenciales",
+      "Respuestas automáticas por WhatsApp Business API",
+      "Panel de seguimiento de conversaciones en tiempo real",
+      "Capacitación de 2 horas para el equipo",
+      "30 días de soporte técnico post-entrega"
+    ],
+    "terminalSpecs": [
+      {
+        "key": "ENGINE",
+        "value": "n8n + OpenAI GPT-4o"
+      },
+      {
+        "key": "TRIGGER",
+        "value": "WhatsApp / Webhook / Email"
+      },
+      {
+        "key": "INTEGRACIONES",
+        "value": "CRM · Zonaprop · Google Sheets · Calendar"
+      },
+      {
+        "key": "UPTIME",
+        "value": "99.9% (cloud)"
+      },
+      {
+        "key": "RESPUESTA",
+        "value": "< 3 segundos promedio"
+      },
+      {
+        "key": "IDIOMA",
+        "value": "es-AR nativo"
+      },
+      {
+        "key": "DEPLOY",
+        "value": "Remoto — sin hardware adicional"
+      },
+      {
+        "key": "SOPORTE",
+        "value": "30 días incluidos + planes extendidos"
+      }
+    ]
+  },
+  {
+    "id": 2,
+    "slug": "auditoria-n8n-make",
+    "name": "Auditoría y Optimización de Flujos n8n / Make",
+    "price": null,
+    "priceLabel": "Consultar",
+    "currency": "ARS",
+    "badge": "Pro",
+    "badgeType": "pro",
+    "desc": "Análisis profundo, optimización de rendimiento y limpieza de workflows existentes. Reducí costos y errores.",
+    "image": "/productos/prod-2.png",
+    "categoria": "IA",
+    "envioGratis": false,
+    "rating": 4.8,
+    "reviews": 8,
+    "gradient": "from-purple-600/20 via-purple-600/5 to-transparent",
+    "envio": "Servicio remoto",
+    "stock": "Disponible",
+    "heroSpecs": [
+      {
+        "key": "Plataformas",
+        "value": "n8n, Make (Integromat)"
+      },
+      {
+        "key": "Entrega",
+        "value": "Informe en 5 días hábiles"
+      },
+      {
+        "key": "Modalidad",
+        "value": "100% remoto"
+      },
+      {
+        "key": "Incluye",
+        "value": "Informe + sesión de revisión"
+      },
+      {
+        "key": "Flujos máx.",
+        "value": "Hasta 20 flujos por auditoría"
+      },
+      {
+        "key": "Garantía",
+        "value": "Si no optimizamos, devolvemos"
+      }
+    ],
+    "incluye": [
+      "Revisión completa de hasta 20 flujos existentes",
+      "Identificación de cuellos de botella y errores silenciosos",
+      "Informe técnico detallado con hallazgos y prioridades",
+      "Propuesta de rediseño con estimación de ahorro de tiempo",
+      "Sesión de 1 hora de revisión en vivo con el equipo",
+      "Implementación de hasta 3 correcciones críticas incluida",
+      "Documentación de los flujos optimizados"
+    ],
+    "terminalSpecs": [
+      {
+        "key": "PLATAFORMAS",
+        "value": "n8n · Make (Integromat)"
+      },
+      {
+        "key": "FLUJOS_MAX",
+        "value": "20 por auditoría"
+      },
+      {
+        "key": "ENTREGA",
+        "value": "5 días hábiles"
+      },
+      {
+        "key": "FORMATO",
+        "value": "PDF + sesión en vivo"
+      },
+      {
+        "key": "CORRECCIONES",
+        "value": "3 críticas incluidas"
+      },
+      {
+        "key": "MODALIDAD",
+        "value": "100% remoto"
+      },
+      {
+        "key": "GARANTIA",
+        "value": "Satisfacción o reembolso"
+      }
+    ]
+  },
+  {
+    "id": 3,
+    "slug": "chatbot-ia-empresarial",
+    "name": "Chatbot IA Empresarial — Atención al Cliente Inteligente",
+    "price": null,
+    "priceLabel": "Consultar",
+    "currency": "ARS",
+    "badge": "Nuevo",
+    "badgeType": "nuevo",
+    "desc": "Asistente virtual con IA generativa para atención 24/7. Aprende de tu negocio y responde como un humano.",
+    "image": "/productos/prod-3.png",
+    "categoria": "IA",
+    "envioGratis": false,
+    "rating": 4.9,
+    "reviews": 6,
+    "gradient": "from-cyan-600/20 via-blue-600/5 to-transparent",
+    "envio": "Implementación remota",
+    "stock": "Disponible",
+    "heroSpecs": [
+      {
+        "key": "Canal principal",
+        "value": "WhatsApp Business / Web"
+      },
+      {
+        "key": "IA base",
+        "value": "GPT-4o con contexto propio"
+      },
+      {
+        "key": "Entrenamiento",
+        "value": "Con tu catálogo y FAQs"
+      },
+      {
+        "key": "Idioma",
+        "value": "Español (ajustable)"
+      },
+      {
+        "key": "Implementación",
+        "value": "10 días hábiles"
+      },
+      {
+        "key": "Soporte",
+        "value": "60 días incluidos"
+      }
+    ],
+    "incluye": [
+      "Diseño conversacional personalizado para tu rubro",
+      "Entrenamiento con tu catálogo, precios y preguntas frecuentes",
+      "Integración con WhatsApp Business API o widget web",
+      "Panel de administración para actualizar respuestas sin código",
+      "Derivación automática a agente humano cuando sea necesario",
+      "Reportes semanales de consultas más frecuentes",
+      "Capacitación al equipo (2 horas)",
+      "60 días de soporte técnico post-entrega"
+    ],
+    "terminalSpecs": [
+      {
+        "key": "ENGINE",
+        "value": "OpenAI GPT-4o + RAG personalizado"
+      },
+      {
+        "key": "CANALES",
+        "value": "WhatsApp Business · Web widget · Telegram"
+      },
+      {
+        "key": "TRAINING",
+        "value": "Documentos propios · FAQs · Catálogo"
+      },
+      {
+        "key": "IDIOMA",
+        "value": "es-AR (configurable)"
+      },
+      {
+        "key": "HANDOFF",
+        "value": "Derivación a humano automática"
+      },
+      {
+        "key": "DASHBOARD",
+        "value": "Panel sin código incluido"
+      },
+      {
+        "key": "DEPLOY",
+        "value": "10 días hábiles"
+      },
+      {
+        "key": "SOPORTE",
+        "value": "60 días incluidos"
+      }
+    ]
+  },
+  {
+    "id": 4,
+    "slug": "automatizacion-reportes-ia",
+    "name": "Automatización de Reportes con IA — Datos en Tiempo Real",
+    "price": null,
+    "priceLabel": "Consultar",
+    "currency": "ARS",
+    "badge": "Pro",
+    "badgeType": "pro",
+    "desc": "Generación automática de informes con datos actualizados. Integración con Google Sheets, CRMs y ERPs.",
+    "image": "/productos/prod-4.png",
+    "categoria": "IA",
+    "envioGratis": false,
+    "rating": 4.7,
+    "reviews": 4,
+    "gradient": "from-yellow-500/15 via-orange-500/5 to-transparent",
+    "envio": "Servicio remoto",
+    "stock": "Disponible",
+    "heroSpecs": [
+      {
+        "key": "Fuentes de datos",
+        "value": "Sheets, Excel, APIs, DBs"
+      },
+      {
+        "key": "Salida",
+        "value": "PDF, email, dashboard"
+      },
+      {
+        "key": "Frecuencia",
+        "value": "Diaria / semanal / mensual"
+      },
+      {
+        "key": "IA incluida",
+        "value": "Análisis y resumen automático"
+      },
+      {
+        "key": "Implementación",
+        "value": "7 días hábiles"
+      },
+      {
+        "key": "Soporte",
+        "value": "30 días incluidos"
+      }
+    ],
+    "incluye": [
+      "Conexión a hasta 3 fuentes de datos (Sheets, APIs, DB, etc.)",
+      "Diseño del reporte a medida según tus KPIs",
+      "Generación y envío automático por email o WhatsApp",
+      "Resumen ejecutivo redactado por IA incluido en cada reporte",
+      "Dashboard visual en Google Looker Studio o Notion",
+      "Alertas automáticas ante desvíos críticos en métricas",
+      "30 días de soporte técnico post-entrega"
+    ],
+    "terminalSpecs": [
+      {
+        "key": "FUENTES",
+        "value": "Google Sheets · APIs REST · MySQL · Excel"
+      },
+      {
+        "key": "OUTPUT",
+        "value": "PDF · Email · WhatsApp · Dashboard"
+      },
+      {
+        "key": "FRECUENCIA",
+        "value": "Diaria · Semanal · Mensual (configurable)"
+      },
+      {
+        "key": "IA_RESUMEN",
+        "value": "GPT-4o — análisis ejecutivo automático"
+      },
+      {
+        "key": "ALERTAS",
+        "value": "Thresholds personalizables por métrica"
+      },
+      {
+        "key": "DASHBOARD",
+        "value": "Looker Studio / Notion"
+      },
+      {
+        "key": "DEPLOY",
+        "value": "7 días hábiles"
+      }
+    ]
+  },
+  {
+    "id": 5,
+    "slug": "kit-cctv-hogar-4-camaras",
+    "name": "Kit CCTV Hogar 4 Cámaras Dahua — Visión Nocturna",
+    "price": 285000,
+    "priceLabel": "$285.000",
+    "currency": "ARS",
+    "cuotas": 12,
+    "cuotasPrecio": "$28.420",
+    "badge": "Stock",
+    "badgeType": "stock",
+    "desc": "4 cámaras Dahua 2MP con visión nocturna, DVR 4ch, disco 1TB, cables y fuentes. Incluye instalación básica.",
+    "image": "/productos/cctv-hogar-4.png",
+    "categoria": "Seguridad",
+    "envioGratis": true,
+    "rating": 4.9,
+    "reviews": 23,
+    "gradient": "from-green-600/20 via-emerald-600/5 to-transparent",
+    "envio": "Envío gratis a Sarmiento y alrededores",
+    "stock": "En stock",
+    "heroSpecs": [
+      {
+        "key": "Cámaras",
+        "value": "4x Dahua 2MP Full HD"
+      },
+      {
+        "key": "Visión nocturna",
+        "value": "IR hasta 30 metros"
+      },
+      {
+        "key": "Grabación",
+        "value": "DVR 4 canales 1080p"
+      },
+      {
+        "key": "Almacenamiento",
+        "value": "HDD 1TB incluido"
+      },
+      {
+        "key": "Instalación",
+        "value": "Incluida en Sarmiento y zona"
+      },
+      {
+        "key": "Garantía",
+        "value": "12 meses en tienda"
+      }
+    ],
+    "incluye": [
+      "4 cámaras Dahua 2MP Full HD con visión nocturna IR 30m",
+      "DVR Dahua 4 canales grabación continua 1080p",
+      "Disco rígido 1TB pre-instalado",
+      "Cables de alimentación y video para hasta 20 metros cada cámara",
+      "Fuente de alimentación central",
+      "Mouse y control remoto para el DVR",
+      "App móvil para visualización remota (iOS y Android)",
+      "Instalación y puesta en marcha en Sarmiento y zona",
+      "Capacitación de uso al propietario",
+      "12 meses de garantía directa en tienda"
+    ],
+    "terminalSpecs": [
+      {
+        "key": "CAMARAS",
+        "value": "4x Dahua IPC-HDW2849H-S-IL 2MP"
+      },
+      {
+        "key": "RESOLUCION",
+        "value": "1920x1080 Full HD"
+      },
+      {
+        "key": "IR_RANGE",
+        "value": "30 metros"
+      },
+      {
+        "key": "DVR",
+        "value": "Dahua XVR5104HS 4CH"
+      },
+      {
+        "key": "STORAGE",
+        "value": "1TB HDD incluido (~30 días cont.)"
+      },
+      {
+        "key": "COMPRESION",
+        "value": "H.265+ / H.264"
+      },
+      {
+        "key": "ACCESO_REMOTO",
+        "value": "DMSS App — iOS / Android"
+      },
+      {
+        "key": "ALIMENTACION",
+        "value": "220V AC centralizada"
+      },
+      {
+        "key": "GARANTIA",
+        "value": "12 meses — tienda BALUMTech"
+      }
+    ]
+  },
+  {
+    "id": 6,
+    "slug": "kit-cctv-empresa-8-camaras",
+    "name": "Kit CCTV Empresa 8 Cámaras Profesional — Analytics",
+    "price": 520000,
+    "priceLabel": "$520.000",
+    "currency": "ARS",
+    "cuotas": 12,
+    "cuotasPrecio": "$51.840",
+    "badge": "Stock",
+    "badgeType": "stock",
+    "desc": "8 cámaras Hikvision 4MP, NVR 8ch con analytics, disco 2TB. Alertas inteligentes y acceso remoto.",
+    "image": "/productos/cctv-empresa-8.png",
+    "categoria": "Seguridad",
+    "envioGratis": true,
+    "rating": 5,
+    "reviews": 15,
+    "gradient": "from-green-600/20 via-teal-600/5 to-transparent",
+    "envio": "Envío gratis a Sarmiento y alrededores",
+    "stock": "En stock",
+    "heroSpecs": [
+      {
+        "key": "Cámaras",
+        "value": "8x Dahua 4MP con IA"
+      },
+      {
+        "key": "Analytics",
+        "value": "Detección de intrusos y rostros"
+      },
+      {
+        "key": "Grabación",
+        "value": "NVR 8 canales 4K"
+      },
+      {
+        "key": "Almacenamiento",
+        "value": "HDD 2TB incluido"
+      },
+      {
+        "key": "Instalación",
+        "value": "Incluida + cableado profesional"
+      },
+      {
+        "key": "Garantía",
+        "value": "12 meses en tienda"
+      }
+    ],
+    "incluye": [
+      "8 cámaras Dahua 4MP con inteligencia artificial integrada",
+      "NVR Dahua 8 canales resolución 4K",
+      "Disco rígido 2TB pre-instalado (~45 días de grabación continua)",
+      "Cableado estructurado Cat6 hasta 50 metros por cámara",
+      "Switch PoE 8 puertos incluido",
+      "Detección de intrusos, conteo de personas y alertas perimetrales",
+      "App DMSS para monitoreo remoto en tiempo real",
+      "Instalación profesional y cableado embutido o canalado",
+      "Configuración de alertas y zonas de detección",
+      "12 meses de garantía directa en tienda"
+    ],
+    "terminalSpecs": [
+      {
+        "key": "CAMARAS",
+        "value": "8x Dahua IPC-HDW3849H-AS-PV 4MP"
+      },
+      {
+        "key": "RESOLUCION",
+        "value": "2688x1520 — 4MP"
+      },
+      {
+        "key": "IA_FEATURES",
+        "value": "Detección personas · Intrusos · Perimetral"
+      },
+      {
+        "key": "NVR",
+        "value": "Dahua NVR4108HS-8P-EI 4K"
+      },
+      {
+        "key": "STORAGE",
+        "value": "2TB HDD incluido (~45 días cont.)"
+      },
+      {
+        "key": "RED",
+        "value": "Switch PoE 8p incluido"
+      },
+      {
+        "key": "COMPRESION",
+        "value": "H.265+ Smart"
+      },
+      {
+        "key": "ACCESO_REMOTO",
+        "value": "DMSS / IVMS-4200 — iOS · Android · PC"
+      },
+      {
+        "key": "GARANTIA",
+        "value": "12 meses — tienda BALUMTech"
+      }
+    ]
+  },
+  {
+    "id": 7,
+    "slug": "control-accesos-biometrico",
+    "name": "Control de Accesos Biométrico — Cerradura Inteligente",
+    "price": 180000,
+    "priceLabel": "$180.000",
+    "currency": "ARS",
+    "cuotas": 6,
+    "cuotasPrecio": "$33.000",
+    "badge": "Instalación",
+    "badgeType": "stock",
+    "desc": "Cerraduras inteligentes con lector biométrico, código PIN y control celular.",
+    "image": "/productos/acceso-biometrico.png",
+    "categoria": "Seguridad",
+    "envioGratis": true,
+    "rating": 4.6,
+    "reviews": 9,
+    "gradient": "from-emerald-600/15 via-green-600/5 to-transparent",
+    "envio": "Instalación incluida en zona",
+    "stock": "Disponible",
+    "heroSpecs": [
+      {
+        "key": "Biométrico",
+        "value": "Huella dactilar + PIN + tarjeta"
+      },
+      {
+        "key": "Capacidad",
+        "value": "Hasta 500 usuarios"
+      },
+      {
+        "key": "Conectividad",
+        "value": "WiFi + Bluetooth"
+      },
+      {
+        "key": "Historial",
+        "value": "Registro de accesos en app"
+      },
+      {
+        "key": "Instalación",
+        "value": "Incluida en Sarmiento y zona"
+      },
+      {
+        "key": "Garantía",
+        "value": "12 meses"
+      }
+    ],
+    "incluye": [
+      "Cerradura biométrica con huella dactilar, PIN y tarjeta RFID",
+      "Soporte y herrajes de instalación incluidos",
+      "Conexión WiFi para gestión remota desde el celular",
+      "App de control con historial de accesos y usuarios",
+      "Alta de hasta 500 huellas / usuarios",
+      "Batería de respaldo ante corte de luz",
+      "Instalación y configuración completa en puerta",
+      "Capacitación de uso a los administradores",
+      "12 meses de garantía"
+    ],
+    "terminalSpecs": [
+      {
+        "key": "METODOS",
+        "value": "Huella · PIN · Tarjeta RFID · App"
+      },
+      {
+        "key": "USUARIOS",
+        "value": "Hasta 500"
+      },
+      {
+        "key": "CONECTIVIDAD",
+        "value": "WiFi 2.4GHz + Bluetooth 5.0"
+      },
+      {
+        "key": "HISTORIAL",
+        "value": "10.000 registros de acceso"
+      },
+      {
+        "key": "BATERIA",
+        "value": "Respaldo 6h ante corte"
+      },
+      {
+        "key": "APP",
+        "value": "iOS / Android — gestión remota"
+      },
+      {
+        "key": "MATERIAL",
+        "value": "Acero + aleación de zinc grado A"
+      },
+      {
+        "key": "GARANTIA",
+        "value": "12 meses — BALUMTech"
+      }
+    ]
+  },
+  {
+    "id": 8,
+    "slug": "nodo-red-pro-ubiquiti",
+    "name": "Nodo de Red Pro — Access Point Ubiquiti + Cableado",
+    "price": 145000,
+    "priceLabel": "$145.000",
+    "currency": "ARS",
+    "cuotas": 6,
+    "cuotasPrecio": "$26.620",
+    "badge": "Instalación",
+    "badgeType": "stock",
+    "desc": "Mejora de cobertura Wi-Fi con AP Ubiquiti empresarial y cableado estructurado Cat 6.",
+    "image": "/productos/nodo-red-pro.png",
+    "categoria": "Redes",
+    "envioGratis": true,
+    "rating": 4.8,
+    "reviews": 18,
+    "gradient": "from-sky-600/20 via-blue-600/5 to-transparent",
+    "envio": "Instalación incluida en zona",
+    "stock": "Disponible",
+    "heroSpecs": [
+      {
+        "key": "Equipo",
+        "value": "Ubiquiti UniFi AP AX"
+      },
+      {
+        "key": "Velocidad",
+        "value": "Hasta 1.5 Gbps WiFi 6"
+      },
+      {
+        "key": "Cobertura",
+        "value": "Hasta 300m² por AP"
+      },
+      {
+        "key": "Cableado",
+        "value": "Cat6 hasta 40 metros incluido"
+      },
+      {
+        "key": "Instalación",
+        "value": "Incluida en Sarmiento y zona"
+      },
+      {
+        "key": "Garantía",
+        "value": "12 meses"
+      }
+    ],
+    "incluye": [
+      "1 Access Point Ubiquiti UniFi WiFi 6 (U6 Lite o superior)",
+      "Cableado Cat6 hasta 40 metros (pared o cielorraso)",
+      "Switch PoE o inyector PoE según la instalación",
+      "Configuración de SSID, VLAN y seguridad WPA3",
+      "Integración con red existente o nueva",
+      "Test de cobertura y ajuste de potencia",
+      "Dashboard UniFi configurado para gestión propia",
+      "12 meses de garantía en equipo"
+    ],
+    "terminalSpecs": [
+      {
+        "key": "EQUIPO",
+        "value": "Ubiquiti UniFi U6 Lite / U6 Pro"
+      },
+      {
+        "key": "WIFI",
+        "value": "WiFi 6 (802.11ax) — 2.4 + 5GHz"
+      },
+      {
+        "key": "THROUGHPUT",
+        "value": "Hasta 1.5 Gbps"
+      },
+      {
+        "key": "COBERTURA",
+        "value": "~300m² por AP"
+      },
+      {
+        "key": "CABLEADO",
+        "value": "Cat6 hasta 40m incluido"
+      },
+      {
+        "key": "SEGURIDAD",
+        "value": "WPA3 · VLAN · Guest network"
+      },
+      {
+        "key": "GESTION",
+        "value": "UniFi Dashboard (cloud / local)"
+      },
+      {
+        "key": "ALIMENTACION",
+        "value": "PoE 802.3af incluido"
+      },
+      {
+        "key": "GARANTIA",
+        "value": "12 meses — BALUMTech"
+      }
+    ]
+  },
+  {
+    "id": 9,
+    "slug": "red-mesh-empresarial",
+    "name": "Red Mesh Empresarial — Conectividad Industrial",
+    "price": null,
+    "priceLabel": "Consultar",
+    "currency": "ARS",
+    "badge": "Proyecto",
+    "badgeType": "pedido",
+    "desc": "Solución de conectividad robusta para yacimientos y plantas. Diseño a medida.",
+    "image": "https://mastecnologia.com.ar/images/productos/14095.png",
+    "categoria": "Redes",
+    "envioGratis": false,
+    "rating": 5,
+    "reviews": 7,
+    "gradient": "from-orange-500/15 via-amber-500/5 to-transparent",
+    "envio": "Instalación en sitio",
+    "stock": "Disponible",
+    "heroSpecs": [
+      {
+        "key": "Tecnología",
+        "value": "Ubiquiti UniFi / Mikrotik Mesh"
+      },
+      {
+        "key": "Cobertura",
+        "value": "Yacimientos, galpones, plantas"
+      },
+      {
+        "key": "Nodos",
+        "value": "Desde 3 nodos (escalable)"
+      },
+      {
+        "key": "Redundancia",
+        "value": "Auto-recuperación ante fallas"
+      },
+      {
+        "key": "Proyecto",
+        "value": "Relevamiento + diseño incluido"
+      },
+      {
+        "key": "Garantía",
+        "value": "12 meses en equipos"
+      }
+    ],
+    "incluye": [
+      "Relevamiento técnico del sitio (presencial o planos)",
+      "Diseño de topología de red Mesh personalizado",
+      "Provisión e instalación de nodos Ubiquiti o MikroTik",
+      "Configuración de roaming automático entre nodos",
+      "Redundancia y failover automático ante caída de nodo",
+      "Segmentación por VLAN (administración, operaciones, invitados)",
+      "Monitoreo remoto 24/7 incluido el primer mes",
+      "Documentación técnica de la red entregada",
+      "12 meses de garantía en equipos instalados"
+    ],
+    "terminalSpecs": [
+      {
+        "key": "PLATAFORMA",
+        "value": "Ubiquiti UniFi / MikroTik CAPsMAN"
+      },
+      {
+        "key": "TOPOLOGIA",
+        "value": "Mesh — auto-recuperable"
+      },
+      {
+        "key": "NODOS_MIN",
+        "value": "3 (escalable sin límite)"
+      },
+      {
+        "key": "ROAMING",
+        "value": "Layer 2 — transparente para clientes"
+      },
+      {
+        "key": "VLAN",
+        "value": "Segmentación por perfil de usuario"
+      },
+      {
+        "key": "MONITOREO",
+        "value": "Dashboard centralizado 24/7"
+      },
+      {
+        "key": "ENTORNO",
+        "value": "Indoor · Outdoor IP67 · Industrial"
+      },
+      {
+        "key": "GARANTIA",
+        "value": "12 meses — equipos BALUMTech"
+      }
+    ]
+  },
+  {
+    "id": 10,
+    "slug": "vpn-firewall-corporativo",
+    "name": "VPN & Firewall Corporativo — Cisco / MikroTik",
+    "price": null,
+    "priceLabel": "Consultar",
+    "currency": "ARS",
+    "badge": "Pro",
+    "badgeType": "pro",
+    "desc": "Seguridad perimetral para oficinas distribuidas. VPN site-to-site.",
+    "image": "https://mastecnologia.com.ar/images/productos/14177.png",
+    "categoria": "Redes",
+    "envioGratis": false,
+    "rating": 4.9,
+    "reviews": 5,
+    "gradient": "from-red-500/15 via-rose-500/5 to-transparent",
+    "envio": "Implementación remota o presencial",
+    "stock": "Disponible",
+    "heroSpecs": [
+      {
+        "key": "Equipos",
+        "value": "Cisco ASA / MikroTik RB"
+      },
+      {
+        "key": "VPN",
+        "value": "Site-to-site + acceso remoto"
+      },
+      {
+        "key": "Firewall",
+        "value": "Reglas por usuario y segmento"
+      },
+      {
+        "key": "Usuarios",
+        "value": "Desde 5 hasta 500+"
+      },
+      {
+        "key": "Implementación",
+        "value": "Presencial o remota"
+      },
+      {
+        "key": "Garantía",
+        "value": "90 días en configuración"
+      }
+    ],
+    "incluye": [
+      "Relevamiento de la red y necesidades de seguridad",
+      "Configuración de firewall con reglas por segmento y usuario",
+      "VPN site-to-site entre sucursales (si aplica)",
+      "VPN de acceso remoto para colaboradores (SSL/IPSec)",
+      "Políticas de filtrado web y control de aplicaciones",
+      "Hardening del router / firewall según estándares CIS",
+      "Documentación completa de la configuración",
+      "90 días de garantía en la configuración realizada"
+    ],
+    "terminalSpecs": [
+      {
+        "key": "EQUIPOS",
+        "value": "Cisco ASA · MikroTik RB · pfSense"
+      },
+      {
+        "key": "VPN_PROTO",
+        "value": "IPSec · OpenVPN · WireGuard · SSL"
+      },
+      {
+        "key": "FIREWALL",
+        "value": "Stateful — reglas L3/L4/L7"
+      },
+      {
+        "key": "USUARIOS",
+        "value": "5 a 500+ (según equipo)"
+      },
+      {
+        "key": "FILTRADO",
+        "value": "Web · Apps · DNS · IDS/IPS"
+      },
+      {
+        "key": "HARDENING",
+        "value": "Basado en CIS Benchmarks"
+      },
+      {
+        "key": "MODALIDAD",
+        "value": "Remoto o presencial en sitio"
+      },
+      {
+        "key": "GARANTIA",
+        "value": "90 días en configuración"
+      }
+    ]
+  },
+  {
+    "id": 11,
+    "slug": "pc-balum-v1-gamer",
+    "name": "PC BALUM v1 Gamer — Ryzen 7 + RTX 4060",
+    "price": 820000,
+    "priceLabel": "$820.000",
+    "currency": "ARS",
+    "cuotas": 12,
+    "cuotasPrecio": "$81.780",
+    "badge": "A pedido",
+    "badgeType": "pedido",
+    "desc": "Ryzen 7 7700X, RTX 4060 8GB, 32GB DDR5, SSD 1TB NVMe. Armada en Sarmiento.",
+    "image": "/productos/pc-gamer-v1.png",
+    "categoria": "Hardware",
+    "envioGratis": true,
+    "rating": 5,
+    "reviews": 11,
+    "gradient": "from-violet-600/20 via-purple-600/5 to-transparent",
+    "envio": "Envío gratis a Sarmiento y alrededores",
+    "stock": "A pedido — 7 días",
+    "heroSpecs": [
+      {
+        "key": "CPU",
+        "value": "AMD Ryzen 7 5700X (8C/16T)"
+      },
+      {
+        "key": "GPU",
+        "value": "NVIDIA RTX 4060 8GB GDDR6"
+      },
+      {
+        "key": "RAM",
+        "value": "16GB DDR4 3200MHz"
+      },
+      {
+        "key": "Storage",
+        "value": "SSD NVMe 1TB"
+      },
+      {
+        "key": "Fuente",
+        "value": "650W 80+ Bronze"
+      },
+      {
+        "key": "Garantía",
+        "value": "12 meses en tienda"
+      }
+    ],
+    "incluye": [
+      "AMD Ryzen 7 5700X 8 núcleos / 16 hilos",
+      "NVIDIA GeForce RTX 4060 8GB GDDR6X",
+      "16GB RAM DDR4 3200MHz (2x8GB dual channel)",
+      "SSD NVMe M.2 1TB PCIe Gen4",
+      "Placa madre AMD B550 con WiFi",
+      "Gabinete gaming con panel de vidrio templado y 3 fans ARGB",
+      "Fuente de alimentación 650W 80+ Bronze certificada",
+      "Cooler AMD Wraith Stealth incluido",
+      "Windows 11 Home activado",
+      "Ensamblado, testeado y garantizado por BALUMTech",
+      "12 meses de garantía directa en tienda"
+    ],
+    "terminalSpecs": [
+      {
+        "key": "CPU",
+        "value": "AMD Ryzen 7 5700X — 4.6GHz boost"
+      },
+      {
+        "key": "GPU",
+        "value": "NVIDIA RTX 4060 — 8GB GDDR6X"
+      },
+      {
+        "key": "RAM",
+        "value": "16GB DDR4 3200MHz — Dual Channel"
+      },
+      {
+        "key": "STORAGE",
+        "value": "SSD NVMe M.2 1TB PCIe Gen4"
+      },
+      {
+        "key": "MOTHERBOARD",
+        "value": "B550M WiFi — AM4"
+      },
+      {
+        "key": "PSU",
+        "value": "650W 80+ Bronze"
+      },
+      {
+        "key": "OS",
+        "value": "Windows 11 Home — activado"
+      },
+      {
+        "key": "CONECTIVIDAD",
+        "value": "WiFi 6 + Gigabit LAN + BT 5.0"
+      },
+      {
+        "key": "GARANTIA",
+        "value": "12 meses — tienda BALUMTech"
+      }
+    ]
+  },
+  {
+    "id": 12,
+    "slug": "workstation-diseno-ia",
+    "name": "Workstation Diseño / IA — Renderizado 3D",
+    "price": 1200000,
+    "priceLabel": "$1.200.000",
+    "currency": "ARS",
+    "cuotas": 12,
+    "cuotasPrecio": "$119.640",
+    "badge": "A pedido",
+    "badgeType": "pedido",
+    "desc": "Xeon + RTX 4080 + 64GB ECC. Optimizada para IA y renderizado profesional.",
+    "image": "/productos/workstation-diseno.jpg",
+    "categoria": "Hardware",
+    "envioGratis": true,
+    "rating": 5,
+    "reviews": 3,
+    "gradient": "from-pink-500/15 via-rose-500/5 to-transparent",
+    "envio": "Envío gratis a Sarmiento y alrededores",
+    "stock": "A pedido — 10 días",
+    "heroSpecs": [
+      {
+        "key": "CPU",
+        "value": "AMD Ryzen 9 7900X (12C/24T)"
+      },
+      {
+        "key": "GPU",
+        "value": "NVIDIA RTX 4070 Ti 12GB"
+      },
+      {
+        "key": "RAM",
+        "value": "32GB DDR5 5200MHz"
+      },
+      {
+        "key": "Storage",
+        "value": "SSD NVMe 2TB + HDD 2TB"
+      },
+      {
+        "key": "Fuente",
+        "value": "850W 80+ Gold"
+      },
+      {
+        "key": "Garantía",
+        "value": "12 meses en tienda"
+      }
+    ],
+    "incluye": [
+      "AMD Ryzen 9 7900X 12 núcleos / 24 hilos",
+      "NVIDIA GeForce RTX 4070 Ti 12GB GDDR6X",
+      "32GB RAM DDR5 5200MHz (2x16GB dual channel)",
+      "SSD NVMe M.2 2TB PCIe Gen5 (sistema + proyectos)",
+      "HDD 2TB 7200RPM (almacenamiento secundario)",
+      "Placa madre X670E con WiFi 6E",
+      "Gabinete full-tower con flujo de aire optimizado",
+      "Fuente de alimentación 850W 80+ Gold modular",
+      "Cooler líquido AIO 240mm",
+      "Windows 11 Pro activado",
+      "Ensamblado, stress-testeado 24h y garantizado",
+      "12 meses de garantía directa en tienda"
+    ],
+    "terminalSpecs": [
+      {
+        "key": "CPU",
+        "value": "AMD Ryzen 9 7900X — 5.6GHz boost"
+      },
+      {
+        "key": "GPU",
+        "value": "NVIDIA RTX 4070 Ti — 12GB GDDR6X"
+      },
+      {
+        "key": "CUDA_CORES",
+        "value": "7680 CUDA cores"
+      },
+      {
+        "key": "RAM",
+        "value": "32GB DDR5 5200MHz — ECC support"
+      },
+      {
+        "key": "STORAGE_1",
+        "value": "2TB NVMe PCIe Gen5 (OS + work)"
+      },
+      {
+        "key": "STORAGE_2",
+        "value": "2TB HDD 7200RPM (archivo)"
+      },
+      {
+        "key": "MOTHERBOARD",
+        "value": "X670E — AM5 — PCIe 5.0"
+      },
+      {
+        "key": "PSU",
+        "value": "850W 80+ Gold — Full Modular"
+      },
+      {
+        "key": "COOLING",
+        "value": "AIO Líquido 240mm"
+      },
+      {
+        "key": "OS",
+        "value": "Windows 11 Pro — activado"
+      },
+      {
+        "key": "GARANTIA",
+        "value": "12 meses — tienda BALUMTech"
+      }
+    ]
+  },
+  {
+    "id": 13,
+    "slug": "servidor-nas-synology",
+    "name": "Servidor NAS Empresarial — Synology RAID",
+    "price": 650000,
+    "priceLabel": "$650.000",
+    "currency": "ARS",
+    "cuotas": 12,
+    "cuotasPrecio": "$64.840",
+    "badge": "A pedido",
+    "badgeType": "pedido",
+    "desc": "NAS Synology RAID 5, 4 bahías, acceso remoto seguro y respaldo en nube.",
+    "image": "/productos/nas-qnap.png",
+    "categoria": "Hardware",
+    "envioGratis": true,
+    "rating": 4.7,
+    "reviews": 6,
+    "gradient": "from-slate-500/15 via-gray-500/5 to-transparent",
+    "envio": "Envío gratis a Sarmiento y alrededores",
+    "stock": "A pedido — 10 días",
+    "heroSpecs": [
+      {
+        "key": "Modelo",
+        "value": "Synology DS923+"
+      },
+      {
+        "key": "Capacidad",
+        "value": "16TB usable (RAID 5)"
+      },
+      {
+        "key": "RAID",
+        "value": "RAID 1 / 5 / 6 configurable"
+      },
+      {
+        "key": "Conectividad",
+        "value": "2.5GbE x2 + expansión 10GbE"
+      },
+      {
+        "key": "Apps incluidas",
+        "value": "Drive, Photos, Surveillance"
+      },
+      {
+        "key": "Garantía",
+        "value": "12 meses en tienda"
+      }
+    ],
+    "incluye": [
+      "Synology DiskStation DS923+ (4 bahías)",
+      "4 discos Seagate IronWolf Pro 4TB NAS-grade",
+      "Configuración RAID 5 (16TB usable con redundancia)",
+      "DSM (DiskStation Manager) configurado y actualizado",
+      "Synology Drive — nube privada tipo Google Drive",
+      "Synology Photos — respaldo automático de fotos",
+      "Synology Surveillance Station para cámaras IP",
+      "Configuración de usuarios y permisos por carpeta",
+      "Acceso remoto seguro (QuickConnect + VPN)",
+      "Capacitación de administración al responsable IT",
+      "12 meses de garantía directa en tienda"
+    ],
+    "terminalSpecs": [
+      {
+        "key": "MODELO",
+        "value": "Synology DS923+ — 4 bahías"
+      },
+      {
+        "key": "CPU",
+        "value": "AMD Ryzen R1600 dual-core"
+      },
+      {
+        "key": "RAM",
+        "value": "4GB DDR4 ECC (amp. a 32GB)"
+      },
+      {
+        "key": "DISCOS",
+        "value": "4x Seagate IronWolf Pro 4TB"
+      },
+      {
+        "key": "RAID",
+        "value": "SHR · RAID 0/1/5/6/10"
+      },
+      {
+        "key": "CAPACIDAD",
+        "value": "16TB usable en RAID 5"
+      },
+      {
+        "key": "RED",
+        "value": "2x 2.5GbE — expansión 10GbE"
+      },
+      {
+        "key": "APPS",
+        "value": "Drive · Photos · Surveillance · Mail"
+      },
+      {
+        "key": "ACCESO",
+        "value": "QuickConnect · VPN · HTTPS"
+      },
+      {
+        "key": "GARANTIA",
+        "value": "12 meses — tienda BALUMTech"
+      }
+    ]
+  }
+]

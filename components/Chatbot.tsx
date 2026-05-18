@@ -1,5 +1,6 @@
 "use client";
 import { useState, useEffect, useRef } from "react";
+import { usePathname } from "next/navigation";
 import { Bot, X, Send, Store, BrainCircuit, UserCircle, MessageSquare } from "lucide-react";
 
 interface Message {
@@ -10,7 +11,9 @@ interface Message {
 }
 
 export default function Chatbot() {
+  const pathname = usePathname();
   const [isOpen, setIsOpen] = useState(false);
+  if (pathname.startsWith('/admin')) return null;
   const [messages, setMessages] = useState<Message[]>([]);
   const [inputText, setInputText] = useState("");
   const messagesEndRef = useRef<HTMLDivElement>(null);

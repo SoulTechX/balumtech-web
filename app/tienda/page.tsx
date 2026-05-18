@@ -33,129 +33,7 @@ interface CartItem {
   quantity: number;
 }
 
-// ─── DATOS DE PRODUCTOS ──────────────────────────────
 const waNumber = "5492974779978";
-
-const productos: Producto[] = [
-  // IA & Automatización
-  { 
-    id: 1, slug: "agente-ia-inmobiliario", name: "Agente IA Inmobiliario — Automatización 24/7 con n8n", 
-    price: null, priceLabel: "Consultar", currency: "ARS",
-    badge: "Especialidad", badgeType: "nuevo",
-    desc: "Automatización completa de leads, agenda y seguimiento para inmobiliarias y corredores. Incluye configuración personalizada.",
-    image: "/productos/prod-1.png", categoria: "IA", envioGratis: false,
-    rating: 5, reviews: 12, gradient: "from-blue-600/20 via-indigo-600/10 to-transparent"
-  },
-  { 
-    id: 2, slug: "auditoria-n8n-make", name: "Auditoría y Optimización de Flujos n8n / Make", 
-    price: null, priceLabel: "Consultar", currency: "ARS",
-    badge: "Pro", badgeType: "pro",
-    desc: "Análisis profundo, optimización de rendimiento y limpieza de workflows existentes. Reducí costos y errores.",
-    image: "/productos/prod-2.png", categoria: "IA", envioGratis: false,
-    rating: 4.8, reviews: 8, gradient: "from-purple-600/20 via-purple-600/5 to-transparent"
-  },
-  { 
-    id: 3, slug: "chatbot-ia-empresarial", name: "Chatbot IA Empresarial — Atención al Cliente Inteligente", 
-    price: null, priceLabel: "Consultar", currency: "ARS",
-    badge: "Nuevo", badgeType: "nuevo",
-    desc: "Asistente virtual con IA generativa para atención 24/7. Aprende de tu negocio y responde como un humano.",
-    image: "/productos/prod-3.png", categoria: "IA", envioGratis: false,
-    rating: 4.9, reviews: 6, gradient: "from-cyan-600/20 via-blue-600/5 to-transparent"
-  },
-  { 
-    id: 4, slug: "automatizacion-reportes-ia", name: "Automatización de Reportes con IA — Datos en Tiempo Real", 
-    price: null, priceLabel: "Consultar", currency: "ARS",
-    badge: "Pro", badgeType: "pro",
-    desc: "Generación automática de informes con datos actualizados. Integración con Google Sheets, CRMs y ERPs.",
-    image: "/productos/prod-4.png", categoria: "IA", envioGratis: false,
-    rating: 4.7, reviews: 4, gradient: "from-yellow-500/15 via-orange-500/5 to-transparent"
-  },
-
-  // Seguridad Electrónica
-  { 
-    id: 5, slug: "kit-cctv-hogar-4-camaras", name: "Kit CCTV Hogar 4 Cámaras Dahua — Visión Nocturna", 
-    price: 285000, priceLabel: "$285.000", currency: "ARS",
-    cuotas: 12, cuotasPrecio: "$28.420",
-    badge: "Stock", badgeType: "stock",
-    desc: "4 cámaras Dahua 2MP con visión nocturna, DVR 4ch, disco 1TB, cables y fuentes. Incluye instalación básica.",
-    image: "/productos/cctv-hogar-4.png", categoria: "Seguridad", envioGratis: true,
-    rating: 4.9, reviews: 23, gradient: "from-green-600/20 via-emerald-600/5 to-transparent"
-  },
-  { 
-    id: 6, slug: "kit-cctv-empresa-8-camaras", name: "Kit CCTV Empresa 8 Cámaras Profesional — Analytics", 
-    price: 520000, priceLabel: "$520.000", currency: "ARS",
-    cuotas: 12, cuotasPrecio: "$51.840",
-    badge: "Stock", badgeType: "stock",
-    desc: "8 cámaras Hikvision 4MP, NVR 8ch con analytics, disco 2TB. Alertas inteligentes y acceso remoto.",
-    image: "/productos/cctv-empresa-8.png", categoria: "Seguridad", envioGratis: true,
-    rating: 5, reviews: 15, gradient: "from-green-600/20 via-teal-600/5 to-transparent"
-  },
-  { 
-    id: 7, slug: "control-accesos-biometrico", name: "Control de Accesos Biométrico — Cerradura Inteligente", 
-    price: 180000, priceLabel: "$180.000", currency: "ARS",
-    cuotas: 6, cuotasPrecio: "$33.000",
-    badge: "Instalación", badgeType: "stock",
-    desc: "Cerraduras inteligentes con lector biométrico, código PIN y control celular.",
-    image: "/productos/acceso-biometrico.png", categoria: "Seguridad", envioGratis: true,
-    rating: 4.6, reviews: 9, gradient: "from-emerald-600/15 via-green-600/5 to-transparent"
-  },
-
-  // Redes & Conectividad
-  { 
-    id: 8, slug: "nodo-red-pro-ubiquiti", name: "Nodo de Red Pro — Access Point Ubiquiti + Cableado", 
-    price: 145000, priceLabel: "$145.000", currency: "ARS",
-    cuotas: 6, cuotasPrecio: "$26.620",
-    badge: "Instalación", badgeType: "stock",
-    desc: "Mejora de cobertura Wi-Fi con AP Ubiquiti empresarial y cableado estructurado Cat 6.",
-    image: "/productos/nodo-red-pro.png", categoria: "Redes", envioGratis: true,
-    rating: 4.8, reviews: 18, gradient: "from-sky-600/20 via-blue-600/5 to-transparent"
-  },
-  { 
-    id: 9, slug: "red-mesh-empresarial", name: "Red Mesh Empresarial — Conectividad Industrial", 
-    price: null, priceLabel: "Consultar", currency: "ARS",
-    badge: "Proyecto", badgeType: "pedido",
-    desc: "Solución de conectividad robusta para yacimientos y plantas. Diseño a medida.",
-    image: "https://mastecnologia.com.ar/images/productos/14095.png", categoria: "Redes", envioGratis: false,
-    rating: 5, reviews: 7, gradient: "from-orange-500/15 via-amber-500/5 to-transparent"
-  },
-  { 
-    id: 10, slug: "vpn-firewall-corporativo", name: "VPN & Firewall Corporativo — Cisco / MikroTik", 
-    price: null, priceLabel: "Consultar", currency: "ARS",
-    badge: "Pro", badgeType: "pro",
-    desc: "Seguridad perimetral para oficinas distribuidas. VPN site-to-site.",
-    image: "https://mastecnologia.com.ar/images/productos/14177.png", categoria: "Redes", envioGratis: false,
-    rating: 4.9, reviews: 5, gradient: "from-red-500/15 via-rose-500/5 to-transparent"
-  },
-
-  // Hardware & Workstations
-  { 
-    id: 11, slug: "pc-balum-v1-gamer", name: "PC BALUM v1 Gamer — Ryzen 7 + RTX 4060", 
-    price: 820000, priceLabel: "$820.000", currency: "ARS",
-    cuotas: 12, cuotasPrecio: "$81.780",
-    badge: "A pedido", badgeType: "pedido",
-    desc: "Ryzen 7 7700X, RTX 4060 8GB, 32GB DDR5, SSD 1TB NVMe. Armada en Sarmiento.",
-    image: "/productos/pc-gamer-v1.png", categoria: "Hardware", envioGratis: true,
-    rating: 5, reviews: 11, gradient: "from-violet-600/20 via-purple-600/5 to-transparent"
-  },
-  { 
-    id: 12, slug: "workstation-diseno-ia", name: "Workstation Diseño / IA — Renderizado 3D", 
-    price: 1200000, priceLabel: "$1.200.000", currency: "ARS",
-    cuotas: 12, cuotasPrecio: "$119.640",
-    badge: "A pedido", badgeType: "pedido",
-    desc: "Xeon + RTX 4080 + 64GB ECC. Optimizada para IA y renderizado profesional.",
-    image: "/productos/workstation-diseno.jpg", categoria: "Hardware", envioGratis: true,
-    rating: 5, reviews: 3, gradient: "from-pink-500/15 via-rose-500/5 to-transparent"
-  },
-  { 
-    id: 13, slug: "servidor-nas-synology", name: "Servidor NAS Empresarial — Synology RAID", 
-    price: 650000, priceLabel: "$650.000", currency: "ARS",
-    cuotas: 12, cuotasPrecio: "$64.840",
-    badge: "A pedido", badgeType: "pedido",
-    desc: "NAS Synology RAID 5, 4 bahías, acceso remoto seguro y respaldo en nube.",
-    image: "/productos/nas-qnap.png", categoria: "Hardware", envioGratis: true,
-    rating: 4.7, reviews: 6, gradient: "from-slate-500/15 via-gray-500/5 to-transparent"
-  },
-];
 
 const categorias = ["Todos", "IA", "Seguridad", "Redes", "Hardware"];
 
@@ -180,6 +58,8 @@ function Badge({ text, type }: { text: string; type: string }) {
 
 // ─── PÁGINA PRINCIPAL ────────────────────────────────
 export default function TiendaPage() {
+  const [productos, setProductos] = useState<Producto[]>([]);
+  const [loading, setLoading] = useState(true);
   const [filtro, setFiltro] = useState("Todos");
   const [busqueda, setBusqueda] = useState("");
   const [sort, setSort] = useState<SortOption>("relevancia");
@@ -189,6 +69,19 @@ export default function TiendaPage() {
   // Estado del Carrito
   const [cart, setCart] = useState<CartItem[]>([]);
   const [isCartOpen, setIsCartOpen] = useState(false);
+
+  useEffect(() => {
+    fetch('/api/productos')
+      .then(res => res.json())
+      .then(data => {
+        setProductos(data);
+        setLoading(false);
+      })
+      .catch(err => {
+        console.error("Error fetching products:", err);
+        setLoading(false);
+      });
+  }, []);
 
   // Funciones del Carrito
   const addToCart = (product: Producto) => {
@@ -241,13 +134,13 @@ export default function TiendaPage() {
     if (sort === "menor") result = [...result].sort((a, b) => (a.price ?? Infinity) - (b.price ?? Infinity));
     else if (sort === "mayor") result = [...result].sort((a, b) => (b.price ?? 0) - (a.price ?? 0));
     return result;
-  }, [filtro, busqueda, sort, soloEnvioGratis]);
+  }, [filtro, busqueda, sort, soloEnvioGratis, productos]);
 
   const categoryCounts = useMemo(() => {
     const counts: Record<string, number> = { Todos: productos.length };
     productos.forEach(p => { counts[p.categoria] = (counts[p.categoria] || 0) + 1; });
     return counts;
-  }, []);
+  }, [productos]);
 
   return (
     <div className="min-h-screen bg-[var(--bg-base)] relative overflow-x-hidden">
