@@ -1,29 +1,38 @@
-import { NextResponse } from 'next/server';
+import { NextResponse } from 'next/server'
+import { createServerClient } from '@supabase/ssr'
+import { cookies } from 'next/headers'
 
-const ADMIN_USER = process.env.ADMIN_USER || 'admin';
-const ADMIN_PASS = process.env.ADMIN_PASS || 'balum2026';
-const ADMIN_SECRET = process.env.ADMIN_SECRET || 'balum-secret-2026';
+// Ruta de callback de Supabase Auth (para magic links, OAuth, etc.)
+export async function GET(request: Request) {
+  const { searchParams, origin } = new URL(request.url)
+  const code = searchParams.get('code')
+  const next = searchParams.get('next') ?? '/admin/tienda'
 
-export async function POST(req: Request) {
-  const { username, password } = await req.json();
+  if (code) {
+    const cookieStore = await cookies()
+    const supabase = createServerClient(
+      process.env.NEXT_PUBLIC_SUPABASE_URL!,
+      process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!,
+      {
+        cookies: {
+          getAll() {
+            return cookieStore.getAll()
+          },
+          setAll(cookiesToSet) {
+            cookiesToSet.forEach(({ name, value, options }) => {
+              cookieStore.set(name, value, options)
+            })
+          },
+        },
+      }
+    )
 
-  if (username === ADMIN_USER && password === ADMIN_PASS) {
-    const res = NextResponse.json({ success: true });
-    res.cookies.set('admin_token', ADMIN_SECRET, {
-      httpOnly: true,
-      secure: process.env.NODE_ENV === 'production',
-      sameSite: 'lax',
-      maxAge: 60 * 60 * 8, // 8 horas
-      path: '/',
-    });
-    return res;
+    const { error } = await supabase.auth.exchangeCodeForSession(code)
+    if (!error) {
+      return NextResponse.redirect(`${origin}${next}`)
+    }
   }
 
-  return NextResponse.json({ success: false, error: 'Credenciales incorrectas' }, { status: 401 });
-}
-
-export async function DELETE() {
-  const res = NextResponse.json({ success: true });
-  res.cookies.set('admin_token', '', { maxAge: 0, path: '/' });
-  return res;
+  // En caso de error, redirigir al login
+  return NextResponse.redirect(`${origin}/admin/login?error=auth`)
 }

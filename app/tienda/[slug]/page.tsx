@@ -43,27 +43,38 @@ export default async function ProductPage({ params }: { params: Promise<{ slug: 
   }
 
   // Mapeamos de base de datos (snake_case) a lo que espera la vista (camelCase)
+  const cuotasData = dbProduct.cuotas && typeof dbProduct.cuotas === 'object' ? dbProduct.cuotas : null;
+  const cuotasCantidad = cuotasData?.cantidad ?? undefined;
+  const cuotasPrecioStr = cuotasData?.monto
+    ? `${cuotasData.cantidad}x $${Number(cuotasData.monto).toLocaleString('es-AR')}`
+    : undefined;
+
+  const envioText: string = dbProduct.envio ?? '';
+  const envioGratis =
+    envioText.toLowerCase().includes('gratis') || envioText.toLowerCase().includes('incluida');
+
   const prod: Producto = {
     id: dbProduct.id,
     slug: dbProduct.slug,
     name: dbProduct.nombre,
-    price: dbProduct.precio,
-    priceLabel: dbProduct.precio_label || "Consultar",
-    currency: dbProduct.currency || "ARS",
-    cuotas: dbProduct.cuotas?.cantidad || undefined,
-    cuotasPrecio: dbProduct.cuotas?.monto ? `$${dbProduct.cuotas.monto.toLocaleString('es-AR')}` : undefined,
+    price: dbProduct.precio ?? null,
+    priceLabel: dbProduct.precio_label || 'Consultar',
+    currency: 'ARS',
+    cuotas: cuotasCantidad,
+    cuotasPrecio: cuotasPrecioStr,
     badge: dbProduct.badge,
-    badgeType: dbProduct.badge_color || "nuevo",
-    desc: dbProduct.desc || dbProduct.nombre,
+    badgeType: dbProduct.badge_color || 'nuevo',
+    desc: dbProduct.descripcion || dbProduct.nombre,
     image: dbProduct.imagen,
     categoria: dbProduct.categoria,
-    envioGratis: dbProduct.envioGratis || false,
+    envioGratis: envioGratis,
     rating: Number(dbProduct.rating || 5),
     reviews: Number(dbProduct.reviews || 0),
-    gradient: dbProduct.gradient || "from-blue-600/20 via-indigo-600/10 to-transparent",
-    envio: dbProduct.envio,
+    gradient: 'from-blue-600/20 via-indigo-600/10 to-transparent',
+    envio: envioText,
     stock: dbProduct.stock,
-    heroSpecs: (dbProduct.hero_specs || []).map((s: any) => ({ key: s.label || s.key, value: s.value })),
+    // heroSpecs: la BD guarda { label, value }; la vista espera { key, value }
+    heroSpecs: (dbProduct.hero_specs || []).map((s: any) => ({ key: s.label ?? s.key, value: s.value })),
     incluye: dbProduct.incluye || [],
     terminalSpecs: dbProduct.terminal_specs || [],
     images: dbProduct.images || [],
