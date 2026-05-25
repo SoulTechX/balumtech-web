@@ -4,6 +4,7 @@ import { Plus, Save, Trash2, Edit, LogOut, X, ChevronDown, ChevronUp, Package } 
 import Link from "next/link";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
+import { createClient } from "@/lib/supabase/client";
 
 interface Spec { key: string; value: string; }
 interface Producto {
@@ -156,8 +157,10 @@ export default function AdminTiendaPanel() {
   const showMsg = (type:"ok"|"err", text:string) => { setMsg({type,text}); setTimeout(()=>setMsg(null),3000); };
 
   const handleLogout = async () => {
-    await fetch("/api/auth",{method:"DELETE"});
+    const supabase = createClient();
+    await supabase.auth.signOut();
     router.push("/admin/login");
+    router.refresh();
   };
 
   const handleSave = async (e:React.FormEvent) => {

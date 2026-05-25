@@ -1,13 +1,10 @@
-import Image from "next/image";
+import { createClient } from "@/lib/supabase/server";
 import { notFound } from "next/navigation";
 import { Check, Terminal as TerminalIcon, ShoppingCart, Truck, Star, ArrowLeft } from "lucide-react";
 import Link from "next/link";
-import fs from "fs";
-import path from "path";
 import GalleryViewer from "@/components/GalleryViewer";
 
 export const dynamic = "force-dynamic";
-export const revalidate = 0;
 
 interface Spec { key: string; value: string; }
 interface Producto {
@@ -22,13 +19,6 @@ interface Producto {
   images?: string[];
 }
 
-function getProducts(): Producto[] {
-  try {
-    const file = path.join(process.cwd(), "data", "productos.json");
-    return JSON.parse(fs.readFileSync(file, "utf8"));
-  } catch { return []; }
-}
-
 const waNumber = "5492974779978";
 
 const badgeClasses: Record<string, string> = {
@@ -40,9 +30,44 @@ const badgeClasses: Record<string, string> = {
 
 export default async function ProductPage({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params;
-  const all = getProducts();
-  const prod = all.find(p => p.slug === slug);
-  if (!prod) notFound();
+  
+  const supabase = await createClient();
+  const { data: dbProduct, error } = await supabase
+    .from("productos")
+    .select("*")
+    .eq("slug", slug)
+    .single();
+
+  if (error || !dbProduct) {
+    notFound();
+  }
+
+  // Mapeamos de base de datos (snake_case) a lo que espera la vista (camelCase)
+  const prod: Producto = {
+    id: dbProduct.id,
+    slug: dbProduct.slug,
+    name: dbProduct.nombre,
+    price: dbProduct.precio,
+    priceLabel: dbProduct.precio_label || "Consultar",
+    currency: dbProduct.currency || "ARS",
+    cuotas: dbProduct.cuotas?.cantidad || undefined,
+    cuotasPrecio: dbProduct.cuotas?.monto ? `$${dbProduct.cuotas.monto.toLocaleString('es-AR')}` : undefined,
+    badge: dbProduct.badge,
+    badgeType: dbProduct.badge_color || "nuevo",
+    desc: dbProduct.desc || dbProduct.nombre,
+    image: dbProduct.imagen,
+    categoria: dbProduct.categoria,
+    envioGratis: dbProduct.envioGratis || false,
+    rating: Number(dbProduct.rating || 5),
+    reviews: Number(dbProduct.reviews || 0),
+    gradient: dbProduct.gradient || "from-blue-600/20 via-indigo-600/10 to-transparent",
+    envio: dbProduct.envio,
+    stock: dbProduct.stock,
+    heroSpecs: (dbProduct.hero_specs || []).map((s: any) => ({ key: s.label || s.key, value: s.value })),
+    incluye: dbProduct.incluye || [],
+    terminalSpecs: dbProduct.terminal_specs || [],
+    images: dbProduct.images || [],
+  };
 
   const waMsg = `Hola BALUMTech, estoy interesado en: ${prod.name}`;
   const waLink = `https://wa.me/${waNumber}?text=${encodeURIComponent(waMsg)}`;
