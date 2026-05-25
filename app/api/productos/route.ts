@@ -46,7 +46,7 @@ function mapToFrontend(dbProduct: any, index = 0) {
     badgeColor: dbProduct.badge_color,
     badgeType: (dbProduct.badge_color as string) || 'nuevo',
     precio: precio,
-    cuotas: cuotas,
+   cuotas: cuotas?.cantidad ?? undefined,  // ✅ devuelve solo el número,
     precioLabel: dbProduct.precio_label || 'Consultar',
     envio: envio,
     stock: dbProduct.stock,
