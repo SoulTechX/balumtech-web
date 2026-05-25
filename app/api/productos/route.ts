@@ -13,6 +13,7 @@ function mapToFrontend(dbProduct: any) {
     categoria: dbProduct.categoria,
     badge: dbProduct.badge,
     badgeColor: dbProduct.badge_color,
+    badgeType: dbProduct.badge_color || 'nuevo', // Mapeo de color/tipo para badge
     precio: dbProduct.precio,
     cuotas: dbProduct.cuotas,
     precioLabel: dbProduct.precio_label,
@@ -21,6 +22,7 @@ function mapToFrontend(dbProduct: any) {
     rating: Number(dbProduct.rating || 5),
     reviews: Number(dbProduct.reviews || 0),
     imagen: dbProduct.imagen,
+    image: dbProduct.imagen, // Mapeo necesario para el componente <Image> de Next.js
     heroSpecs: dbProduct.hero_specs || [],
     incluye: dbProduct.incluye || [],
     terminalSpecs: dbProduct.terminal_specs || [],
@@ -34,7 +36,7 @@ function mapToDatabase(feProduct: any) {
     nombre: feProduct.nombre || feProduct.name,
     categoria: feProduct.categoria,
     badge: feProduct.badge,
-    badge_color: feProduct.badgeColor,
+    badge_color: feProduct.badgeType || feProduct.badgeColor, // Soporta ambos campos para guardar color del badge
     precio: feProduct.precio === '' || feProduct.precio === null ? null : Number(feProduct.precio),
     cuotas: feProduct.cuotas || null,
     precio_label: feProduct.precioLabel || 'Consultar',
@@ -42,7 +44,7 @@ function mapToDatabase(feProduct: any) {
     stock: feProduct.stock,
     rating: feProduct.rating ? Number(feProduct.rating) : 5.0,
     reviews: feProduct.reviews ? Number(feProduct.reviews) : 0,
-    imagen: feProduct.imagen,
+    imagen: feProduct.image || feProduct.imagen, // Guarda tanto 'image' como 'imagen'
     hero_specs: feProduct.heroSpecs || [],
     incluye: feProduct.incluye || [],
     terminal_specs: feProduct.terminalSpecs || [],
