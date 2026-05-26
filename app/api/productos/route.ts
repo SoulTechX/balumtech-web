@@ -71,6 +71,23 @@ function mapToFrontend(dbProduct: any, index = 0) {
 
 // Helper para mapear del frontend (camelCase) al formato de base de datos (snake_case)
 function mapToDatabase(feProduct: any) {
+  // Procesar las cuotas para guardarlas en la estructura JSONB {"cantidad": X, "monto": Y}
+  let cuotasDb = null;
+  const cantCuotas = feProduct.cuotas ? Number(feProduct.cuotas) : null;
+  if (cantCuotas && cantCuotas > 0) {
+    // Limpiar el string del precio por cuota para obtener solo el valor numérico (ej: "$28.420" -> 28420)
+    let montoCuota = 0;
+    if (feProduct.cuotasPrecio) {
+      const limpio = String(feProduct.cuotasPrecio).replace(/[^0-9]/g, '');
+      montoCuota = Number(limpio);
+    } else if (feProduct.precio || feProduct.price) {
+      // Si no hay precio de cuota especificado, aproximar
+      const total = Number(feProduct.precio || feProduct.price);
+      montoCuota = Math.round(total / cantCuotas);
+    }
+    cuotasDb = { cantidad: cantCuotas, monto: montoCuota };
+  }
+
   return {
     slug:
       feProduct.slug ||
@@ -90,13 +107,14 @@ function mapToDatabase(feProduct: any) {
           : feProduct.price != null
             ? Number(feProduct.price)
             : null,
-    cuotas: feProduct.cuotas || null,
+    cuotas: cuotasDb,
     precio_label: feProduct.precioLabel || feProduct.priceLabel || 'Consultar',
     envio: feProduct.envio || '',
     stock: feProduct.stock || 'Disponible',
     rating: feProduct.rating ? Number(feProduct.rating) : 5.0,
     reviews: feProduct.reviews ? Number(feProduct.reviews) : 0,
     imagen: feProduct.image || feProduct.imagen,
+    descripcion: feProduct.desc || feProduct.descripcion || '',
     hero_specs: feProduct.heroSpecs || [],
     incluye: feProduct.incluye || [],
     terminal_specs: feProduct.terminalSpecs || [],
