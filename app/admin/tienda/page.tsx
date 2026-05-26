@@ -1,8 +1,7 @@
 "use client";
 import { useState, useEffect } from "react";
-import { Plus, Save, Trash2, Edit, LogOut, X, ChevronDown, ChevronUp, Package } from "lucide-react";
+import { Plus, Save, Trash2, Edit, LogOut, X, ChevronDown, ChevronUp, Package, Star, ShoppingCart, Truck } from "lucide-react";
 import Link from "next/link";
-import Image from "next/image";
 import { useRouter } from "next/navigation";
 import { createClient } from "@/lib/supabase/client";
 
@@ -39,6 +38,13 @@ const empty: Partial<Producto> = {
   categoria:"IA", badge:"Nuevo", badgeType:"nuevo", image:"", envioGratis:false,
   rating:5, reviews:0, gradient: GRADIENTS[0], envio:"", stock:"Disponible",
   heroSpecs:[], incluye:[], terminalSpecs:[], images:[]
+};
+
+const badgeClasses: Record<string, string> = {
+  nuevo: "bg-blue-500/15 text-blue-400 border border-blue-500/20",
+  stock: "bg-green-500/15 text-green-400 border border-green-500/20",
+  pedido: "bg-orange-500/15 text-orange-400 border border-orange-500/20",
+  pro: "bg-purple-500/15 text-purple-400 border border-purple-500/20",
 };
 
 function GalleryEditor({ items, onChange }: { items: string[]; onChange: (v: string[]) => void }) {
@@ -106,9 +112,9 @@ function SpecEditor({ label, items, onChange }: { label:string, items:Spec[], on
         {items.map((s,i)=>(
           <div key={i} className="flex gap-2 items-center">
             <input value={s.key} onChange={e=>{const n=[...items];n[i]={...n[i],key:e.target.value};onChange(n);}}
-              placeholder="Clave" className="flex-1 bg-black/40 border border-white/10 rounded-lg px-3 py-2 text-sm text-white focus:outline-none focus:border-blue-500"/>
+              placeholder="Clave (ej: CPU)" className="flex-1 bg-black/40 border border-white/10 rounded-lg px-3 py-2 text-sm text-white focus:outline-none focus:border-blue-500"/>
             <input value={s.value} onChange={e=>{const n=[...items];n[i]={...n[i],value:e.target.value};onChange(n);}}
-              placeholder="Valor" className="flex-2 w-full bg-black/40 border border-white/10 rounded-lg px-3 py-2 text-sm text-white focus:outline-none focus:border-blue-500"/>
+              placeholder="Valor (ej: Ryzen 7)" className="flex-2 w-full bg-black/40 border border-white/10 rounded-lg px-3 py-2 text-sm text-white focus:outline-none focus:border-blue-500"/>
             <button type="button" onClick={()=>onChange(items.filter((_,j)=>j!==i))} className="text-red-400 hover:text-red-300 p-1"><X size={14}/></button>
           </div>
         ))}
@@ -236,119 +242,125 @@ export default function AdminTiendaPanel() {
         </div>
 
         {isEditing && current ? (
-          /* ─── FORMULARIO ─── */
-          <div className="bg-white/[0.03] border border-white/10 rounded-2xl p-6 md:p-8 backdrop-blur-xl mb-10 shadow-2xl">
-            <div className="flex items-center justify-between mb-6 pb-4 border-b border-white/10">
-              <h3 className="text-xl font-bold">{current.id ? "Editar Producto" : "Nuevo Producto"}</h3>
-              <button onClick={()=>{setIsEditing(false);setCurrent(null);}} className="text-zinc-500 hover:text-white p-2 rounded-lg hover:bg-white/5"><X size={20}/></button>
-            </div>
+          /* ─── EDICIÓN CON VISTA PREVIA INTERACTIVA ─── */
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 mb-10 items-start">
+            
+            {/* FORMULARIO DE EDICIÓN (Izquierda) */}
+            <form onSubmit={handleSave} className="lg:col-span-7 bg-white/[0.03] border border-white/10 rounded-2xl p-6 md:p-8 backdrop-blur-xl shadow-2xl space-y-6">
+              <div className="flex items-center justify-between pb-4 border-b border-white/10">
+                <h3 className="text-xl font-bold">{current.id ? "Editar Producto" : "Nuevo Producto"}</h3>
+                <button type="button" onClick={()=>{setIsEditing(false);setCurrent(null);}} className="text-zinc-500 hover:text-white p-2 rounded-lg hover:bg-white/5"><X size={20}/></button>
+              </div>
 
-            <form onSubmit={handleSave} className="space-y-6">
-              {/* SECCIÓN: INFO BÁSICA */}
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
-                <div className="md:col-span-2">
-                  <label className="block text-sm font-semibold text-zinc-400 mb-2">Nombre del Producto *</label>
-                  <input required type="text" value={current.name||""} onChange={e=>set("name",e.target.value)} placeholder="Ej: Kit CCTV Hogar 4 Cámaras"
+              <div className="space-y-4">
+                <div>
+                  <label className="block text-xs font-bold text-zinc-400 uppercase tracking-wider mb-2">Nombre del Producto *</label>
+                  <input required type="text" value={current.name||""} onChange={e=>set("name",e.target.value)} placeholder="Ej: Kit CCTV Hogar 4 Cámaras Dahua"
                     className="w-full bg-black/40 border border-white/10 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500/20"/>
                 </div>
 
-                <div className="md:col-span-2">
-                  <label className="block text-sm font-semibold text-zinc-400 mb-2">Descripción Breve *</label>
-                  <textarea required rows={2} value={current.desc||""} onChange={e=>set("desc",e.target.value)} placeholder="Descripción que aparece en la card"
+                <div>
+                  <label className="block text-xs font-bold text-zinc-400 uppercase tracking-wider mb-2">Descripción Breve *</label>
+                  <textarea required rows={2} value={current.desc||""} onChange={e=>set("desc",e.target.value)} placeholder="Descripción que aparece en la tarjeta del producto"
                     className="w-full bg-black/40 border border-white/10 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-blue-500 resize-none"/>
                 </div>
 
-                <div>
-                  <label className="block text-sm font-semibold text-zinc-400 mb-2">Categoría</label>
-                  <select value={current.categoria||"IA"} onChange={e=>set("categoria",e.target.value)}
-                    className="w-full bg-black/40 border border-white/10 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-blue-500">
-                    {["IA","Seguridad","Redes","Hardware"].map(c=><option key={c} value={c}>{c}</option>)}
-                  </select>
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                  <div>
+                    <label className="block text-xs font-bold text-zinc-400 uppercase tracking-wider mb-2">Categoría</label>
+                    <select value={current.categoria||"IA"} onChange={e=>set("categoria",e.target.value)}
+                      className="w-full bg-black/40 border border-white/10 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-blue-500">
+                      {["IA","Seguridad","Redes","Hardware"].map(c=><option key={c} value={c}>{c}</option>)}
+                    </select>
+                  </div>
+
+                  <div>
+                    <label className="block text-xs font-bold text-zinc-400 uppercase tracking-wider mb-2">Stock / Disponibilidad</label>
+                    <input type="text" value={current.stock||""} onChange={e=>set("stock",e.target.value)} placeholder="En stock / A pedido — 7 días"
+                      className="w-full bg-black/40 border border-white/10 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-blue-500"/>
+                  </div>
+                </div>
+
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                  <div>
+                    <label className="block text-xs font-bold text-zinc-400 uppercase tracking-wider mb-2">Precio (número)</label>
+                    <input type="number" value={current.price||""} onChange={e=>set("price", parseFloat(e.target.value)||null)} placeholder="285000"
+                      className="w-full bg-black/40 border border-white/10 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-blue-500"/>
+                  </div>
+
+                  <div>
+                    <label className="block text-xs font-bold text-zinc-400 uppercase tracking-wider mb-2">Precio Etiqueta (texto visible)</label>
+                    <input type="text" value={current.priceLabel||""} onChange={e=>set("priceLabel",e.target.value)} placeholder="$285.000 o Consultar"
+                      className="w-full bg-black/40 border border-white/10 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-blue-500"/>
+                  </div>
+                </div>
+
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                  <div>
+                    <label className="block text-xs font-bold text-zinc-400 uppercase tracking-wider mb-2">Cuotas (cantidad)</label>
+                    <input type="number" value={current.cuotas||""} onChange={e=>set("cuotas",parseInt(e.target.value)||undefined)} placeholder="12"
+                      className="w-full bg-black/40 border border-white/10 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-blue-500"/>
+                  </div>
+
+                  <div>
+                    <label className="block text-xs font-bold text-zinc-400 uppercase tracking-wider mb-2">Precio por cuota (ej: $28.420)</label>
+                    <input type="text" value={current.cuotasPrecio||""} onChange={e=>set("cuotasPrecio",e.target.value)} placeholder="$28.420"
+                      className="w-full bg-black/40 border border-white/10 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-blue-500"/>
+                  </div>
+                </div>
+
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                  <div>
+                    <label className="block text-xs font-bold text-zinc-400 uppercase tracking-wider mb-2">Badge (texto)</label>
+                    <input type="text" value={current.badge||""} onChange={e=>set("badge",e.target.value)} placeholder="Stock, Nuevo, Pro..."
+                      className="w-full bg-black/40 border border-white/10 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-blue-500"/>
+                  </div>
+
+                  <div>
+                    <label className="block text-xs font-bold text-zinc-400 uppercase tracking-wider mb-2">Estilo Badge</label>
+                    <select value={current.badgeType||"nuevo"} onChange={e=>set("badgeType",e.target.value as any)}
+                      className="w-full bg-black/40 border border-white/10 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-blue-500">
+                      <option value="nuevo">🔵 Azul — Nuevo/Especialidad</option>
+                      <option value="stock">🟢 Verde — Stock/Instalación</option>
+                      <option value="pedido">🟠 Naranja — A pedido/Proyecto</option>
+                      <option value="pro">🟣 Púrpura — Pro</option>
+                    </select>
+                  </div>
+                </div>
+
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                  <div>
+                    <label className="block text-xs font-bold text-zinc-400 uppercase tracking-wider mb-2">Envío / Instalación (texto)</label>
+                    <input type="text" value={current.envio||""} onChange={e=>set("envio",e.target.value)} placeholder="Envío gratis a Sarmiento..."
+                      className="w-full bg-black/40 border border-white/10 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-blue-500"/>
+                  </div>
+
+                  <div className="flex items-center gap-3 pt-6">
+                    <input type="checkbox" id="envioGratis" checked={current.envioGratis||false} onChange={e=>set("envioGratis",e.target.checked)}
+                      className="w-5 h-5 rounded accent-blue-500 cursor-pointer"/>
+                    <label htmlFor="envioGratis" className="text-sm font-semibold text-zinc-300 cursor-pointer select-none">Envío/Instalación Gratis</label>
+                  </div>
                 </div>
 
                 <div>
-                  <label className="block text-sm font-semibold text-zinc-400 mb-2">Precio (número, 0 = Consultar)</label>
-                  <input type="number" value={current.price||""} onChange={e=>set("price", parseFloat(e.target.value)||null)} placeholder="285000"
+                  <label className="block text-xs font-bold text-zinc-400 uppercase tracking-wider mb-2">🖼 URL de la Imagen Principal</label>
+                  <input type="text" value={current.image||""} onChange={e=>set("image",e.target.value)} placeholder="/productos/nombre.png o https://..."
                     className="w-full bg-black/40 border border-white/10 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-blue-500"/>
                 </div>
 
                 <div>
-                  <label className="block text-sm font-semibold text-zinc-400 mb-2">Precio Etiqueta</label>
-                  <input type="text" value={current.priceLabel||""} onChange={e=>set("priceLabel",e.target.value)} placeholder="$285.000 o Consultar"
-                    className="w-full bg-black/40 border border-white/10 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-blue-500"/>
-                </div>
-
-                <div>
-                  <label className="block text-sm font-semibold text-zinc-400 mb-2">Cuotas (cantidad)</label>
-                  <input type="number" value={current.cuotas||""} onChange={e=>set("cuotas",parseInt(e.target.value)||undefined)} placeholder="12"
-                    className="w-full bg-black/40 border border-white/10 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-blue-500"/>
-                </div>
-
-                <div>
-                  <label className="block text-sm font-semibold text-zinc-400 mb-2">Precio por cuota</label>
-                  <input type="text" value={current.cuotasPrecio||""} onChange={e=>set("cuotasPrecio",e.target.value)} placeholder="$28.420"
-                    className="w-full bg-black/40 border border-white/10 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-blue-500"/>
-                </div>
-
-                <div>
-                  <label className="block text-sm font-semibold text-zinc-400 mb-2">Badge (texto)</label>
-                  <input type="text" value={current.badge||""} onChange={e=>set("badge",e.target.value)} placeholder="Stock, Nuevo, Pro..."
-                    className="w-full bg-black/40 border border-white/10 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-blue-500"/>
-                </div>
-
-                <div>
-                  <label className="block text-sm font-semibold text-zinc-400 mb-2">Estilo Badge</label>
-                  <select value={current.badgeType||"nuevo"} onChange={e=>set("badgeType",e.target.value as any)}
-                    className="w-full bg-black/40 border border-white/10 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-blue-500">
-                    <option value="nuevo">🔵 Azul — Nuevo/Especialidad</option>
-                    <option value="stock">🟢 Verde — Stock/Instalación</option>
-                    <option value="pedido">🟠 Naranja — A pedido/Proyecto</option>
-                    <option value="pro">🟣 Púrpura — Pro</option>
-                  </select>
-                </div>
-
-                <div>
-                  <label className="block text-sm font-semibold text-zinc-400 mb-2">Envío / Instalación</label>
-                  <input type="text" value={current.envio||""} onChange={e=>set("envio",e.target.value)} placeholder="Envío gratis a Sarmiento..."
-                    className="w-full bg-black/40 border border-white/10 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-blue-500"/>
-                </div>
-
-                <div>
-                  <label className="block text-sm font-semibold text-zinc-400 mb-2">Stock / Disponibilidad</label>
-                  <input type="text" value={current.stock||""} onChange={e=>set("stock",e.target.value)} placeholder="En stock / A pedido — 7 días"
-                    className="w-full bg-black/40 border border-white/10 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-blue-500"/>
-                </div>
-
-                <div className="flex items-center gap-3 pt-2">
-                  <input type="checkbox" id="envioGratis" checked={current.envioGratis||false} onChange={e=>set("envioGratis",e.target.checked)}
-                    className="w-5 h-5 rounded accent-blue-500"/>
-                  <label htmlFor="envioGratis" className="text-sm font-semibold text-zinc-300">Envío/Instalación Gratis</label>
-                </div>
-
-                <div className="md:col-span-2">
-                  <label className="block text-sm font-semibold text-zinc-400 mb-2">🖼 URL de la Imagen</label>
-                  <input type="text" value={current.image||""} onChange={e=>set("image",e.target.value)} placeholder="https://tu-servidor.com/foto.jpg o /productos/nombre.png"
-                    className="w-full bg-black/40 border border-white/10 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-blue-500"/>
-                  {current.image && (
-                    <div className="mt-2 w-24 h-24 rounded-lg overflow-hidden border border-white/10 bg-black/40 relative">
-                      <img src={current.image} alt="preview" className="object-cover w-full h-full opacity-80"/>
-                    </div>
-                  )}
-                </div>
-
-                <div className="md:col-span-2">
-                  <label className="block text-sm font-semibold text-zinc-400 mb-2">Gradiente de fondo (card)</label>
-                  <div className="grid grid-cols-3 md:grid-cols-6 gap-2">
+                  <label className="block text-xs font-bold text-zinc-400 uppercase tracking-wider mb-2">Gradiente de fondo (card)</label>
+                  <div className="grid grid-cols-4 md:grid-cols-6 gap-2">
                     {GRADIENTS.map((g,i)=>(
                       <button key={i} type="button" onClick={()=>set("gradient",g)}
-                        className={`h-10 rounded-lg bg-gradient-to-br ${g} border-2 transition-all ${current.gradient===g?"border-blue-400 scale-105":"border-white/10 hover:border-white/30"}`}/>
+                        className={`h-8 rounded-lg bg-gradient-to-br ${g} border-2 transition-all ${current.gradient===g?"border-blue-400 scale-105":"border-white/10 hover:border-white/30"}`}/>
                     ))}
                   </div>
                 </div>
               </div>
 
               {/* SECCIÓN AVANZADA */}
-              <div className="border border-white/10 rounded-xl overflow-hidden">
+              <div className="border border-white/10 rounded-xl overflow-hidden mt-6">
                 <button type="button" onClick={()=>setShowAdvanced(!showAdvanced)}
                   className="w-full flex items-center justify-between px-5 py-4 bg-white/[0.02] hover:bg-white/[0.04] transition-colors">
                   <span className="font-semibold text-zinc-300 text-sm">⚙️ Detalles del Producto (página interna)</span>
@@ -356,18 +368,11 @@ export default function AdminTiendaPanel() {
                 </button>
 
                 {showAdvanced && (
-                  <div className="p-5 space-y-6 border-t border-white/10">
-                    {/* GALERÍA */}
+                  <div className="p-5 space-y-6 border-t border-white/10 bg-black/20">
                     <div>
-                      <label className="block text-sm font-semibold text-zinc-300 mb-1">
-                        🖼️ Galería de Imágenes
-                      </label>
-                      <p className="text-xs text-zinc-500 mb-3">
-                        La primera foto marcada como <span className="text-blue-400 font-semibold">PRINCIPAL</span> es la que se muestra en la página de detalle como imagen grande. Podés reordenar eliminando y volviendo a agregar.
-                      </p>
+                      <label className="block text-sm font-semibold text-zinc-300 mb-1">🖼️ Galería de Imágenes Secundarias</label>
                       <GalleryEditor items={current.images||[]} onChange={v=>set("images",v)}/>
                     </div>
-
                     <div className="border-t border-white/5 pt-4">
                       <SpecEditor label="Hero Specs (grilla de características principales)"
                         items={current.heroSpecs||[]} onChange={v=>set("heroSpecs",v)}/>
@@ -393,6 +398,63 @@ export default function AdminTiendaPanel() {
                 </button>
               </div>
             </form>
+
+            {/* VISTA PREVIA EN TIEMPO REAL (Derecha) */}
+            <div className="lg:col-span-5 lg:sticky lg:top-24 space-y-6">
+              <h4 className="text-sm font-bold text-zinc-500 uppercase tracking-wider font-mono">Vista Previa (Card en Tienda)</h4>
+              
+              <div className="product-card-ml group relative flex flex-col justify-between h-[520px] bg-[#0c0c0c] border border-white/10 rounded-3xl overflow-hidden shadow-2xl p-6">
+                <div className="relative block">
+                  {/* Gradiente e Imagen */}
+                  <div className={`product-image-area bg-gradient-to-br ${current.gradient || "from-blue-600/20 via-indigo-600/10 to-transparent"} bg-[#0a0a0a] relative rounded-2xl overflow-hidden aspect-[4/3] w-full border border-white/5`}>
+                    {current.image ? (
+                      <img src={current.image} alt={current.name} className="w-full h-full object-cover opacity-80" />
+                    ) : (
+                      <div className="w-full h-full flex items-center justify-center bg-zinc-900/50 text-zinc-600 text-xs">Sin Imagen</div>
+                    )}
+                    
+                    {current.badge && (
+                      <div className="absolute top-3 left-3 z-10">
+                        <span className={`${badgeClasses[current.badgeType || "nuevo"] || badgeClasses.nuevo} text-[10px] font-bold uppercase tracking-wider px-2.5 py-1 rounded-md shadow-lg`}>
+                          {current.badge}
+                        </span>
+                      </div>
+                    )}
+                    {current.envioGratis && (
+                      <div className="absolute top-3 right-3 z-10">
+                        <span className="bg-green-500/20 backdrop-blur-md text-green-400 text-[10px] font-bold uppercase px-2 py-1 rounded border border-green-500/30 flex items-center gap-1">
+                          <Truck size={10} /> Gratis
+                        </span>
+                      </div>
+                    )}
+                  </div>
+                </div>
+
+                <div className="product-body flex-1 flex flex-col justify-end mt-4">
+                  <div className="product-price text-2xl font-black text-white">{current.priceLabel || "Consultar"}</div>
+                  {current.cuotas && (
+                    <div className="product-installments text-xs text-green-400 font-medium mt-1">
+                      en {current.cuotas}x {current.cuotasPrecio || `$${Math.round((current.price||0)/(current.cuotas||1)).toLocaleString('es-AR')}`}
+                    </div>
+                  )}
+                  <p className="product-name font-bold text-white text-base mt-2 line-clamp-2 leading-tight">{current.name || "Nombre del Producto"}</p>
+                  
+                  <div className="product-rating flex items-center gap-1 mt-2">
+                    {[1, 2, 3, 4, 5].map((i) => (
+                      <Star key={i} size={12} className={i <= Math.floor(current.rating || 5) ? "text-blue-400 fill-blue-400" : "text-zinc-700"} />
+                    ))}
+                    <span className="text-[11px] text-zinc-500 ml-1">({current.reviews || 0})</span>
+                  </div>
+
+                  <button type="button" disabled
+                    className="mt-4 w-full py-2.5 bg-blue-600/10 text-blue-400 border border-blue-500/30 rounded-xl text-sm font-bold flex items-center justify-center gap-2 opacity-50 cursor-not-allowed"
+                  >
+                    <ShoppingCart size={16} /> Agregar al carrito
+                  </button>
+                </div>
+              </div>
+            </div>
+
           </div>
         ) : (
           /* ─── TABLA ─── */
