@@ -25,7 +25,8 @@ export default function MetrikaLoginPage() {
       if (signInError) {
         setError("Credenciales inválidas");
       } else {
-        window.location.href = "/metrika";
+        await supabase.auth.getSession();
+  window.location.replace("/metrika");
       }
     } catch {
       setError("Error de conexión");
