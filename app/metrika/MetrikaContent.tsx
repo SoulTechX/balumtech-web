@@ -539,6 +539,9 @@ export default function MetrikaContent() {
         .tl-step {
             flex: 1;
             position: relative;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
         }
         .tl-step::before {
             content: '';
@@ -560,10 +563,12 @@ export default function MetrikaContent() {
             position: relative;
             z-index: 1;
             margin: 0 auto 10px;
+            flex-shrink: 0;
         }
         .tl-dot i { font-size: 14px; color: var(--silver); }
         .tl-step.active .tl-dot { border-color: var(--blue-glow); background: rgba(0,170,255,0.1); box-shadow: 0 0 10px rgba(0,170,255,0.2); }
         .tl-step.active .tl-dot i { color: var(--blue-glow); }
+        .tl-content { text-align: center; }
         .tl-label { font-size: 10px; text-align: center; color: var(--silver); line-height: 1.4; }
         .tl-step.active .tl-label { color: var(--white); }
         .tl-phase { font-size: 9px; text-transform: uppercase; letter-spacing: 0.08em; color: var(--blue-glow); text-align: center; margin-bottom: 4px; font-weight: 600; }
@@ -598,6 +603,172 @@ export default function MetrikaContent() {
             font-size: 11px;
             color: var(--border2);
             text-align: right;
+        }
+
+        /* ── MOBILE ── */
+        @media (max-width: 640px) {
+
+            .container {
+                padding: 24px 16px 40px;
+            }
+
+            /* Header */
+            header {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 20px;
+                padding-bottom: 24px;
+                margin-bottom: 28px;
+            }
+
+            .doc-info {
+                text-align: left;
+            }
+
+            .logo-img {
+                height: 100px;
+            }
+
+            /* Hero */
+            h1 {
+                font-size: 28px;
+            }
+
+            .hero {
+                margin-bottom: 32px;
+            }
+
+            /* Plan cards */
+            .plan-inner {
+                padding: 20px 20px 20px 24px;
+            }
+
+            .plan-header {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 12px;
+            }
+
+            .plan-price-wrap {
+                text-align: left;
+            }
+
+            .plan-price { font-size: 24px; }
+            .featured .plan-price { font-size: 28px; }
+
+            .ribbon {
+                top: 14px;
+                right: -32px;
+                font-size: 8px;
+                padding: 4px 32px;
+            }
+
+            /* Addons grid: 1 column on mobile */
+            .addons {
+                grid-template-columns: 1fr;
+                gap: 12px;
+                margin-bottom: 32px;
+            }
+
+            /* Comparison table: scrollable */
+            .compare-wrap {
+                overflow-x: auto;
+                -webkit-overflow-scrolling: touch;
+                margin-bottom: 32px;
+            }
+
+            .compare-table {
+                min-width: 480px;
+            }
+
+            /* Timeline: vertical on mobile */
+            .tl-row {
+                flex-direction: column;
+                gap: 0;
+            }
+
+            .tl-step {
+                display: flex;
+                align-items: flex-start;
+                gap: 14px;
+                padding-bottom: 20px;
+            }
+
+            .tl-step::before {
+                top: 16px;
+                left: 16px;
+                width: 1px;
+                height: 100%;
+                background: var(--border2);
+            }
+
+            .tl-step:last-child { padding-bottom: 0; }
+
+            .tl-dot {
+                margin: 0;
+                flex-shrink: 0;
+            }
+
+            .tl-phase,
+            .tl-label {
+                text-align: left;
+            }
+
+            .tl-content { padding-top: 4px; }
+
+            /* Footer */
+            footer {
+                flex-direction: column;
+                align-items: center;
+                text-align: center;
+                gap: 12px;
+            }
+
+            .footer-brand {
+                flex-direction: column;
+                align-items: center;
+                text-align: center;
+            }
+
+            .footer-text {
+                text-align: center;
+            }
+
+            .footer-legal {
+                text-align: center;
+            }
+
+            /* Plans */
+            .plans {
+                margin-bottom: 32px;
+            }
+
+            .timeline {
+                margin-bottom: 32px;
+            }
+        }
+
+        @media (min-width: 641px) and (max-width: 900px) {
+            .container {
+                padding: 32px 24px 48px;
+            }
+
+            .addons {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            h1 {
+                font-size: 32px;
+            }
+
+            .compare-wrap {
+                overflow-x: auto;
+                -webkit-overflow-scrolling: touch;
+            }
+
+            .compare-table {
+                min-width: 520px;
+            }
         }
 
         /* PRINT */
@@ -795,19 +966,19 @@ export default function MetrikaContent() {
                     </tr>
                 </thead>
                 <tbody>
-                    <tr><td>Landing Page premium</td><td style={{textAlign: "center"}}><i className="ti ti-check check"></i></td><td style={{textAlign: "center"}}><i className="ti ti-check check"></i></td><td style={{textAlign: "center"}}><i className="ti ti-check check"></i></td></tr>
-                    <tr><td>Multilenguaje EN/ES/PT/AR</td><td style={{textAlign: "center"}}><i className="ti ti-check check"></i></td><td style={{textAlign: "center"}}><i className="ti ti-check check"></i></td><td style={{textAlign: "center"}}><i className="ti ti-check check"></i></td></tr>
-                    <tr><td>SSL + CDN Cloudflare</td><td style={{textAlign: "center"}}><i className="ti ti-check check"></i></td><td style={{textAlign: "center"}}><i className="ti ti-check check"></i></td><td style={{textAlign: "center"}}><i className="ti ti-check check"></i></td></tr>
-                    <tr><td>Investor Portal privado</td><td style={{textAlign: "center"}}><i className="ti ti-minus dash"></i></td><td style={{textAlign: "center"}}><i className="ti ti-check check"></i></td><td style={{textAlign: "center"}}><i className="ti ti-check check"></i></td></tr>
-                    <tr><td>Gestor de proyectos (Admin)</td><td style={{textAlign: "center"}}><i className="ti ti-minus dash"></i></td><td style={{textAlign: "center"}}><i className="ti ti-check check"></i></td><td style={{textAlign: "center"}}><i className="ti ti-check check"></i></td></tr>
-                    <tr><td>Blindaje anti-filtraciones</td><td style={{textAlign: "center"}}><i className="ti ti-minus dash"></i></td><td style={{textAlign: "center"}}><i className="ti ti-check check"></i></td><td style={{textAlign: "center"}}><i className="ti ti-check check"></i></td></tr>
-                    <tr><td>Proyectos por inversor (silos)</td><td style={{textAlign: "center"}}><i className="ti ti-minus dash"></i></td><td style={{textAlign: "center"}}><i className="ti ti-check check"></i></td><td style={{textAlign: "center"}}><i className="ti ti-check check"></i></td></tr>
-                    <tr><td>Log de actividad de usuarios</td><td style={{textAlign: "center"}}><i className="ti ti-minus dash"></i></td><td style={{textAlign: "center"}}><i className="ti ti-check check"></i></td><td style={{textAlign: "center"}}><i className="ti ti-check check"></i></td></tr>
-                    <tr><td>Sala de videollamadas branded</td><td style={{textAlign: "center"}}><i className="ti ti-minus dash"></i></td><td style={{textAlign: "center"}}><i className="ti ti-minus dash"></i></td><td style={{textAlign: "center"}}><i className="ti ti-check check"></i></td></tr>
-                    <tr><td>Traducción dual en vivo (intérprete)</td><td style={{textAlign: "center"}}><i className="ti ti-minus dash"></i></td><td style={{textAlign: "center"}}><i className="ti ti-minus dash"></i></td><td style={{textAlign: "center"}}><i className="ti ti-check check"></i></td></tr>
-                    <tr><td>Subtítulos IA en tiempo real</td><td style={{textAlign: "center"}}><i className="ti ti-minus dash"></i></td><td style={{textAlign: "center"}}><i className="ti ti-minus dash"></i></td><td style={{textAlign: "center"}}><i className="ti ti-check check"></i></td></tr>
-                    <tr><td>Glosario de proyecto para intérprete</td><td style={{textAlign: "center"}}><i className="ti ti-minus dash"></i></td><td style={{textAlign: "center"}}><i className="ti ti-minus dash"></i></td><td style={{textAlign: "center"}}><i className="ti ti-check check"></i></td></tr>
-                    <tr><td>Actas automáticas post-reunión</td><td style={{textAlign: "center"}}><i className="ti ti-minus dash"></i></td><td style={{textAlign: "center"}}><i className="ti ti-minus dash"></i></td><td style={{textAlign: "center"}}><i className="ti ti-check check"></i></td></tr>
+                    <tr><td>Landing Page premium</td><td style={{textAlign: "center"}}><span className="check">✓</span></td><td style={{textAlign: "center"}}><span className="check">✓</span></td><td style={{textAlign: "center"}}><span className="check">✓</span></td></tr>
+                    <tr><td>Multilenguaje EN/ES/PT/AR</td><td style={{textAlign: "center"}}><span className="check">✓</span></td><td style={{textAlign: "center"}}><span className="check">✓</span></td><td style={{textAlign: "center"}}><span className="check">✓</span></td></tr>
+                    <tr><td>SSL + CDN Cloudflare</td><td style={{textAlign: "center"}}><span className="check">✓</span></td><td style={{textAlign: "center"}}><span className="check">✓</span></td><td style={{textAlign: "center"}}><span className="check">✓</span></td></tr>
+                    <tr><td>Investor Portal privado</td><td style={{textAlign: "center"}}><span className="dash">—</span></td><td style={{textAlign: "center"}}><span className="check">✓</span></td><td style={{textAlign: "center"}}><span className="check">✓</span></td></tr>
+                    <tr><td>Gestor de proyectos (Admin)</td><td style={{textAlign: "center"}}><span className="dash">—</span></td><td style={{textAlign: "center"}}><span className="check">✓</span></td><td style={{textAlign: "center"}}><span className="check">✓</span></td></tr>
+                    <tr><td>Blindaje anti-filtraciones</td><td style={{textAlign: "center"}}><span className="dash">—</span></td><td style={{textAlign: "center"}}><span className="check">✓</span></td><td style={{textAlign: "center"}}><span className="check">✓</span></td></tr>
+                    <tr><td>Proyectos por inversor (silos)</td><td style={{textAlign: "center"}}><span className="dash">—</span></td><td style={{textAlign: "center"}}><span className="check">✓</span></td><td style={{textAlign: "center"}}><span className="check">✓</span></td></tr>
+                    <tr><td>Log de actividad de usuarios</td><td style={{textAlign: "center"}}><span className="dash">—</span></td><td style={{textAlign: "center"}}><span className="check">✓</span></td><td style={{textAlign: "center"}}><span className="check">✓</span></td></tr>
+                    <tr><td>Sala de videollamadas branded</td><td style={{textAlign: "center"}}><span className="dash">—</span></td><td style={{textAlign: "center"}}><span className="dash">—</span></td><td style={{textAlign: "center"}}><span className="check">✓</span></td></tr>
+                    <tr><td>Traducción dual en vivo (intérprete)</td><td style={{textAlign: "center"}}><span className="dash">—</span></td><td style={{textAlign: "center"}}><span className="dash">—</span></td><td style={{textAlign: "center"}}><span className="check">✓</span></td></tr>
+                    <tr><td>Subtítulos IA en tiempo real</td><td style={{textAlign: "center"}}><span className="dash">—</span></td><td style={{textAlign: "center"}}><span className="dash">—</span></td><td style={{textAlign: "center"}}><span className="check">✓</span></td></tr>
+                    <tr><td>Glosario de proyecto para intérprete</td><td style={{textAlign: "center"}}><span className="dash">—</span></td><td style={{textAlign: "center"}}><span className="dash">—</span></td><td style={{textAlign: "center"}}><span className="check">✓</span></td></tr>
+                    <tr><td>Actas automáticas post-reunión</td><td style={{textAlign: "center"}}><span className="dash">—</span></td><td style={{textAlign: "center"}}><span className="dash">—</span></td><td style={{textAlign: "center"}}><span className="check">✓</span></td></tr>
                 </tbody>
             </table>
         </div>
@@ -818,34 +989,46 @@ export default function MetrikaContent() {
         <div className="section-title">Timeline de implementación</div>
         <div className="tl-row">
             <div className="tl-step active">
-                <div className="tl-phase">Semana 1–2</div>
                 <div className="tl-dot"><i className="ti ti-palette"></i></div>
-                <div className="tl-label">Diseño & estructura</div>
+                <div className="tl-content">
+                    <div className="tl-phase">Semana 1–2</div>
+                    <div className="tl-label">Diseño & estructura</div>
+                </div>
             </div>
             <div className="tl-step active">
-                <div className="tl-phase">Semana 3–4</div>
                 <div className="tl-dot"><i className="ti ti-code"></i></div>
-                <div className="tl-label">Desarrollo frontend</div>
+                <div className="tl-content">
+                    <div className="tl-phase">Semana 3–4</div>
+                    <div className="tl-label">Desarrollo frontend</div>
+                </div>
             </div>
             <div className="tl-step active">
-                <div className="tl-phase">Semana 5</div>
                 <div className="tl-dot"><i className="ti ti-lock"></i></div>
-                <div className="tl-label">Portal & seguridad</div>
+                <div className="tl-content">
+                    <div className="tl-phase">Semana 5</div>
+                    <div className="tl-label">Portal & seguridad</div>
+                </div>
             </div>
             <div className="tl-step">
-                <div className="tl-phase">Semana 6</div>
                 <div className="tl-dot"><i className="ti ti-video"></i></div>
-                <div className="tl-label">Sala & traducción</div>
+                <div className="tl-content">
+                    <div className="tl-phase">Semana 6</div>
+                    <div className="tl-label">Sala & traducción</div>
+                </div>
             </div>
             <div className="tl-step">
-                <div className="tl-phase">Semana 7</div>
                 <div className="tl-dot"><i className="ti ti-test-pipe"></i></div>
-                <div className="tl-label">Testing & QA</div>
+                <div className="tl-content">
+                    <div className="tl-phase">Semana 7</div>
+                    <div className="tl-label">Testing & QA</div>
+                </div>
             </div>
             <div className="tl-step">
-                <div className="tl-phase">Semana 8</div>
                 <div className="tl-dot"><i className="ti ti-rocket"></i></div>
-                <div className="tl-label">Deploy & entrega</div>
+                <div className="tl-content">
+                    <div className="tl-phase">Semana 8</div>
+                    <div className="tl-label">Deploy & entrega</div>
+                </div>
             </div>
         </div>
     </div>
