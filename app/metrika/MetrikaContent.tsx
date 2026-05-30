@@ -496,169 +496,69 @@ export default function MetrikaContent() {
         .addon-title { font-size: 13px; font-weight: 500; color: var(--white); margin-bottom: 5px; }
         .addon-desc { font-size: 11px; color: var(--silver); line-height: 1.55; }
 
-/* ── MOBILE ── */
-        @media (max-width: 640px) {
+       /* ── COMPARISON TABLE ── */
+.compare-wrap { margin-bottom: 48px; }
 
-            .container {
-                padding: 24px 16px 40px;
-            }
+.compare-wrap::after {
+    content: '← deslizá →';
+    display: block;
+    text-align: center;
+    font-size: 10px;
+    color: rgba(0,170,255,0.5);
+    margin-top: 8px;
+    letter-spacing: 0.1em;
+}
 
-            /* Header */
-            header {
-                flex-direction: column;
-                align-items: flex-start;
-                gap: 20px;
-                padding-bottom: 24px;
-                margin-bottom: 28px;
-            }
+.compare-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 12px;
+}
+        .compare-table th {
+            padding: 10px 14px;
+            text-align: left;
+            font-size: 10px;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: var(--blue-glow);
+            border-bottom: 1px solid var(--border2);
+            font-weight: 600;
+        }
 
-            .doc-info {
-                text-align: left;
-            }
+        .compare-table th:first-child { color: var(--silver); }
 
-            .logo-img {
-                height: 100px;
-            }
-            
-            .logo-tagline {
-                 white-space: normal;
-                 font-size: 10px;
-            }
-            
-            /* Hero */
-            h1 {
-                font-size: 28px;
-            }
+        .compare-table td {
+            padding: 11px 14px;
+            border-bottom: 1px solid rgba(255,255,255,0.04);
+            color: var(--silver);
+            vertical-align: middle;
+        }
 
-            .hero {
-                margin-bottom: 32px;
-            }
+        .compare-table tr:last-child td { border-bottom: none; }
+        .compare-table tr:hover td { background: rgba(255,255,255,0.015); }
+        .compare-table td:first-child { color: var(--white-dim); font-weight: 400; }
 
-            /* Plan cards */
-            .plan-inner {
-                padding: 20px 20px 20px 24px;
-            }
+        .check { color: var(--success); font-size: 15px; }
+        .dash { color: var(--border2); font-size: 15px; }
+        .star { color: var(--blue-glow); font-size: 13px; font-weight: 600; }
 
-            .plan-header {
-                flex-direction: column;
-                align-items: flex-start;
-                gap: 12px;
-            }
-
-            .plan-price-wrap {
-                text-align: left;
-            }
-
-            .plan-price { font-size: 24px; }
-            .featured .plan-price { font-size: 28px; }
-
-            .ribbon {
-                top: 14px;
-                right: -32px;
-                font-size: 8px;
-                padding: 4px 32px;
-            }
-
-            /* Addons grid: 1 column on mobile */
-            .addons {
-                grid-template-columns: 1fr;
-                gap: 12px;
-                margin-bottom: 32px;
-            }
-
-            /* Comparison table: scrollable con columna fija */
-            .compare-wrap {
-                overflow-x: auto;
-                -webkit-overflow-scrolling: touch;
-                margin-bottom: 32px;
-                display: block;
-                width: 100%;
-                padding-bottom: 15px; 
-            }
-            
-            .compare-table {
-                min-width: 580px; 
-            }
-
-            .compare-table th:first-child,
-            .compare-table td:first-child {
-                position: sticky;
-                left: 0;
-                background-color: var(--black); 
-                z-index: 2;
-                border-right: 1px solid var(--border); 
-            }
-
-            .compare-table th:first-child {
-                z-index: 3; 
-            }
-
-            /* Timeline: vertical on mobile */
-            .tl-row {
-                flex-direction: column;
-                gap: 0;
-            }
-
-            .tl-step {
-                display: flex;
-                align-items: flex-start;
-                gap: 14px;
-                padding-bottom: 20px;
-            }
-
-            .tl-step::before {
-                top: 16px;
-                left: 16px;
-                width: 1px;
-                height: 100%;
-                background: var(--border2);
-            }
-
-            .tl-step:last-child { padding-bottom: 0; }
-
-            .tl-dot {
-                margin: 0;
-                flex-shrink: 0;
-            }
-
-            .tl-phase,
-            .tl-label {
-                text-align: left;
-            }
-
-            .tl-content { padding-top: 4px; }
-
-            /* Footer */
-            footer {
-                flex-direction: column;
-                align-items: center;
-                text-align: center;
-                gap: 12px;
-            }
-
-            .footer-brand {
-                flex-direction: column;
-                align-items: center;
-                text-align: center;
-            }
-
-            .footer-text {
-                text-align: center;
-            }
-
-            .footer-legal {
-                text-align: center;
-            }
-
-            /* Plans */
-            .plans {
-                margin-bottom: 32px;
-            }
-
-            .timeline {
-                margin-bottom: 32px;
-            }
-        
+        /* ── TIMELINE ── */
+        .timeline { margin-bottom: 48px; }
+        .tl-row { display: flex; gap: 0; }
+        .tl-step {
+            flex: 1;
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .tl-step::before {
+            content: '';
+            position: absolute;
+            top: 16px; left: 50%;
+            width: 100%; height: 1px;
+            background: var(--border2);
+            z-index: 0;
         }
         .tl-step:last-child::before { display: none; }
         .tl-dot {
