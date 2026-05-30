@@ -13,7 +13,7 @@ interface Message {
 export default function Chatbot() {
   const pathname = usePathname();
   const [isOpen, setIsOpen] = useState(false);
-  if (pathname.startsWith('/admin')) return null;
+ if (pathname.startsWith('/admin') || pathname.startsWith('/metrika')) return null;
   const [messages, setMessages] = useState<Message[]>([]);
   const [inputText, setInputText] = useState("");
   const messagesEndRef = useRef<HTMLDivElement>(null);
