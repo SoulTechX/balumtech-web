@@ -10,7 +10,7 @@ export default function Navbar() {
   const pathname = usePathname();
 
   // Ocultar Navbar en tienda y admin
-  if (pathname.startsWith('/tienda') || pathname.startsWith('/admin')) return null;
+if (pathname.startsWith('/tienda') || pathname.startsWith('/admin') || pathname.startsWith('/metrika')) return null;
 
   const navItems = [
     { label: "INICIO", href: "/" },
