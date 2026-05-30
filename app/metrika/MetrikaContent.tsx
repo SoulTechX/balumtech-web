@@ -682,12 +682,18 @@ export default function MetrikaContent() {
                 margin-bottom: 32px;
             }
 
-            /* Comparison table: scrollable */
-            .compare-wrap {
-                overflow-x: auto;
-                -webkit-overflow-scrolling: touch;
-                margin-bottom: 32px;
-            }
+           /* Comparison table: scrollable */
+.compare-wrap {
+    overflow-x: scroll;
+    -webkit-overflow-scrolling: touch;
+    margin-bottom: 32px;
+    display: block;
+    width: 100%;
+}
+.compare-table {
+    min-width: 600px;
+    table-layout: fixed;
+}
 
             .compare-table {
                 min-width: 600px;
