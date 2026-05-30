@@ -496,51 +496,39 @@ export default function MetrikaContent() {
         .addon-title { font-size: 13px; font-weight: 500; color: var(--white); margin-bottom: 5px; }
         .addon-desc { font-size: 11px; color: var(--silver); line-height: 1.55; }
 
-       /* ── COMPARISON TABLE ── */
-.compare-wrap { margin-bottom: 48px; }
+/* ── MOBILE ── */
+        @media (max-width: 640px) {
+            
+            /* ... (acá arriba están los arreglos del header y los planes) ... */
 
-.compare-wrap::after {
-    content: '← deslizá →';
-    display: block;
-    text-align: center;
-    font-size: 10px;
-    color: rgba(0,170,255,0.5);
-    margin-top: 8px;
-    letter-spacing: 0.1em;
-}
+            /* Comparison table: scrollable con columna fija */
+            .compare-wrap {
+                overflow-x: auto;
+                -webkit-overflow-scrolling: touch;
+                margin-bottom: 32px;
+                display: block;
+                width: 100%;
+                padding-bottom: 15px; 
+            }
+            
+            .compare-table {
+                min-width: 580px; 
+            }
 
-.compare-table {
-    width: 100%;
-    border-collapse: collapse;
-    font-size: 12px;
-}
-        .compare-table th {
-            padding: 10px 14px;
-            text-align: left;
-            font-size: 10px;
-            text-transform: uppercase;
-            letter-spacing: 0.1em;
-            color: var(--blue-glow);
-            border-bottom: 1px solid var(--border2);
-            font-weight: 600;
-        }
+            .compare-table th:first-child,
+            .compare-table td:first-child {
+                position: sticky;
+                left: 0;
+                background-color: var(--black); 
+                z-index: 2;
+                border-right: 1px solid var(--border); 
+            }
 
-        .compare-table th:first-child { color: var(--silver); }
+            .compare-table th:first-child {
+                z-index: 3; 
+            }
 
-        .compare-table td {
-            padding: 11px 14px;
-            border-bottom: 1px solid rgba(255,255,255,0.04);
-            color: var(--silver);
-            vertical-align: middle;
-        }
-
-        .compare-table tr:last-child td { border-bottom: none; }
-        .compare-table tr:hover td { background: rgba(255,255,255,0.015); }
-        .compare-table td:first-child { color: var(--white-dim); font-weight: 400; }
-
-        .check { color: var(--success); font-size: 15px; }
-        .dash { color: var(--border2); font-size: 15px; }
-        .star { color: var(--blue-glow); font-size: 13px; font-weight: 600; }
+            /* ... (acá abajo sigue lo del Timeline) ... */
 
         /* ── TIMELINE ── */
         .timeline { margin-bottom: 48px; }
