@@ -496,9 +496,10 @@ export default function MetrikaContent() {
         .addon-title { font-size: 13px; font-weight: 500; color: var(--white); margin-bottom: 5px; }
         .addon-desc { font-size: 11px; color: var(--silver); line-height: 1.55; }
 
-        /* ── COMPARISON TABLE ── */
-        .compare-wrap { margin-bottom: 48px; }
-         .compare-wrap::after {
+       /* ── COMPARISON TABLE ── */
+.compare-wrap { margin-bottom: 48px; }
+
+.compare-wrap::after {
     content: '← deslizá →';
     display: block;
     text-align: center;
@@ -506,12 +507,13 @@ export default function MetrikaContent() {
     color: rgba(0,170,255,0.5);
     margin-top: 8px;
     letter-spacing: 0.1em;
-        .compare-table {
-            width: 100%;
-            border-collapse: collapse;
-            font-size: 12px;
-        }
+}
 
+.compare-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 12px;
+}
         .compare-table th {
             padding: 10px 14px;
             text-align: left;
