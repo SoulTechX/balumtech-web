@@ -1,6 +1,3 @@
-Acá tenés tu código original con la modificación exacta aplicada en la sección de los listeners y agregando el estado de React (`isDenied`) para que no rompa el DOM, manteniendo todo el resto del diseño, estilos y lógica intactos:
-
-```tsx
 'use client'
 import { useEffect, useState } from 'react'
 
