@@ -9,7 +9,6 @@ export async function middleware(request: NextRequest) {
     },
   })
 
-  // Crear el cliente de Supabase específico para el middleware
   const supabase = createServerClient(
     process.env.NEXT_PUBLIC_SUPABASE_URL!,
     process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!,
@@ -33,30 +32,26 @@ export async function middleware(request: NextRequest) {
     }
   )
 
-  // Obtener sesión del usuario actual
   const {
     data: { user },
   } = await supabase.auth.getUser()
 
   const url = request.nextUrl.pathname
 
-  // Permitir la página de login libremente
+  // ── ADMIN ──
   if (url === '/admin/login') {
-    // Si ya está logueado, redirigir directo a la tienda del admin
     if (user) {
       return NextResponse.redirect(new URL('/admin/tienda', request.url))
     }
     return response
   }
 
-  // Proteger rutas de admin (ej: /admin/tienda) -> redirigir a login si no hay usuario autenticado
   if (url.startsWith('/admin')) {
     if (!user) {
       return NextResponse.redirect(new URL('/admin/login', request.url))
     }
   }
 
-  // Proteger mutaciones de la API de productos (POST, PUT, DELETE)
   if (url.startsWith('/api/productos') && request.method !== 'GET') {
     if (!user) {
       return new NextResponse(
@@ -66,9 +61,23 @@ export async function middleware(request: NextRequest) {
     }
   }
 
+  // ── METRIKA ──
+  if (url === '/metrika/login') {
+    if (user) {
+      return NextResponse.redirect(new URL('/metrika', request.url))
+    }
+    return response
+  }
+
+  if (url.startsWith('/metrika')) {
+    if (!user) {
+      return NextResponse.redirect(new URL('/metrika/login', request.url))
+    }
+  }
+
   return response
 }
 
 export const config = {
-  matcher: ['/admin/:path*', '/api/productos/:path*'],
+  matcher: ['/admin/:path*', '/api/productos/:path*', '/metrika/:path*'],
 }
