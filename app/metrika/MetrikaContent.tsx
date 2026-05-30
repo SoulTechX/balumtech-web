@@ -498,7 +498,14 @@ export default function MetrikaContent() {
 
         /* ── COMPARISON TABLE ── */
         .compare-wrap { margin-bottom: 48px; }
-
+         .compare-wrap::after {
+    content: '← deslizá →';
+    display: block;
+    text-align: center;
+    font-size: 10px;
+    color: rgba(0,170,255,0.5);
+    margin-top: 8px;
+    letter-spacing: 0.1em;
         .compare-table {
             width: 100%;
             border-collapse: collapse;
