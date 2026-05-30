@@ -628,7 +628,10 @@ export default function MetrikaContent() {
             .logo-img {
                 height: 100px;
             }
-
+            .logo-tagline {
+                 white-space: normal;
+                 font-size: 10px;
+            }
             /* Hero */
             h1 {
                 font-size: 28px;
