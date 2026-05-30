@@ -690,7 +690,7 @@ export default function MetrikaContent() {
             }
 
             .compare-table {
-                min-width: 480px;
+                min-width: 600px;
             }
 
             /* Timeline: vertical on mobile */
