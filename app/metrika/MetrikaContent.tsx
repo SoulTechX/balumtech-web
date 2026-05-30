@@ -498,8 +498,73 @@ export default function MetrikaContent() {
 
 /* ── MOBILE ── */
         @media (max-width: 640px) {
+
+            .container {
+                padding: 24px 16px 40px;
+            }
+
+            /* Header */
+            header {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 20px;
+                padding-bottom: 24px;
+                margin-bottom: 28px;
+            }
+
+            .doc-info {
+                text-align: left;
+            }
+
+            .logo-img {
+                height: 100px;
+            }
             
-            /* ... (acá arriba están los arreglos del header y los planes) ... */
+            .logo-tagline {
+                 white-space: normal;
+                 font-size: 10px;
+            }
+            
+            /* Hero */
+            h1 {
+                font-size: 28px;
+            }
+
+            .hero {
+                margin-bottom: 32px;
+            }
+
+            /* Plan cards */
+            .plan-inner {
+                padding: 20px 20px 20px 24px;
+            }
+
+            .plan-header {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 12px;
+            }
+
+            .plan-price-wrap {
+                text-align: left;
+            }
+
+            .plan-price { font-size: 24px; }
+            .featured .plan-price { font-size: 28px; }
+
+            .ribbon {
+                top: 14px;
+                right: -32px;
+                font-size: 8px;
+                padding: 4px 32px;
+            }
+
+            /* Addons grid: 1 column on mobile */
+            .addons {
+                grid-template-columns: 1fr;
+                gap: 12px;
+                margin-bottom: 32px;
+            }
 
             /* Comparison table: scrollable con columna fija */
             .compare-wrap {
@@ -528,25 +593,72 @@ export default function MetrikaContent() {
                 z-index: 3; 
             }
 
-            /* ... (acá abajo sigue lo del Timeline) ... */
+            /* Timeline: vertical on mobile */
+            .tl-row {
+                flex-direction: column;
+                gap: 0;
+            }
 
-        /* ── TIMELINE ── */
-        .timeline { margin-bottom: 48px; }
-        .tl-row { display: flex; gap: 0; }
-        .tl-step {
-            flex: 1;
-            position: relative;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-        }
-        .tl-step::before {
-            content: '';
-            position: absolute;
-            top: 16px; left: 50%;
-            width: 100%; height: 1px;
-            background: var(--border2);
-            z-index: 0;
+            .tl-step {
+                display: flex;
+                align-items: flex-start;
+                gap: 14px;
+                padding-bottom: 20px;
+            }
+
+            .tl-step::before {
+                top: 16px;
+                left: 16px;
+                width: 1px;
+                height: 100%;
+                background: var(--border2);
+            }
+
+            .tl-step:last-child { padding-bottom: 0; }
+
+            .tl-dot {
+                margin: 0;
+                flex-shrink: 0;
+            }
+
+            .tl-phase,
+            .tl-label {
+                text-align: left;
+            }
+
+            .tl-content { padding-top: 4px; }
+
+            /* Footer */
+            footer {
+                flex-direction: column;
+                align-items: center;
+                text-align: center;
+                gap: 12px;
+            }
+
+            .footer-brand {
+                flex-direction: column;
+                align-items: center;
+                text-align: center;
+            }
+
+            .footer-text {
+                text-align: center;
+            }
+
+            .footer-legal {
+                text-align: center;
+            }
+
+            /* Plans */
+            .plans {
+                margin-bottom: 32px;
+            }
+
+            .timeline {
+                margin-bottom: 32px;
+            }
+        
         }
         .tl-step:last-child::before { display: none; }
         .tl-dot {
