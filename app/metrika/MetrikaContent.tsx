@@ -1,7 +1,12 @@
 'use client'
-import { useEffect } from 'react'
+import { useEffect, useState } from 'react'
+import { createClient } from '@/lib/supabase/client'
 
 export default function MetrikaContent() {
+  const [email, setEmail] = useState('BALUMTech Inversor')
+  const [ip, setIp] = useState('')
+  const [timestamp, setTimestamp] = useState('')
+
   useEffect(() => {
     const noContext = (e: MouseEvent) => e.preventDefault()
     const noKeys = (e: KeyboardEvent) => {
@@ -14,11 +19,64 @@ export default function MetrikaContent() {
     }
     document.addEventListener('contextmenu', noContext)
     document.addEventListener('keydown', noKeys)
+
+    // Supabase User Session
+    const supabase = createClient()
+    supabase.auth.getUser().then(({ data }) => {
+      if (data?.user?.email) {
+        setEmail(data.user.email)
+      }
+    })
+
+    // Fetch Public IP Address
+    fetch('https://api.ipify.org?format=json')
+      .then(res => res.json())
+      .then(data => {
+        if (data?.ip) setIp(data.ip)
+      })
+      .catch(() => {})
+
+    // Set Local Timestamp
+    const date = new Date().toLocaleDateString('es-AR', {
+      year: 'numeric',
+      month: '2-digit',
+      day: '2-digit',
+      hour: '2-digit',
+      minute: '2-digit'
+    })
+    setTimestamp(date)
+
+    // MutationObserver to protect the watermark element
+    const observer = new MutationObserver(() => {
+      const watermark = document.getElementById('security-watermark-id')
+      if (!watermark) {
+        window.location.reload()
+      } else {
+        const opacity = watermark.style.opacity
+        const display = watermark.style.display
+        const visibility = watermark.style.visibility
+        if (opacity !== '0.03' || display === 'none' || visibility === 'hidden') {
+          window.location.reload()
+        }
+      }
+    })
+
+    const timer = setTimeout(() => {
+      const targetNode = document.getElementById('security-watermark-id')
+      if (targetNode) {
+        observer.observe(targetNode, { attributes: true, childList: true, subtree: true })
+      }
+    }, 1000)
+
     return () => {
       document.removeEventListener('contextmenu', noContext)
       document.removeEventListener('keydown', noKeys)
+      clearTimeout(timer)
+      observer.disconnect()
     }
   }, [])
+
+  const watermarkText = `${email} ${ip ? `| IP: ${ip}` : ''} | ${timestamp}`
 
   return (
     <div
@@ -27,6 +85,19 @@ export default function MetrikaContent() {
       onCut={(e) => e.preventDefault()}
       onDragStart={(e) => e.preventDefault()}
     >
+      {/* Dynamic Security Watermark */}
+      <div
+        id="security-watermark-id"
+        style={{
+          position: 'fixed',
+          inset: 0,
+          pointerEvents: 'none',
+          zIndex: 9999,
+          opacity: 0.03, // Ultra-sutil en vivo, visible en capturas
+          backgroundImage: `url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='380' height='280'><text transform='rotate(-25 150 150)' font-family='monospace' font-size='10' fill='white' x='30' y='150'>${encodeURIComponent(watermarkText)}</text></svg>")`,
+          backgroundRepeat: 'repeat',
+        }}
+      />
       <style>{`
 
         :root {
