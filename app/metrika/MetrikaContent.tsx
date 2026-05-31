@@ -12,21 +12,11 @@ export default function MetrikaContent() {
         (e.metaKey && ['c','a','s'].includes(e.key.toLowerCase()))
       ) e.preventDefault()
     }
-    const noDevtools = () => {
-      if (
-        window.outerWidth - window.innerWidth > 160 ||
-        window.outerHeight - window.innerHeight > 160
-      ) {
-        document.body.innerHTML = '<div style="display:flex;height:100vh;align-items:center;justify-content:center;background:#060709;color:#E24B4A;font-family:monospace;font-size:14px">// acceso denegado</div>'
-      }
-    }
     document.addEventListener('contextmenu', noContext)
     document.addEventListener('keydown', noKeys)
-    window.addEventListener('resize', noDevtools)
     return () => {
       document.removeEventListener('contextmenu', noContext)
       document.removeEventListener('keydown', noKeys)
-      window.removeEventListener('resize', noDevtools)
     }
   }, [])
 
@@ -973,7 +963,7 @@ export default function MetrikaContent() {
     {/* COMPARISON TABLE */}
     <div className="compare-wrap">
         <div className="section-title">Comparativa de funcionalidades</div>
-        <div className="card" style={{background: "var(--card)", border: "1px solid var(--border)", borderRadius: "10px", overflow: "hidden"}}>
+        <div className="card" style={{background: "var(--card)", border: "1px solid var(--border)", borderRadius: "10px", overflowX: "auto", overflowY: "hidden", WebkitOverflowScrolling: "touch"}}>
             <table className="compare-table">
                 <thead>
                     <tr>
