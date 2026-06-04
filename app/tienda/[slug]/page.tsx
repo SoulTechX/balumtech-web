@@ -16,7 +16,7 @@ interface Producto {
   envioGratis: boolean; rating: number; reviews: number;
   gradient: string; envio?: string; stock?: string;
   heroSpecs?: Spec[]; incluye?: string[]; terminalSpecs?: Spec[];
-  images?: string[];
+  images?: string[]; balumCode?: string;
 }
 
 const waNumber = "5492974779978";
@@ -73,11 +73,11 @@ export default async function ProductPage({ params }: { params: Promise<{ slug: 
     gradient: 'from-blue-600/20 via-indigo-600/10 to-transparent',
     envio: envioText,
     stock: dbProduct.stock,
-    // heroSpecs: la BD guarda { label, value }; la vista espera { key, value }
     heroSpecs: (dbProduct.hero_specs || []).map((s: any) => ({ key: s.label ?? s.key, value: s.value })),
     incluye: dbProduct.incluye || [],
     terminalSpecs: dbProduct.terminal_specs || [],
     images: dbProduct.images || [],
+    balumCode: dbProduct.balum_code || '',
   };
 
   const waMsg = `Hola BALUMTech, estoy interesado en: ${prod.name}`;
@@ -230,6 +230,19 @@ export default async function ProductPage({ params }: { params: Promise<{ slug: 
                   <div className="mt-4 flex items-center gap-2 opacity-40 group-hover:opacity-100 transition-opacity">
                     <span className="w-2 h-4 bg-green-500 animate-pulse inline-block"/>
                   </div>
+                </div>
+              </div>
+            )}
+
+            {/* Balum CODE section */}
+            {prod.balumCode && (
+              <div className="bg-[#0a0a0a] rounded-3xl p-8 border border-white/10 shadow-2xl relative overflow-hidden md:col-span-1 lg:col-span-2">
+                <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-blue-600 to-indigo-600"/>
+                <h3 className="text-xl font-bold text-white mb-6 flex items-center gap-3">
+                  <TerminalIcon className="text-blue-500" /> Balum CODE
+                </h3>
+                <div className="font-mono text-sm leading-relaxed text-zinc-300 bg-black/50 p-6 rounded-xl border border-white/5 overflow-x-auto whitespace-pre-wrap">
+                  {prod.balumCode}
                 </div>
               </div>
             )}

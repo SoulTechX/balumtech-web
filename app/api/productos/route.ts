@@ -56,6 +56,7 @@ function mapToFrontend(dbProduct: any, index = 0) {
     heroSpecs: dbProduct.hero_specs || [],
     incluye: dbProduct.incluye || [],
     terminalSpecs: dbProduct.terminal_specs || [],
+    balumCode: dbProduct.balum_code || '',
     // Alias para compatibilidad con componentes del frontend
     name: dbProduct.nombre,
     image: dbProduct.imagen,
@@ -64,6 +65,7 @@ function mapToFrontend(dbProduct: any, index = 0) {
     currency: 'ARS',
     cuotasPrecio: cuotasPrecio,
     desc: dbProduct.descripcion || '',
+    balumCode: dbProduct.balum_code || '',
     envioGratis: envioGratis,
     gradient: GRADIENTS[index % GRADIENTS.length],
   }
@@ -115,6 +117,7 @@ function mapToDatabase(feProduct: any) {
     reviews: feProduct.reviews ? Number(feProduct.reviews) : 0,
     imagen: feProduct.image || feProduct.imagen,
     descripcion: feProduct.desc || feProduct.descripcion || '',
+    balum_code: feProduct.balumCode || '',
     hero_specs: feProduct.heroSpecs || [],
     incluye: feProduct.incluye || [],
     terminal_specs: feProduct.terminalSpecs || [],

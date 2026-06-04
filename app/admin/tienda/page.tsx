@@ -15,7 +15,7 @@ interface Producto {
   envioGratis: boolean; rating: number; reviews: number;
   gradient: string; envio?: string; stock?: string;
   heroSpecs?: Spec[]; incluye?: string[]; terminalSpecs?: Spec[];
-  images?: string[];
+  images?: string[]; balumCode?: string;
 }
 
 const GRADIENTS = [
@@ -37,7 +37,7 @@ const empty: Partial<Producto> = {
   name:"", slug:"", desc:"", price:null, priceLabel:"Consultar", currency:"ARS",
   categoria:"IA", badge:"Nuevo", badgeType:"nuevo", image:"", envioGratis:false,
   rating:5, reviews:0, gradient: GRADIENTS[0], envio:"", stock:"Disponible",
-  heroSpecs:[], incluye:[], terminalSpecs:[], images:[]
+  heroSpecs:[], incluye:[], terminalSpecs:[], images:[], balumCode:""
 };
 
 const badgeClasses: Record<string, string> = {
@@ -154,7 +154,6 @@ export default function AdminTiendaPanel() {
   const [current, setCurrent] = useState<Partial<Producto>|null>(null);
   const [saving, setSaving] = useState(false);
   const [msg, setMsg] = useState<{type:"ok"|"err", text:string}|null>(null);
-  const [showAdvanced, setShowAdvanced] = useState(false);
 
   useEffect(()=>{
     fetch("/api/productos").then(r=>r.json()).then(d=>{setProductos(d);setLoading(false);}).catch(()=>setLoading(false));
@@ -235,7 +234,7 @@ export default function AdminTiendaPanel() {
             <h2 className="text-3xl font-bold">Gestión de Productos</h2>
             <p className="text-zinc-500 text-sm mt-1">{productos.length} productos en catálogo</p>
           </div>
-          <button onClick={()=>{setCurrent({...empty});setIsEditing(true);setShowAdvanced(false);}}
+          <button onClick={()=>{setCurrent({...empty});setIsEditing(true);}}
             className="bg-blue-600 hover:bg-blue-500 text-white px-6 py-3 rounded-xl font-bold flex items-center gap-2 transition-all shadow-[0_0_20px_rgba(37,99,235,0.3)]">
             <Plus size={18}/> Nuevo Producto
           </button>
@@ -359,34 +358,35 @@ export default function AdminTiendaPanel() {
                 </div>
               </div>
 
-              {/* SECCIÓN AVANZADA */}
+              {/* SECCIÓN DETALLES AVANZADOS (Siempre visible) */}
               <div className="border border-white/10 rounded-xl overflow-hidden mt-6">
-                <button type="button" onClick={()=>setShowAdvanced(!showAdvanced)}
-                  className="w-full flex items-center justify-between px-5 py-4 bg-white/[0.02] hover:bg-white/[0.04] transition-colors">
-                  <span className="font-semibold text-zinc-300 text-sm">⚙️ Detalles del Producto (página interna)</span>
-                  {showAdvanced ? <ChevronUp size={18} className="text-zinc-400"/> : <ChevronDown size={18} className="text-zinc-400"/>}
-                </button>
+                <div className="w-full flex items-center justify-between px-5 py-4 bg-white/[0.04]">
+                  <span className="font-semibold text-zinc-200 text-sm">⚙️ Detalles del Producto</span>
+                </div>
 
-                {showAdvanced && (
-                  <div className="p-5 space-y-6 border-t border-white/10 bg-black/20">
-                    <div>
-                      <label className="block text-sm font-semibold text-zinc-300 mb-1">🖼️ Galería de Imágenes Secundarias</label>
-                      <GalleryEditor items={current.images||[]} onChange={v=>set("images",v)}/>
-                    </div>
-                    <div className="border-t border-white/5 pt-4">
-                      <SpecEditor label="Hero Specs (grilla de características principales)"
-                        items={current.heroSpecs||[]} onChange={v=>set("heroSpecs",v)}/>
-                    </div>
-                    <div className="border-t border-white/5 pt-4">
-                      <ListEditor label="¿Qué Incluye? (lista de items del producto)"
-                        items={current.incluye||[]} onChange={v=>set("incluye",v)}/>
-                    </div>
-                    <div className="border-t border-white/5 pt-4">
-                      <SpecEditor label='Terminal Specs (panel "código" de especificaciones técnicas)'
-                        items={current.terminalSpecs||[]} onChange={v=>set("terminalSpecs",v)}/>
-                    </div>
+                <div className="p-5 space-y-6 border-t border-white/10 bg-black/20">
+                  <div>
+                    <label className="block text-sm font-semibold text-zinc-300 mb-1">🖼️ Galería de Imágenes Secundarias</label>
+                    <GalleryEditor items={current.images||[]} onChange={v=>set("images",v)}/>
                   </div>
-                )}
+                  <div className="border-t border-white/5 pt-4">
+                    <SpecEditor label="Hero Specs (grilla de características principales)"
+                      items={current.heroSpecs||[]} onChange={v=>set("heroSpecs",v)}/>
+                  </div>
+                  <div className="border-t border-white/5 pt-4">
+                    <ListEditor label="¿Qué Incluye? (lista de items del producto)"
+                      items={current.incluye||[]} onChange={v=>set("incluye",v)}/>
+                  </div>
+                  <div className="border-t border-white/5 pt-4">
+                    <SpecEditor label='Terminal Specs (panel "código" de especificaciones técnicas)'
+                      items={current.terminalSpecs||[]} onChange={v=>set("terminalSpecs",v)}/>
+                  </div>
+                  <div className="border-t border-white/5 pt-4">
+                    <label className="block text-sm font-semibold text-zinc-300 mb-2">Balum CODE</label>
+                    <textarea rows={4} value={current.balumCode||""} onChange={e=>set("balumCode",e.target.value)} placeholder="Agrega detalles extra o código..."
+                      className="w-full bg-black/40 border border-white/10 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-blue-500 font-mono text-sm resize-y"/>
+                  </div>
+                </div>
               </div>
 
               <div className="flex justify-end gap-4 pt-4 border-t border-white/10">
@@ -501,7 +501,7 @@ export default function AdminTiendaPanel() {
                         </td>
                         <td className="px-5 py-4">
                           <div className="flex justify-end gap-2">
-                            <button onClick={()=>{setCurrent({...prod, heroSpecs:prod.heroSpecs||[], incluye:prod.incluye||[], terminalSpecs:prod.terminalSpecs||[]});setIsEditing(true);setShowAdvanced(false);}}
+                            <button onClick={()=>{setCurrent({...prod, heroSpecs:prod.heroSpecs||[], incluye:prod.incluye||[], terminalSpecs:prod.terminalSpecs||[]});setIsEditing(true);}}
                               className="p-2 rounded-lg hover:bg-blue-600/20 text-blue-400 hover:text-blue-300 transition-colors" title="Editar">
                               <Edit size={17}/>
                             </button>
