@@ -65,7 +65,6 @@ function mapToFrontend(dbProduct: any, index = 0) {
     currency: 'ARS',
     cuotasPrecio: cuotasPrecio,
     desc: dbProduct.descripcion || '',
-    balumCode: dbProduct.balum_code || '',
     envioGratis: envioGratis,
     gradient: GRADIENTS[index % GRADIENTS.length],
   }
