@@ -1,7 +1,7 @@
 "use client"
 import { useEffect } from "react"
 import Link from "next/link"
-import { ArrowRight, MessageCircle, Mail, Code2 } from "lucide-react"
+import { ArrowLeft, ArrowRight, MessageCircle, Mail, Code2 } from "lucide-react"
 
 /* ——————————————————————————————————
    DATA
@@ -158,6 +158,15 @@ export default function CodePage() {
         <div className="absolute top-[-10%] right-[-5%] w-[60vw] md:w-[500px] h-[60vw] md:h-[500px] bg-green-600/15 blur-[120px] rounded-full mix-blend-screen" />
         <div className="absolute bottom-[-10%] left-[-5%] w-[70vw] md:w-[600px] h-[70vw] md:h-[600px] bg-emerald-500/10 blur-[150px] rounded-full mix-blend-screen" />
       </div>
+
+      {/* BACK BUTTON */}
+      <Link 
+        href="/"
+        className="fixed top-6 left-6 md:top-8 md:left-8 z-50 flex items-center gap-2 text-zinc-400 hover:text-white transition-colors group text-xs font-mono font-bold uppercase tracking-widest bg-black/50 backdrop-blur-md px-4 py-2 rounded-full border border-white/5"
+      >
+        <ArrowLeft size={14} className="group-hover:-translate-x-1 transition-transform" />
+        Volver
+      </Link>
 
       {/* ======================================
           SECTION 1 — HERO
