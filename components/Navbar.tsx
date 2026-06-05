@@ -46,7 +46,15 @@ export default function Navbar() {
         {/* DESKTOP MENU */}
         <div className="hidden md:flex gap-10 text-[10px] uppercase tracking-[0.3em] font-black text-zinc-400">
           {navItems.map((item) => (
-            <Link key={item.label} href={item.href} className="hover:text-blue-400 transition-colors">
+            <Link 
+              key={item.label} 
+              href={item.href} 
+              className={`transition-colors ${
+                item.label === "CODE" 
+                  ? "text-green-400 hover:text-green-300 drop-shadow-[0_0_8px_rgba(74,222,128,0.5)]" 
+                  : "hover:text-blue-400"
+              }`}
+            >
               {item.label}
             </Link>
           ))}
@@ -95,6 +103,7 @@ export default function Navbar() {
             key={item.label} 
             href={item.href} 
             onClick={() => setMenuOpen(false)}
+            className={item.label === "CODE" ? "text-green-400 font-black drop-shadow-[0_0_8px_rgba(74,222,128,0.5)] !text-green-400" : ""}
           >
             {item.label}
           </Link>
