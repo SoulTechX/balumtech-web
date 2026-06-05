@@ -206,31 +206,37 @@ export default function CodePage() {
       {/* ======================================
           SECTION 2 — PROCESS
           ====================================== */}
-      <section id="proceso" className="py-32 md:py-40 px-6 md:px-8 relative z-10 border-t border-white/[0.05]">
-        <div className="max-w-5xl mx-auto">
-          <div className="reveal mb-20 md:mb-24 text-center">
+      <section id="proceso" className="py-32 md:py-48 px-6 relative z-10 border-t border-white/[0.05]">
+        <div className="max-w-3xl mx-auto flex flex-col items-center text-center">
+          <div className="reveal mb-24 md:mb-32">
             <span className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-green-500/20 bg-green-500/10 text-green-400 text-[10px] font-mono font-semibold tracking-wide mb-6">
               ### como-trabajamos
             </span>
-            <h2 className="text-4xl md:text-5xl font-black tracking-tighter mb-6 text-white">Tres pasos. Sin vueltas.</h2>
-            <p className="text-zinc-400 text-lg max-w-lg mx-auto font-medium tracking-tight">
+            <h2 className="text-4xl md:text-6xl font-black tracking-tighter mb-6 text-white">Tres pasos.<br />Sin vueltas.</h2>
+            <p className="text-zinc-400 text-lg md:text-xl max-w-lg mx-auto font-medium tracking-tight">
               De la primera charla a tu sistema funcionando.
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-10 md:gap-8">
+          <div className="flex flex-col gap-32 md:gap-40 w-full">
             {PROCESS_STEPS.map((step, i) => (
-              <div key={step.step} className={`reveal delay-${(i + 1) * 100} flex flex-col gap-6`}>
-                <div className="flex items-center gap-3">
-                  <span className="text-green-400 font-mono text-xs font-bold">[{step.step}]</span>
-                  <span className="text-white font-bold text-lg">{step.title}</span>
+              <div key={step.step} className={`reveal delay-100 flex flex-col items-center text-center gap-8`}>
+                <div className="flex flex-col items-center gap-4">
+                  <span className="text-green-400 font-mono text-sm font-bold bg-green-500/10 px-4 py-2 rounded-full border border-green-500/20">
+                    Paso {step.step}
+                  </span>
+                  <h3 className="text-white font-black text-3xl md:text-4xl">{step.title}</h3>
                 </div>
 
-                <TerminalCard header={step.header} lines={step.lines} />
+                <div className="w-full max-w-2xl text-left">
+                  <TerminalCard header={step.header} lines={step.lines} className="shadow-2xl shadow-green-500/5" />
+                </div>
 
-                <p className="text-zinc-400 text-sm leading-relaxed font-medium">{step.description}</p>
+                <p className="text-zinc-400 text-base md:text-lg max-w-xl leading-relaxed font-medium">
+                  {step.description}
+                </p>
 
-                <span className="inline-flex self-start items-center gap-1.5 px-3 py-1.5 rounded-lg border border-green-500/20 bg-green-500/5 text-green-400 text-[10px] font-mono font-semibold tracking-wide">
+                <span className="inline-flex items-center gap-2 px-4 py-2 rounded-xl border border-green-500/20 bg-green-500/5 text-green-400 text-xs font-mono font-bold tracking-wide">
                   ✓ {step.entregable}
                 </span>
               </div>
@@ -242,40 +248,42 @@ export default function CodePage() {
       {/* ======================================
           SECTION 3 — SUCCESS CASES
           ====================================== */}
-      <section className="py-32 md:py-40 px-6 md:px-8 relative z-10 border-t border-white/[0.05]">
-        <div className="max-w-5xl mx-auto">
-          <div className="reveal mb-20 md:mb-24 text-center">
+      <section className="py-32 md:py-48 px-6 relative z-10 border-t border-white/[0.05]">
+        <div className="max-w-3xl mx-auto flex flex-col items-center text-center">
+          <div className="reveal mb-24 md:mb-32">
             <span className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-green-500/20 bg-green-500/10 text-green-400 text-[10px] font-mono font-semibold tracking-wide mb-6">
               ### casos-de-exito
             </span>
-            <h2 className="text-4xl md:text-5xl font-black tracking-tighter mb-6 text-white">Resultados reales.</h2>
+            <h2 className="text-4xl md:text-6xl font-black tracking-tighter mb-6 text-white">Resultados reales.</h2>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <div className="flex flex-col gap-16 md:gap-24 w-full max-w-2xl text-left">
             {TESTIMONIALS.map((t, i) => (
               <div
                 key={i}
-                className={`reveal delay-${(i + 1) * 100} bg-[#050505] border border-white/10 rounded-2xl overflow-hidden hover:border-green-500/20 transition-all duration-500`}
+                className={`reveal delay-100 bg-[#050505] border border-white/10 rounded-2xl overflow-hidden hover:border-green-500/20 transition-all duration-500 shadow-2xl`}
               >
-                <div className="bg-white/[0.02] border-b border-white/5 px-4 py-3 flex items-center gap-2">
+                <div className="bg-white/[0.02] border-b border-white/5 px-5 py-4 flex items-center gap-2">
                   <div className="flex gap-1.5">
-                    <div className="w-2.5 h-2.5 rounded-full bg-red-500/70" />
-                    <div className="w-2.5 h-2.5 rounded-full bg-yellow-500/70" />
-                    <div className="w-2.5 h-2.5 rounded-full bg-green-500/70" />
+                    <div className="w-3 h-3 rounded-full bg-red-500/70" />
+                    <div className="w-3 h-3 rounded-full bg-yellow-500/70" />
+                    <div className="w-3 h-3 rounded-full bg-green-500/70" />
                   </div>
-                  <span className="ml-2 text-[10px] text-zinc-500 font-mono tracking-wider">
+                  <span className="ml-2 text-xs text-zinc-500 font-mono tracking-wider">
                     balum_CLIENTE@root — resultado.log
                   </span>
                 </div>
-                <div className="p-6 md:p-8 font-mono text-xs space-y-5">
-                  <p className="text-zinc-300 whitespace-pre-line leading-relaxed">{t.text}</p>
-                  <p className="text-zinc-500">— {t.client}</p>
-                  <div className="pt-4 border-t border-white/5 space-y-1.5">
-                    <div className="flex items-center gap-2">
-                      <span className="w-2 h-2 rounded-full bg-green-400 pulse-green" />
-                      <span className="text-green-400 text-[11px]">STATUS: SISTEMA EN USO ✓</span>
+                <div className="p-8 md:p-10 font-mono space-y-6">
+                  <p className="text-zinc-300 text-sm md:text-base whitespace-pre-line leading-relaxed">
+                    {t.text}
+                  </p>
+                  <p className="text-zinc-500 text-sm">— {t.client}</p>
+                  <div className="pt-6 border-t border-white/5 space-y-2">
+                    <div className="flex items-center gap-3">
+                      <span className="w-2.5 h-2.5 rounded-full bg-green-400 pulse-green" />
+                      <span className="text-green-400 text-xs font-bold tracking-widest">STATUS: SISTEMA EN USO ✓</span>
                     </div>
-                    <p className="text-zinc-500 text-[11px]">RESULTADO: {t.resultado}</p>
+                    <p className="text-zinc-400 text-xs tracking-widest pl-5">RESULTADO: <span className="text-white">{t.resultado}</span></p>
                   </div>
                 </div>
               </div>
@@ -287,34 +295,34 @@ export default function CodePage() {
       {/* ======================================
           SECTION 4 — TECH STACK
           ====================================== */}
-      <section className="py-32 md:py-40 px-6 md:px-8 relative z-10 border-t border-white/[0.05]">
-        <div className="max-w-4xl mx-auto">
-          <div className="reveal mb-16 md:mb-20 text-center">
+      <section className="py-32 md:py-48 px-6 relative z-10 border-t border-white/[0.05]">
+        <div className="max-w-3xl mx-auto flex flex-col items-center text-center">
+          <div className="reveal mb-24 md:mb-32">
             <span className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-green-500/20 bg-green-500/10 text-green-400 text-[10px] font-mono font-semibold tracking-wide mb-6">
               ### con-que-lo-construimos
             </span>
-            <h2 className="text-3xl md:text-4xl font-black tracking-tighter mb-6 text-white">
+            <h2 className="text-3xl md:text-5xl font-black tracking-tighter mb-8 text-white leading-tight">
               Vos no necesitás entender la tecnología — nosotros sí.
             </h2>
-            <p className="text-zinc-500 text-base max-w-lg mx-auto font-medium tracking-tight">
+            <p className="text-zinc-400 text-lg md:text-xl max-w-xl mx-auto font-medium tracking-tight leading-relaxed">
               Usamos las mismas herramientas que las empresas más grandes del mundo.
             </p>
           </div>
 
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+          <div className="flex flex-col gap-12 w-full max-w-xl">
             {TECH_STACK.map((group, i) => (
               <div
                 key={group.category}
-                className={`reveal delay-${(i + 1) * 100} glass-panel rounded-2xl p-5 md:p-6`}
+                className={`reveal delay-100 glass-panel rounded-3xl p-8 md:p-10 flex flex-col items-center shadow-2xl`}
               >
-                <h3 className="text-[10px] font-mono font-bold uppercase tracking-widest text-zinc-500 mb-4">
+                <h3 className="text-sm font-mono font-bold uppercase tracking-widest text-zinc-400 mb-6">
                   {group.category}
                 </h3>
-                <div className="flex flex-wrap gap-1.5">
+                <div className="flex flex-wrap justify-center gap-3">
                   {group.items.map((item) => (
                     <span
                       key={item}
-                      className={`px-2.5 py-1 rounded-md border text-[10px] font-mono font-semibold ${group.color}`}
+                      className={`px-4 py-2 rounded-lg border text-sm font-mono font-semibold ${group.color}`}
                     >
                       {item}
                     </span>
@@ -329,21 +337,21 @@ export default function CodePage() {
       {/* ======================================
           SECTION 5 — FINAL CTA
           ====================================== */}
-      <section className="py-32 md:py-44 px-6 md:px-8 relative z-10 border-t border-white/[0.05]">
-        <div className="max-w-3xl mx-auto text-center">
-          <div className="reveal mb-14">
+      <section className="py-32 md:py-48 px-6 relative z-10 border-t border-white/[0.05]">
+        <div className="max-w-3xl mx-auto flex flex-col items-center text-center">
+          <div className="reveal mb-16 md:mb-20">
             <span className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-green-500/20 bg-green-500/10 text-green-400 text-[10px] font-mono font-semibold tracking-wide mb-6">
               ### empeza-hoy
             </span>
-            <h2 className="text-4xl md:text-5xl font-black tracking-tighter mb-6 text-white">
+            <h2 className="text-4xl md:text-6xl font-black tracking-tighter mb-8 text-white">
               El primer paso es una charla.
             </h2>
-            <p className="text-zinc-400 text-lg max-w-md mx-auto font-medium tracking-tight">
+            <p className="text-zinc-400 text-lg md:text-xl max-w-lg mx-auto font-medium tracking-tight leading-relaxed">
               Sin costo, sin compromiso. Respondemos en menos de 24hs.
             </p>
           </div>
 
-          <div className="reveal delay-100 w-full max-w-md mx-auto mb-14">
+          <div className="reveal delay-100 w-full max-w-xl mb-16 text-left">
             <TerminalCard
               header="balum_CODE@root — primer-contacto.sh"
               lines={[
@@ -352,25 +360,26 @@ export default function CodePage() {
                 { type: "log", text: "▸ Lugares este mes: 2 proyectos" },
                 { type: "ok", text: "✓ LISTO PARA ESCUCHARTE" },
               ]}
+              className="shadow-2xl shadow-green-500/5"
             />
           </div>
 
-          <div className="reveal delay-200 flex flex-col sm:flex-row gap-4 justify-center">
+          <div className="reveal delay-200 flex flex-col sm:flex-row gap-6 justify-center w-full sm:w-auto">
             <a
               href={`https://wa.me/${WA_NUMBER}?text=${encodeURIComponent("Hola BALUMTech, quiero iniciar un proyecto con Balum CODE.")}`}
               target="_blank"
               rel="noopener noreferrer"
-              className="px-8 py-4 bg-green-500 hover:bg-green-400 text-black rounded-xl font-bold tracking-tight hover:scale-105 transition-all flex items-center justify-center gap-2 group shadow-xl shadow-green-500/20"
+              className="px-10 py-5 bg-green-500 hover:bg-green-400 text-black rounded-2xl font-bold tracking-tight text-lg hover:scale-105 transition-all flex items-center justify-center gap-3 group shadow-2xl shadow-green-500/20"
             >
-              <MessageCircle size={18} />
+              <MessageCircle size={22} />
               Escribinos por WhatsApp
-              <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform" />
+              <ArrowRight size={22} className="group-hover:translate-x-1 transition-transform" />
             </a>
             <a
               href="mailto:contacto@balumtech.com"
-              className="px-8 py-4 glass-panel text-zinc-300 rounded-xl font-semibold tracking-tight hover:bg-white/5 hover:text-white transition-all flex items-center justify-center gap-2"
+              className="px-10 py-5 glass-panel text-zinc-300 rounded-2xl font-semibold tracking-tight text-lg hover:bg-white/5 hover:text-white transition-all flex items-center justify-center gap-3"
             >
-              <Mail size={18} />
+              <Mail size={22} />
               contacto@balumtech.com
             </a>
           </div>
@@ -378,12 +387,12 @@ export default function CodePage() {
       </section>
 
       {/* FOOTER */}
-      <footer className="pt-16 pb-12 px-6 md:px-8 border-t border-white/[0.05] relative z-10">
-        <div className="max-w-6xl mx-auto flex flex-col md:flex-row justify-between items-center gap-6">
-          <div className="text-zinc-600 font-mono text-xs">
+      <footer className="pt-16 pb-12 px-6 border-t border-white/[0.05] relative z-10">
+        <div className="max-w-5xl mx-auto flex flex-col md:flex-row justify-between items-center gap-8 text-center md:text-left">
+          <div className="text-zinc-500 font-mono text-sm">
             balum_CODE — Sistemas a medida para empresas reales
           </div>
-          <div className="flex gap-6 text-xs font-semibold tracking-wider text-zinc-600 uppercase">
+          <div className="flex flex-wrap justify-center gap-4 text-xs font-semibold tracking-wider text-zinc-600 uppercase">
             <span>© {new Date().getFullYear()} BALUMTech</span>
             <span className="hidden md:inline">•</span>
             <span>Sarmiento, Chubut 🇦🇷</span>
