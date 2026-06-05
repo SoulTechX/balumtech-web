@@ -5,6 +5,7 @@ import "./globals.css";
 import Navbar from "@/components/Navbar"; 
 import CursorParticles from "@/components/CursorParticles";
 import Chatbot from "@/components/Chatbot";
+import SecurityProvider from "@/components/SecurityProvider";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -31,7 +32,8 @@ export default function RootLayout({
       lang="es"
       className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
     >
-      <body className="min-h-full flex flex-col text-white">
+      <body className="min-h-full flex flex-col text-white select-none">
+        <SecurityProvider />
         <CursorParticles />
         {/* El Navbar vive aquí, arriba de todas las páginas */}
         <Navbar />
