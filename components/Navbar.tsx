@@ -9,8 +9,8 @@ export default function Navbar() {
   const [menuOpen, setMenuOpen] = useState(false);
   const pathname = usePathname();
 
-  // Ocultar Navbar en tienda y admin
-if (pathname.startsWith('/tienda') || pathname.startsWith('/admin') || pathname.startsWith('/metrika')) return null;
+  // Ocultar Navbar en tienda, admin y Code
+  if (pathname.startsWith('/tienda') || pathname.startsWith('/admin') || pathname.startsWith('/metrika') || pathname.startsWith('/Code')) return null;
 
   const navItems = [
     { label: "INICIO", href: "/" },
