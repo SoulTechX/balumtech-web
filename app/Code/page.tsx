@@ -162,7 +162,7 @@ export default function CodePage() {
       {/* ======================================
           SECTION 1 — HERO
           ====================================== */}
-      <section className="relative pt-44 pb-32 md:pt-56 md:pb-44 flex flex-col items-center justify-center min-h-[95vh] z-10 text-center px-6">
+      <section className="relative flex flex-col items-center justify-center min-h-screen py-20 z-10 text-center px-6">
         <div className="reveal inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-green-500/20 bg-green-500/10 text-green-400 text-xs font-mono font-semibold tracking-wide mb-10">
           <Code2 size={14} />
           <span>### para-tu-negocio</span>
