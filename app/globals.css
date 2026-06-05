@@ -563,3 +563,50 @@ textarea.form-input {
 .mobile-menu a:hover {
   color: var(--accent-blue);
 }
+
+/* ============================
+   BALUM CODE PAGE
+   ============================ */
+@keyframes typing {
+  from { width: 0; }
+  to { width: 100%; }
+}
+
+@keyframes blink-caret {
+  0%, 100% { border-color: transparent; }
+  50% { border-color: #22c55e; }
+}
+
+@keyframes terminal-line {
+  from { opacity: 0; transform: translateY(8px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.terminal-line-animate {
+  opacity: 0;
+  animation: terminal-line 0.4s ease-out forwards;
+}
+
+@keyframes pulse-green {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(34, 197, 94, 0.4); }
+  50% { box-shadow: 0 0 20px 4px rgba(34, 197, 94, 0.15); }
+}
+
+.pulse-green {
+  animation: pulse-green 2s ease-in-out infinite;
+}
+
+@keyframes marquee-industries {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+.animate-marquee-industries {
+  display: flex;
+  width: max-content;
+  animation: marquee-industries 30s linear infinite;
+}
+
+.animate-marquee-industries:hover {
+  animation-play-state: paused;
+}

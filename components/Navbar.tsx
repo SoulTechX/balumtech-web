@@ -15,6 +15,7 @@ if (pathname.startsWith('/tienda') || pathname.startsWith('/admin') || pathname.
   const navItems = [
     { label: "INICIO", href: "/" },
     { label: "TIENDA", href: "/tienda" },
+    { label: "CODE", href: "/Code" },
     { label: "NOSOTROS", href: "/#nosotros" },
     { label: "SOPORTE", href: "#contacto" },
   ];

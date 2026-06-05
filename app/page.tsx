@@ -2,7 +2,7 @@
 import { useEffect } from "react"
 import Link from "next/link"
 import Image from "next/image"
-import { Shield, Bot, ShoppingCart, ArrowRight, Terminal, Cpu, Zap, Mail, MapPin, Phone, MessageCircle, ShieldCheck, Users, Code2, GitBranch, Package, Layers } from "lucide-react"
+import { Shield, Bot, ShoppingCart, ArrowRight, Terminal, Cpu, Zap, Mail, MapPin, Phone, MessageCircle, ShieldCheck, Users } from "lucide-react"
 
 export default function Home() {
   useEffect(() => {
@@ -245,120 +245,6 @@ export default function Home() {
 
           <div className="absolute inset-y-0 left-0 w-32 bg-gradient-to-r from-[var(--bg-base)] to-transparent z-10 pointer-events-none" />
           <div className="absolute inset-y-0 right-0 w-32 bg-gradient-to-l from-[var(--bg-base)] to-transparent z-10 pointer-events-none" />
-        </div>
-      </section>
-
-      {/* BALUM CODE SECTION */}
-      <section id="code" className="py-24 px-6 md:px-8 relative z-10 border-t border-white/[0.05]">
-        <div className="max-w-6xl mx-auto">
-          
-          {/* Header */}
-          <div className="reveal mb-16 flex flex-col md:flex-row md:items-end justify-between gap-6">
-            <div>
-              <h3 className="text-[10px] uppercase tracking-[0.3em] font-black text-blue-500 mb-2">Desarrollo de Software</h3>
-              <h2 className="text-4xl md:text-5xl font-black tracking-tighter text-white leading-tight">
-                Balum <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-indigo-500">CODE.</span>
-              </h2>
-            </div>
-            <p className="text-zinc-400 text-lg max-w-sm font-medium tracking-tight md:text-right">
-              Soluciones a medida. Desde paneles de control hasta sistemas de automatización complejos.
-            </p>
-          </div>
-
-          {/* Main grid */}
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-            
-            {/* Terminal Demo - Izquierda */}
-            <div className="reveal glass-panel rounded-[2rem] overflow-hidden group">
-              <div className="bg-white/[0.02] border-b border-white/5 px-5 py-3.5 flex items-center gap-2">
-                <div className="flex gap-1.5">
-                  <div className="w-3 h-3 rounded-full bg-red-500/70" />
-                  <div className="w-3 h-3 rounded-full bg-yellow-500/70" />
-                  <div className="w-3 h-3 rounded-full bg-green-500/70" />
-                </div>
-                <span className="ml-2 text-[10px] text-zinc-500 font-mono tracking-wider">balum_CODE@root — deploy.sh</span>
-              </div>
-              <div className="p-6 md:p-8 font-mono text-xs md:text-sm text-zinc-400 space-y-2.5">
-                <div><span className="text-blue-400">$ </span><span className="text-white">balum init --project=nueva-solucion</span></div>
-                <div className="text-zinc-500 pl-2">▸ Analizando requerimientos del cliente...</div>
-                <div className="text-zinc-500 pl-2">▸ Configurando stack tecnológico...</div>
-                <div className="text-green-400 pl-2">✓ Proyecto inicializado en 0.8s</div>
-                <br/>
-                <div><span className="text-blue-400">$ </span><span className="text-white">balum deploy --env=production</span></div>
-                <div className="text-zinc-500 pl-2">▸ Build optimizado completado</div>
-                <div className="text-zinc-500 pl-2">▸ Tests pasados: 100%</div>
-                <div className="text-zinc-500 pl-2">▸ Subiendo a servidor VPS...</div>
-                <div className="text-green-400 pl-2">✓ Deploy exitoso — uptime 99.9%</div>
-                <br/>
-                <div className="flex items-center gap-2">
-                  <span className="text-blue-400">$ </span>
-                  <span className="text-white">balum status</span>
-                </div>
-                <div className="text-green-400 pl-2 flex items-center gap-2">
-                  <span className="w-2 h-2 rounded-full bg-green-400 animate-pulse inline-block" />
-                  SISTEMA ONLINE — 100% operativo
-                </div>
-                <span className="w-2 h-4 bg-zinc-400 animate-pulse inline-block ml-2" />
-              </div>
-            </div>
-
-            {/* Feature cards - Derecha */}
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-              
-              <div className="reveal delay-100 glass-panel p-6 rounded-[1.5rem] hover:bg-white/[0.04] transition-all duration-500 group">
-                <div className="w-12 h-12 app-icon rounded-[1rem] flex items-center justify-center mb-5 group-hover:scale-105 transition-transform duration-500">
-                  <Layers className="text-blue-300" size={22} strokeWidth={1.5} />
-                </div>
-                <h4 className="font-bold text-white text-sm mb-2">Web Apps</h4>
-                <p className="text-zinc-500 text-xs leading-relaxed">Paneles de control, dashboards y plataformas web a medida con Next.js.</p>
-              </div>
-
-              <div className="reveal delay-200 glass-panel p-6 rounded-[1.5rem] hover:bg-white/[0.04] transition-all duration-500 group">
-                <div className="w-12 h-12 app-icon rounded-[1rem] flex items-center justify-center mb-5 group-hover:scale-105 transition-transform duration-500">
-                  <Bot className="text-indigo-300" size={22} strokeWidth={1.5} />
-                </div>
-                <h4 className="font-bold text-white text-sm mb-2">Agentes IA</h4>
-                <p className="text-zinc-500 text-xs leading-relaxed">Automatizaciones inteligentes con n8n y modelos de lenguaje propios.</p>
-              </div>
-
-              <div className="reveal delay-300 glass-panel p-6 rounded-[1.5rem] hover:bg-white/[0.04] transition-all duration-500 group">
-                <div className="w-12 h-12 app-icon rounded-[1rem] flex items-center justify-center mb-5 group-hover:scale-105 transition-transform duration-500">
-                  <GitBranch className="text-zinc-300" size={22} strokeWidth={1.5} />
-                </div>
-                <h4 className="font-bold text-white text-sm mb-2">APIs & Backends</h4>
-                <p className="text-zinc-500 text-xs leading-relaxed">Integraciones robustas entre sistemas, bases de datos y servicios externos.</p>
-              </div>
-
-              <div className="reveal delay-100 glass-panel p-6 rounded-[1.5rem] hover:bg-white/[0.04] transition-all duration-500 group">
-                <div className="w-12 h-12 app-icon rounded-[1rem] flex items-center justify-center mb-5 group-hover:scale-105 transition-transform duration-500">
-                  <Package className="text-zinc-300" size={22} strokeWidth={1.5} />
-                </div>
-                <h4 className="font-bold text-white text-sm mb-2">Deploy & VPS</h4>
-                <p className="text-zinc-500 text-xs leading-relaxed">Configuración y mantenimiento de servidores en producción con alta disponibilidad.</p>
-              </div>
-
-              {/* CTA Card */}
-              <div className="sm:col-span-2">
-                <a
-                  href={`https://wa.me/${waNumber}?text=${encodeURIComponent("Hola BALUMTech, quiero consultar sobre Balum CODE para mi proyecto.")}`}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="reveal delay-200 flex items-center justify-between gap-4 glass-panel p-6 rounded-[1.5rem] border border-blue-500/20 hover:border-blue-500/50 hover:bg-blue-500/5 transition-all duration-500 group cursor-pointer"
-                >
-                  <div className="flex items-center gap-4">
-                    <div className="w-12 h-12 rounded-[1rem] flex items-center justify-center bg-blue-500/10 border border-blue-500/20">
-                      <Code2 className="text-blue-400" size={22} strokeWidth={1.5} />
-                    </div>
-                    <div>
-                      <h4 className="font-bold text-white text-sm mb-1">Cotizá tu proyecto</h4>
-                      <p className="text-zinc-500 text-xs">Respondemos en minutos con una propuesta técnica</p>
-                    </div>
-                  </div>
-                  <ArrowRight size={20} className="text-zinc-600 group-hover:text-blue-400 group-hover:translate-x-1 transition-all flex-shrink-0" />
-                </a>
-              </div>
-            </div>
-          </div>
         </div>
       </section>
 
