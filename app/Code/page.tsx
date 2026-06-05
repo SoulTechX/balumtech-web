@@ -10,39 +10,42 @@ import { ArrowRight, MessageCircle, Mail, Terminal, Code2, GitBranch, Layers, Pa
 const PROCESS_STEPS = [
   {
     step: "01",
-    title: "Discovery",
-    header: "balum_DISCOVERY@root — kickoff.sh",
+    title: "Entendemos tu negocio",
+    header: "balum_CHARLA@root — primer-contacto.sh",
     lines: [
-      { type: "cmd", text: "$ balum analyze --client=vos" },
-      { type: "log", text: "▸ Validando idea de negocio..." },
-      { type: "log", text: "▸ Definiendo alcance y MVP..." },
-      { type: "ok", text: "✓ Requerimientos documentados" },
+      { type: "cmd", text: "$ balum escuchar --cliente=vos" },
+      { type: "log", text: "▸ ¿Qué parte del negocio te quita tiempo?" },
+      { type: "log", text: "▸ ¿Qué información necesitás tener a mano?" },
+      { type: "ok", text: "✓ Sabemos exactamente qué construir" },
     ],
-    description: "Entendemos tu negocio, validamos la idea y definimos el alcance real del proyecto. Sin promesas vacías.",
+    description: "Te hacemos las preguntas correctas. No asumimos nada. Hasta no entender cómo funciona tu negocio, no tocamos una línea de código.",
+    entregable: "ENTREGABLE: Propuesta técnica con tiempos y precio",
   },
   {
     step: "02",
-    title: "Product Design",
-    header: "balum_DESIGN@root — ux.sh",
+    title: "Diseñamos cómo va a funcionar",
+    header: "balum_DISEÑO@root — prototipo.sh",
     lines: [
-      { type: "cmd", text: "$ balum design --focus=conversion" },
-      { type: "log", text: "▸ Wireframes y flujos de usuario..." },
-      { type: "log", text: "▸ UI centrada en conversión..." },
-      { type: "ok", text: "✓ Prototipo aprobado" },
+      { type: "cmd", text: "$ balum diseñar --foco=tu-operacion" },
+      { type: "log", text: "▸ Armando las pantallas de tu sistema..." },
+      { type: "log", text: "▸ Mostrándote cómo va a funcionar..." },
+      { type: "ok", text: "✓ Vos aprobás antes de que empecemos" },
     ],
-    description: "Diseñamos interfaces centradas en el usuario y la conversión. Cada pantalla tiene un propósito.",
+    description: "Antes de escribir una sola línea de código, te mostramos cómo va a verse y funcionar tu sistema. Lo revisamos juntos, lo ajustamos, y recién ahí arrancamos.",
+    entregable: "ENTREGABLE: Prototipo aprobado por vos",
   },
   {
     step: "03",
-    title: "Deploy & Scale",
-    header: "balum_DEPLOY@root — production.sh",
+    title: "Lo ponemos en marcha y lo mantenemos",
+    header: "balum_ENTREGA@root — en-marcha.sh",
     lines: [
-      { type: "cmd", text: "$ balum deploy --env=production" },
-      { type: "log", text: "▸ CI/CD configurado..." },
-      { type: "log", text: "▸ VPS optimizado y monitoreado..." },
-      { type: "ok", text: "✓ Uptime 99.9% garantizado" },
+      { type: "cmd", text: "$ balum entregar --estado=listo" },
+      { type: "log", text: "▸ Sistema instalado y funcionando..." },
+      { type: "log", text: "▸ Te capacitamos para usarlo solo..." },
+      { type: "ok", text: "✓ Quedamos disponibles — tu negocio no para" },
     ],
-    description: "Construimos, testeamos y desplegamos. Tu producto en producción con infraestructura real y soporte continuo.",
+    description: "Cuando el sistema está listo, lo instalamos, te explicamos cómo usarlo y seguimos disponibles. Si algo falla, lo resolvemos. No te dejamos solo después de la entrega.",
+    entregable: "ENTREGABLE: Sistema en marcha + soporte incluido",
   },
 ]
 
@@ -59,19 +62,19 @@ const INDUSTRIES = [
 
 const TESTIMONIALS = [
   {
-    text: `"Implementamos el panel de control en 3 semanas.\nAhora tenemos métricas en tiempo real y el equipo\nopera 40% más rápido."`,
+    text: `"Antes manejábamos todo en papel y WhatsApp.\nAhora tenemos un panel donde vemos todo\nen tiempo real. El equipo trabaja el doble de rápido."`,
     client: "Empresa de logística, Chubut",
-    stack: "Next.js · PostgreSQL · VPS",
+    resultado: "-40% tiempo operativo",
   },
   {
-    text: `"El sistema de gestión reemplazó tres herramientas\ndistintas. Simple, rápido y funciona offline."`,
+    text: `"Reemplazamos tres planillas de Excel con\nun solo sistema. Simple, rápido y no\nnecesitamos saber de tecnología para usarlo."`,
     client: "Comercio mayorista, Comodoro Rivadavia",
-    stack: "React · Node.js · SQLite",
+    resultado: "3 herramientas reemplazadas",
   },
   {
-    text: `"Automatizamos el seguimiento de clientes con IA.\nLo que tardaba 2 horas ahora tarda 5 minutos."`,
+    text: `"Lo que antes nos tomaba dos horas\nahora lo hace el sistema solo.\nRecuperamos tiempo para atender más clientes."`,
     client: "Empresa de servicios, Patagonia",
-    stack: "n8n · GPT-4 · API REST",
+    resultado: "2hs diarias recuperadas",
   },
 ]
 
@@ -189,17 +192,17 @@ export default function CodePage() {
         {/* Tag */}
         <div className="reveal inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-green-500/20 bg-green-500/10 text-green-400 text-xs font-mono font-semibold tracking-wide mb-8">
           <Code2 size={14} />
-          <span>### desarrollo-de-producto</span>
+          <span>### para-tu-negocio</span>
         </div>
 
         {/* Headline */}
         <h1 className="reveal delay-100 text-5xl md:text-7xl font-black tracking-tighter leading-[0.95] mb-6 text-transparent bg-clip-text bg-gradient-to-b from-white via-white to-zinc-500">
-          Construimos tu producto.<br />Vos escalás.
+          Tu negocio necesita un sistema.<br />Nosotros lo construimos.
         </h1>
 
         {/* Subheadline */}
         <p className="reveal delay-200 text-lg md:text-xl text-zinc-400 mb-12 max-w-2xl leading-relaxed tracking-tight font-medium">
-          Desde la idea hasta producción. Stack moderno, entrega real, soporte incluido.
+          Panel de control, app, sistema de gestión o lo que necesite tu empresa — desarrollado a medida, funcionando desde el primer día.
         </p>
 
         {/* Terminal animation */}
@@ -207,16 +210,15 @@ export default function CodePage() {
           <TerminalCard
             header="balum_CODE@root — build.sh"
             lines={[
-              { type: "cmd", text: "$ balum init --project=tu-idea" },
-              { type: "log", text: "▸ Analizando requerimientos..." },
-              { type: "log", text: "▸ Definiendo stack tecnológico..." },
-              { type: "ok", text: "✓ Proyecto inicializado — listo para construir" },
-              { type: "cmd", text: "$ balum build --mode=production" },
-              { type: "log", text: "▸ UI/UX diseñado para conversión" },
-              { type: "log", text: "▸ Backend robusto y escalable" },
-              { type: "log", text: "▸ Tests: 100% pasados" },
-              { type: "ok", text: "✓ Deploy exitoso — uptime 99.9%" },
-              { type: "ok", text: "STATUS: TU PRODUCTO ONLINE" },
+              { type: "cmd", text: "$ balum analizar --negocio=el-tuyo" },
+              { type: "log", text: "▸ Escuchando cómo trabajás hoy..." },
+              { type: "log", text: "▸ Identificando qué te consume más tiempo..." },
+              { type: "ok", text: "✓ Problema entendido — empezamos a resolver" },
+              { type: "cmd", text: "$ balum construir --para=tu-empresa" },
+              { type: "log", text: "▸ Diseñando tu sistema a medida..." },
+              { type: "log", text: "▸ Revisión y aprobación con vos..." },
+              { type: "ok", text: "✓ Sistema entregado — tu negocio no para" },
+              { type: "ok", text: "STATUS: TU EMPRESA TIENE SISTEMA PROPIO" },
             ]}
           />
         </div>
@@ -229,13 +231,13 @@ export default function CodePage() {
             rel="noopener noreferrer"
             className="px-8 py-4 bg-green-500 hover:bg-green-400 text-black rounded-xl font-bold tracking-tight hover:scale-105 transition-all flex items-center justify-center gap-2 group shadow-xl shadow-green-500/20"
           >
-            Cotizá tu proyecto <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform" />
+            Contanos qué necesitás <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform" />
           </a>
           <a
             href="#proceso"
             className="px-8 py-4 glass-panel text-white rounded-xl font-semibold tracking-tight hover:bg-white/5 transition-all flex items-center justify-center"
           >
-            Ver proceso
+            Ver cómo trabajamos
           </a>
         </div>
       </section>
@@ -250,9 +252,9 @@ export default function CodePage() {
             <span className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-green-500/20 bg-green-500/10 text-green-400 text-[10px] font-mono font-semibold tracking-wide mb-4">
               ### como-trabajamos
             </span>
-            <h2 className="text-4xl md:text-5xl font-black tracking-tighter mb-4 text-white">Del concepto al deploy.</h2>
+            <h2 className="text-4xl md:text-5xl font-black tracking-tighter mb-4 text-white">Tres pasos. Sin vueltas.</h2>
             <p className="text-zinc-400 text-lg max-w-xl font-medium tracking-tight">
-              Un proceso claro, sin sorpresas, con entregables reales en cada etapa.
+              De la primera charla a tu sistema funcionando. Así trabajamos con cada cliente.
             </p>
           </div>
 
@@ -271,6 +273,12 @@ export default function CodePage() {
                 </div>
                 {/* Description */}
                 <p className="text-zinc-400 text-sm leading-relaxed font-medium">{step.description}</p>
+                {/* Entregable badge */}
+                {step.entregable && (
+                  <span className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg border border-green-500/20 bg-green-500/5 text-green-400 text-[10px] font-mono font-semibold tracking-wide">
+                    {step.entregable}
+                  </span>
+                )}
               </div>
             ))}
           </div>
@@ -285,10 +293,10 @@ export default function CodePage() {
           {/* Header */}
           <div className="reveal mb-12 text-center">
             <span className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-green-500/20 bg-green-500/10 text-green-400 text-[10px] font-mono font-semibold tracking-wide mb-4">
-              ### industrias-que-atendemos
+              ### a-quien-le-resolvemos
             </span>
             <h2 className="text-4xl md:text-5xl font-black tracking-tighter mb-4 text-white">
-              Construido para cualquier industria.
+              Si tenés un negocio, tenemos algo para vos.
             </h2>
           </div>
 
@@ -331,9 +339,9 @@ export default function CodePage() {
             <span className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-green-500/20 bg-green-500/10 text-green-400 text-[10px] font-mono font-semibold tracking-wide mb-4">
               ### casos-de-exito
             </span>
-            <h2 className="text-4xl md:text-5xl font-black tracking-tighter mb-4 text-white">Resultados reales.</h2>
+            <h2 className="text-4xl md:text-5xl font-black tracking-tighter mb-4 text-white">Negocios reales. Resultados reales.</h2>
             <p className="text-zinc-400 text-lg max-w-xl mx-auto font-medium tracking-tight">
-              Proyectos entregados, clientes que escalan.
+              Lo que más nos importa: que el sistema funcione y el cliente lo use.
             </p>
           </div>
 
@@ -352,7 +360,7 @@ export default function CodePage() {
                     <div className="w-2.5 h-2.5 rounded-full bg-green-500/70" />
                   </div>
                   <span className="ml-2 text-[10px] text-zinc-500 font-mono tracking-wider">
-                    balum_CLIENT@root — feedback.log
+                    balum_CLIENTE@root — resultado.log
                   </span>
                 </div>
                 {/* Body */}
@@ -362,9 +370,9 @@ export default function CodePage() {
                   <div className="pt-3 border-t border-white/5 space-y-1">
                     <div className="flex items-center gap-2">
                       <span className="w-2 h-2 rounded-full bg-green-400 pulse-green" />
-                      <span className="text-green-400 text-[11px]">STATUS: PROJECT_COMPLETE ✓</span>
+                      <span className="text-green-400 text-[11px]">STATUS: SISTEMA EN USO ✓</span>
                     </div>
-                    <p className="text-zinc-500 text-[11px]">STACK: {t.stack}</p>
+                    <p className="text-zinc-500 text-[11px]">RESULTADO: {t.resultado}</p>
                   </div>
                 </div>
               </div>
@@ -381,11 +389,14 @@ export default function CodePage() {
           {/* Header */}
           <div className="reveal mb-16 text-center md:text-left">
             <span className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-green-500/20 bg-green-500/10 text-green-400 text-[10px] font-mono font-semibold tracking-wide mb-4">
-              ### tech-stack
+              ### con-que-lo-construimos
             </span>
             <h2 className="text-4xl md:text-5xl font-black tracking-tighter mb-4 text-white">
-              Stack moderno. Sin excusas.
+              Tecnología de primer nivel. Vos no necesitás entenderla — nosotros sí.
             </h2>
+            <p className="text-zinc-400 text-lg max-w-2xl font-medium tracking-tight">
+              Usamos las mismas herramientas que usan las empresas más grandes del mundo. Eso garantiza que tu sistema sea rápido, seguro y que escale con tu negocio.
+            </p>
           </div>
 
           {/* Stack grid */}
@@ -425,23 +436,23 @@ export default function CodePage() {
               ### empeza-hoy
             </span>
             <h2 className="text-4xl md:text-5xl font-black tracking-tighter mb-4 text-white">
-              Tu producto, construido<br />desde Patagonia.
+              El primer paso es una charla.<br />Sin costo, sin compromiso.
             </h2>
             <p className="text-zinc-400 text-lg max-w-xl mx-auto font-medium tracking-tight">
-              Respondemos con una propuesta técnica en menos de 24hs.
+              Contanos qué necesita tu negocio. En menos de 24 horas te respondemos con una propuesta concreta.
             </p>
           </div>
 
           {/* Terminal */}
           <div className="reveal delay-100 w-full max-w-lg mx-auto mb-12">
             <TerminalCard
-              header="balum_CODE@root — status.sh"
+              header="balum_CODE@root — primer-contacto.sh"
               lines={[
-                { type: "cmd", text: "$ balum availability --check" },
+                { type: "cmd", text: "$ balum disponibilidad --check" },
                 { type: "log", text: "▸ Equipo disponible: SÍ" },
-                { type: "log", text: "▸ Slots abiertos: 2 proyectos este mes" },
-                { type: "log", text: "▸ Tiempo de respuesta: < 24hs" },
-                { type: "ok", text: "✓ LISTO PARA TU PROYECTO" },
+                { type: "log", text: "▸ Lugares este mes: 2 proyectos" },
+                { type: "log", text: "▸ Respuesta garantizada: menos de 24hs" },
+                { type: "ok", text: "✓ LISTO PARA ESCUCHARTE" },
               ]}
             />
           </div>
@@ -455,7 +466,7 @@ export default function CodePage() {
               className="px-8 py-4 bg-green-500 hover:bg-green-400 text-black rounded-xl font-bold tracking-tight hover:scale-105 transition-all flex items-center justify-center gap-2 group shadow-xl shadow-green-500/20"
             >
               <MessageCircle size={18} />
-              Iniciar proyecto
+              Escribinos por WhatsApp
               <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform" />
             </a>
             <a
@@ -473,7 +484,7 @@ export default function CodePage() {
       <footer className="pt-16 pb-12 px-6 md:px-8 border-t border-white/[0.05] relative z-10">
         <div className="max-w-6xl mx-auto flex flex-col md:flex-row justify-between items-center gap-6">
           <div className="text-zinc-600 font-mono text-xs">
-            balum_CODE — Desarrollo de software a medida
+            balum_CODE — Sistemas a medida para empresas reales
           </div>
           <div className="flex gap-6 text-xs font-semibold tracking-wider text-zinc-600 uppercase">
             <span>© {new Date().getFullYear()} BALUMTech</span>
