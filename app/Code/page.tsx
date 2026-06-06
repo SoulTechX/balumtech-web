@@ -152,7 +152,7 @@ export default function CodePage() {
   }, [])
 
   return (
-    <div className="min-h-screen bg-[var(--bg-base)] text-zinc-50 font-sans antialiased overflow-x-hidden relative">
+    <div className="w-full min-h-screen bg-[var(--bg-base)] text-zinc-50 font-sans antialiased overflow-x-hidden relative">
       {/* AURA BACKGROUNDS */}
       <div className="fixed inset-0 z-0 pointer-events-none overflow-hidden">
         <div className="absolute top-[-10%] right-[-5%] w-[60vw] md:w-[500px] h-[60vw] md:h-[500px] bg-green-600/15 blur-[120px] rounded-full mix-blend-screen" />
@@ -171,7 +171,7 @@ export default function CodePage() {
       {/* ======================================
           SECTION 1 — HERO
           ====================================== */}
-      <section className="relative flex flex-col items-center justify-center min-h-screen py-20 z-10 text-center px-6">
+      <section className="w-full relative flex flex-col items-center justify-center min-h-screen py-20 z-10 text-center px-6">
         <div className="reveal inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-green-500/20 bg-green-500/10 text-green-400 text-xs font-mono font-semibold tracking-wide mb-10">
           <Code2 size={14} />
           <span>### para-tu-negocio</span>
@@ -206,8 +206,8 @@ export default function CodePage() {
       {/* ======================================
           SECTION 2 — PROCESS
           ====================================== */}
-      <section id="proceso" className="py-32 md:py-48 px-6 relative z-10 border-t border-white/[0.05]">
-        <div className="max-w-3xl mx-auto flex flex-col items-center text-center">
+      <section id="proceso" className="w-full py-32 md:py-48 px-6 relative z-10 border-t border-white/[0.05]">
+        <div className="w-full max-w-3xl mx-auto flex flex-col items-center text-center">
           <div className="reveal mb-24 md:mb-32">
             <span className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-green-500/20 bg-green-500/10 text-green-400 text-[10px] font-mono font-semibold tracking-wide mb-6">
               ### como-trabajamos
@@ -248,8 +248,8 @@ export default function CodePage() {
       {/* ======================================
           SECTION 3 — SUCCESS CASES
           ====================================== */}
-      <section className="py-32 md:py-48 px-6 relative z-10 border-t border-white/[0.05]">
-        <div className="max-w-3xl mx-auto flex flex-col items-center text-center">
+      <section className="w-full py-32 md:py-48 px-6 relative z-10 border-t border-white/[0.05]">
+        <div className="w-full max-w-3xl mx-auto flex flex-col items-center text-center">
           <div className="reveal mb-24 md:mb-32">
             <span className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-green-500/20 bg-green-500/10 text-green-400 text-[10px] font-mono font-semibold tracking-wide mb-6">
               ### casos-de-exito
@@ -295,8 +295,8 @@ export default function CodePage() {
       {/* ======================================
           SECTION 4 — TECH STACK
           ====================================== */}
-      <section className="py-32 md:py-48 px-6 relative z-10 border-t border-white/[0.05]">
-        <div className="max-w-3xl mx-auto flex flex-col items-center text-center">
+      <section className="w-full py-32 md:py-48 px-6 relative z-10 border-t border-white/[0.05]">
+        <div className="w-full max-w-3xl mx-auto flex flex-col items-center text-center">
           <div className="reveal mb-24 md:mb-32">
             <span className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-green-500/20 bg-green-500/10 text-green-400 text-[10px] font-mono font-semibold tracking-wide mb-6">
               ### con-que-lo-construimos
@@ -337,8 +337,8 @@ export default function CodePage() {
       {/* ======================================
           SECTION 5 — FINAL CTA
           ====================================== */}
-      <section className="py-32 md:py-48 px-6 relative z-10 border-t border-white/[0.05]">
-        <div className="max-w-3xl mx-auto flex flex-col items-center text-center">
+      <section className="w-full py-32 md:py-48 px-6 relative z-10 border-t border-white/[0.05]">
+        <div className="w-full max-w-3xl mx-auto flex flex-col items-center text-center">
           <div className="reveal mb-16 md:mb-20">
             <span className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-green-500/20 bg-green-500/10 text-green-400 text-[10px] font-mono font-semibold tracking-wide mb-6">
               ### empeza-hoy
@@ -387,8 +387,8 @@ export default function CodePage() {
       </section>
 
       {/* FOOTER */}
-      <footer className="pt-16 pb-12 px-6 border-t border-white/[0.05] relative z-10">
-        <div className="max-w-5xl mx-auto flex flex-col md:flex-row justify-between items-center gap-8 text-center md:text-left">
+      <footer className="w-full pt-16 pb-12 px-6 border-t border-white/[0.05] relative z-10">
+        <div className="w-full max-w-5xl mx-auto flex flex-col md:flex-row justify-between items-center gap-8 text-center md:text-left">
           <div className="text-zinc-500 font-mono text-sm">
             balum_CODE — Sistemas a medida para empresas reales
           </div>
