@@ -1,7 +1,7 @@
 "use client"
 import { useEffect } from "react"
 import Link from "next/link"
-import { ArrowLeft, ArrowRight, MessageCircle, Mail, Code2 } from "lucide-react"
+import { ArrowLeft, ArrowRight, MessageCircle, Mail, Code2, Terminal } from "lucide-react"
 
 /* ——————————————————————————————————
    DATA
@@ -11,38 +11,38 @@ const PROCESS_STEPS = [
   {
     step: "01",
     title: "Entendemos tu negocio",
-    header: "balum_CHARLA@root — primer-contacto.sh",
+    header: "primer-contacto.sh",
     lines: [
-      { type: "cmd", text: "$ balum escuchar --cliente=vos" },
-      { type: "log", text: "▸ ¿Qué te consume más tiempo?" },
-      { type: "ok", text: "✓ Sabemos qué construir" },
+      { type: "cmd", text: "balum escuchar --cliente=vos" },
+      { type: "log", text: "Analizando puntos de dolor..." },
+      { type: "ok", text: "Requerimientos claros." },
     ],
     description: "Te hacemos las preguntas correctas. No asumimos nada. Hasta no entender tu negocio, no arrancamos.",
-    entregable: "Propuesta con tiempos y precio",
+    entregable: "Propuesta técnica detallada",
   },
   {
     step: "02",
-    title: "Diseñamos cómo va a funcionar",
-    header: "balum_DISEÑO@root — prototipo.sh",
+    title: "Diseñamos la solución",
+    header: "prototipo.ts",
     lines: [
-      { type: "cmd", text: "$ balum diseñar --foco=tu-operacion" },
-      { type: "log", text: "▸ Armando las pantallas..." },
-      { type: "ok", text: "✓ Vos aprobás antes de empezar" },
+      { type: "cmd", text: "balum diseñar --foco=tu-operacion" },
+      { type: "log", text: "Estructurando UI/UX..." },
+      { type: "ok", text: "Prototipo interactivo generado." },
     ],
-    description: "Te mostramos cómo va a verse y funcionar. Lo revisamos juntos, lo ajustamos, y recién ahí arrancamos.",
-    entregable: "Prototipo aprobado por vos",
+    description: "Te mostramos cómo va a verse y funcionar. Lo revisamos juntos, lo ajustamos, y recién ahí arrancamos a codear.",
+    entregable: "Prototipo funcional aprobado",
   },
   {
     step: "03",
-    title: "Lo ponemos en marcha",
-    header: "balum_ENTREGA@root — en-marcha.sh",
+    title: "Despliegue y marcha",
+    header: "deploy.yml",
     lines: [
-      { type: "cmd", text: "$ balum entregar --estado=listo" },
-      { type: "log", text: "▸ Sistema instalado y funcionando..." },
-      { type: "ok", text: "✓ Tu negocio no para" },
+      { type: "cmd", text: "balum entregar --estado=produccion" },
+      { type: "log", text: "Desplegando en infraestructura cloud..." },
+      { type: "ok", text: "Sistema en línea. Latencia < 50ms." },
     ],
-    description: "Lo instalamos, te explicamos cómo usarlo y seguimos disponibles. No te dejamos solo después de la entrega.",
-    entregable: "Sistema en marcha + soporte",
+    description: "Lo instalamos, capacitamos a tu equipo y aseguramos su estabilidad a largo plazo. Tu negocio no para.",
+    entregable: "Infraestructura cloud operativa",
   },
 ]
 
@@ -67,23 +67,23 @@ const TESTIMONIALS = [
 const TECH_STACK = [
   {
     category: "Frontend",
-    color: "text-blue-400 border-blue-500/30 bg-blue-500/10",
+    color: "text-[#3ECF8E] border-[#3ECF8E]/20 bg-[#3ECF8E]/[0.03]",
     items: ["Next.js", "React", "Tailwind CSS", "TypeScript"],
   },
   {
     category: "Backend",
-    color: "text-green-400 border-green-500/30 bg-green-500/10",
+    color: "text-zinc-300 border-white/10 bg-white/[0.02]",
     items: ["Node.js", "Python", "FastAPI", "PostgreSQL"],
   },
   {
     category: "IA & Automatización",
-    color: "text-purple-400 border-purple-500/30 bg-purple-500/10",
+    color: "text-[#3ECF8E] border-[#3ECF8E]/20 bg-[#3ECF8E]/[0.03]",
     items: ["n8n", "OpenAI API", "LangChain"],
   },
   {
     category: "Infraestructura",
-    color: "text-orange-400 border-orange-500/30 bg-orange-500/10",
-    items: ["VPS Linux", "Docker", "Nginx", "SSL"],
+    color: "text-zinc-300 border-white/10 bg-white/[0.02]",
+    items: ["Linux", "Docker", "Traefik", "VPS Cloud"],
   },
 ]
 
@@ -93,37 +93,35 @@ const WA_NUMBER = "5492974779978"
    REUSABLE COMPONENTS
    —————————————————————————————————— */
 
-function TerminalCard({ header, lines, className = "" }: {
+function CodeBlockCard({ header, lines, className = "" }: {
   header: string
   lines: { type: string; text: string }[]
   className?: string
 }) {
   return (
-    <div className={`bg-[#050505] border border-white/10 rounded-2xl overflow-hidden group relative ${className}`}>
-      <div className="absolute inset-0 bg-gradient-to-b from-green-500/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none rounded-2xl" />
-      <div className="bg-white/[0.02] border-b border-white/5 px-4 py-3 flex items-center gap-2">
-        <div className="flex gap-1.5">
-          <div className="w-2.5 h-2.5 rounded-full bg-red-500/70" />
-          <div className="w-2.5 h-2.5 rounded-full bg-yellow-500/70" />
-          <div className="w-2.5 h-2.5 rounded-full bg-green-500/70" />
-        </div>
-        <span className="ml-2 text-[10px] text-zinc-500 font-mono tracking-wider">{header}</span>
+    <div className={`bg-black border border-white/[0.08] rounded-xl overflow-hidden group relative transition-colors hover:border-[#3ECF8E]/30 ${className}`}>
+      <div className="absolute inset-0 bg-gradient-to-b from-[#3ECF8E]/[0.02] to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none" />
+      <div className="bg-white/[0.01] border-b border-white/[0.05] px-4 py-3 flex items-center gap-3">
+        <Terminal size={14} className="text-zinc-600" />
+        <span className="text-[11px] text-zinc-400 font-mono tracking-wide">{header}</span>
       </div>
-      <div className="p-5 md:p-6 font-mono text-xs md:text-sm space-y-1.5">
+      <div className="p-6 md:p-8 font-mono text-xs md:text-sm leading-relaxed space-y-2">
         {lines.map((line, i) => (
           <div
             key={i}
             className={`terminal-line-animate ${
               line.type === "cmd"
-                ? "text-white"
+                ? "text-zinc-200"
                 : line.type === "ok"
-                  ? "text-green-400"
-                  : "text-zinc-500 pl-1"
+                  ? "text-[#3ECF8E]"
+                  : "text-zinc-500"
             }`}
             style={{ animationDelay: `${i * 150}ms` }}
           >
-            {line.type === "cmd" && <span className="text-green-400">$ </span>}
-            {line.text.replace("$ ", "")}
+            {line.type === "cmd" && <span className="text-[#3ECF8E] mr-3">~</span>}
+            {line.type === "log" && <span className="text-zinc-700 mr-3">›</span>}
+            {line.type === "ok" && <span className="text-[#3ECF8E] mr-3">✓</span>}
+            {line.text}
           </div>
         ))}
       </div>
@@ -152,17 +150,17 @@ export default function CodePage() {
   }, [])
 
   return (
-    <div className="w-full min-h-screen bg-[var(--bg-base)] text-zinc-50 font-sans antialiased overflow-x-hidden relative">
-      {/* AURA BACKGROUNDS */}
-      <div className="fixed inset-0 z-0 pointer-events-none overflow-hidden">
-        <div className="absolute top-[-10%] right-[-5%] w-[60vw] md:w-[500px] h-[60vw] md:h-[500px] bg-green-600/15 blur-[120px] rounded-full mix-blend-screen" />
-        <div className="absolute bottom-[-10%] left-[-5%] w-[70vw] md:w-[600px] h-[70vw] md:h-[600px] bg-emerald-500/10 blur-[150px] rounded-full mix-blend-screen" />
+    <div className="w-full min-h-screen bg-black text-zinc-50 font-sans antialiased overflow-x-hidden relative selection:bg-[#3ECF8E]/30">
+      
+      {/* GLOWS (SUTIL ESFERA ESTILO SUPABASE) */}
+      <div className="fixed inset-0 z-0 pointer-events-none overflow-hidden flex items-center justify-center">
+        <div className="absolute top-[-20%] right-[-10%] w-[500px] h-[500px] bg-[#3ECF8E]/[0.07] blur-[150px] rounded-full mix-blend-screen" />
       </div>
 
       {/* BACK BUTTON */}
       <Link 
         href="/"
-        className="fixed top-6 left-6 md:top-8 md:left-8 z-50 flex items-center gap-2 text-zinc-400 hover:text-white transition-colors group text-xs font-mono font-bold uppercase tracking-widest bg-black/50 backdrop-blur-md px-4 py-2 rounded-full border border-white/5"
+        className="fixed top-6 left-6 md:top-8 md:left-8 z-50 flex items-center gap-2 text-zinc-400 hover:text-white transition-colors group text-xs font-mono tracking-widest bg-black/80 backdrop-blur-md px-4 py-2 rounded-md border border-white/[0.08]"
       >
         <ArrowLeft size={14} className="group-hover:-translate-x-1 transition-transform" />
         Volver
@@ -171,34 +169,34 @@ export default function CodePage() {
       {/* ======================================
           SECTION 1 — HERO
           ====================================== */}
-      <section className="w-full relative flex flex-col items-center justify-center min-h-screen py-20 z-10 text-center px-6">
-        <div className="reveal inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-green-500/20 bg-green-500/10 text-green-400 text-xs font-mono font-semibold tracking-wide mb-10">
+      <section className="w-full relative flex flex-col items-center justify-center min-h-screen py-24 z-10 text-center px-6">
+        <div className="reveal inline-flex items-center gap-2 px-3 py-1 rounded-full border border-white/[0.08] bg-white/[0.02] text-[#3ECF8E] text-xs font-mono tracking-wide mb-8">
           <Code2 size={14} />
-          <span>### para-tu-negocio</span>
+          <span>DevTools para Negocios</span>
         </div>
 
-        <h1 className="reveal delay-100 text-5xl md:text-7xl font-black tracking-tighter leading-[0.95] mb-8 text-transparent bg-clip-text bg-gradient-to-b from-white via-white to-zinc-500">
-          Tu negocio necesita un sistema.<br />Nosotros lo construimos.
+        <h1 className="reveal delay-100 text-5xl md:text-7xl font-semibold tracking-tighter leading-[1.1] mb-6 text-white max-w-4xl">
+          Construimos el sistema que tu operación necesita.
         </h1>
 
-        <p className="reveal delay-200 text-lg md:text-xl text-zinc-400 mb-16 max-w-xl leading-relaxed tracking-tight font-medium">
-          Desarrollado a medida, funcionando desde el primer día.
+        <p className="reveal delay-200 text-lg md:text-xl text-zinc-400 mb-12 max-w-2xl leading-relaxed tracking-tight">
+          Desarrollo de software a medida y agentes de Inteligencia Artificial para automatizar y escalar procesos sin fricción.
         </p>
 
         <div className="reveal delay-300 flex flex-col sm:flex-row gap-4 w-full sm:w-auto">
           <a
-            href={`https://wa.me/${WA_NUMBER}?text=${encodeURIComponent("Hola BALUMTech, quiero desarrollar mi producto con Balum CODE.")}`}
+            href={`https://wa.me/${WA_NUMBER}?text=${encodeURIComponent("Hola BALUMTech, quiero desarrollar un producto de software.")}`}
             target="_blank"
             rel="noopener noreferrer"
-            className="px-8 py-4 bg-green-500 hover:bg-green-400 text-black rounded-xl font-bold tracking-tight hover:scale-105 transition-all flex items-center justify-center gap-2 group shadow-xl shadow-green-500/20"
+            className="px-6 py-3 bg-[#3ECF8E] hover:bg-[#34b27b] text-black rounded-md font-medium tracking-tight transition-all flex items-center justify-center gap-2 shadow-[0_0_20px_rgba(62,207,142,0.2)]"
           >
-            Contanos qué necesitás <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform" />
+            Iniciar proyecto <ArrowRight size={16} />
           </a>
           <a
             href="#proceso"
-            className="px-8 py-4 glass-panel text-white rounded-xl font-semibold tracking-tight hover:bg-white/5 transition-all flex items-center justify-center"
+            className="px-6 py-3 bg-white/[0.03] border border-white/[0.08] hover:bg-white/[0.06] text-white rounded-md font-medium tracking-tight transition-all flex items-center justify-center"
           >
-            Ver cómo trabajamos
+            Ver arquitectura
           </a>
         </div>
       </section>
@@ -206,39 +204,36 @@ export default function CodePage() {
       {/* ======================================
           SECTION 2 — PROCESS
           ====================================== */}
-      <section id="proceso" className="w-full py-32 md:py-48 px-6 relative z-10 border-t border-white/[0.05]">
-        <div className="w-full max-w-3xl mx-auto flex flex-col items-center text-center">
+      <section id="proceso" className="w-full py-32 px-6 relative z-10 border-t border-white/[0.05]">
+        <div className="w-full max-w-4xl mx-auto flex flex-col items-center text-center">
           <div className="reveal mb-24 md:mb-32">
-            <span className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-green-500/20 bg-green-500/10 text-green-400 text-[10px] font-mono font-semibold tracking-wide mb-6">
-              ### como-trabajamos
-            </span>
-            <h2 className="text-4xl md:text-6xl font-black tracking-tighter mb-6 text-white">Tres pasos.<br />Sin vueltas.</h2>
-            <p className="text-zinc-400 text-lg md:text-xl max-w-lg mx-auto font-medium tracking-tight">
-              De la primera charla a tu sistema funcionando.
+            <h2 className="text-3xl md:text-5xl font-semibold tracking-tighter mb-4 text-white">Metodología de despliegue.</h2>
+            <p className="text-zinc-400 text-lg max-w-lg mx-auto tracking-tight">
+              Un pipeline predecible y transparente desde el día uno.
             </p>
           </div>
 
-          <div className="flex flex-col gap-32 md:gap-40 w-full">
+          <div className="flex flex-col gap-24 w-full">
             {PROCESS_STEPS.map((step, i) => (
               <div key={step.step} className={`reveal delay-100 flex flex-col items-center text-center gap-8`}>
-                <div className="flex flex-col items-center gap-4">
-                  <span className="text-green-400 font-mono text-sm font-bold bg-green-500/10 px-4 py-2 rounded-full border border-green-500/20">
-                    Paso {step.step}
+                <div className="flex flex-col items-center gap-3">
+                  <span className="text-zinc-500 font-mono text-sm tracking-widest uppercase">
+                    Fase {step.step}
                   </span>
-                  <h3 className="text-white font-black text-3xl md:text-4xl">{step.title}</h3>
+                  <h3 className="text-white font-semibold tracking-tight text-2xl md:text-3xl">{step.title}</h3>
                 </div>
 
                 <div className="w-full max-w-2xl text-left">
-                  <TerminalCard header={step.header} lines={step.lines} className="shadow-2xl shadow-green-500/5" />
+                  <CodeBlockCard header={step.header} lines={step.lines} />
                 </div>
 
-                <p className="text-zinc-400 text-base md:text-lg max-w-xl leading-relaxed font-medium">
+                <p className="text-zinc-400 text-base max-w-xl leading-relaxed">
                   {step.description}
                 </p>
 
-                <span className="inline-flex items-center gap-2 px-4 py-2 rounded-xl border border-green-500/20 bg-green-500/5 text-green-400 text-xs font-mono font-bold tracking-wide">
-                  ✓ {step.entregable}
-                </span>
+                <div className="inline-flex items-center gap-2 px-4 py-2 rounded-md border border-white/[0.08] bg-white/[0.02] text-zinc-300 text-xs font-mono tracking-wide">
+                  Output: <span className="text-[#3ECF8E]">{step.entregable}</span>
+                </div>
               </div>
             ))}
           </div>
@@ -248,43 +243,31 @@ export default function CodePage() {
       {/* ======================================
           SECTION 3 — SUCCESS CASES
           ====================================== */}
-      <section className="w-full py-32 md:py-48 px-6 relative z-10 border-t border-white/[0.05]">
-        <div className="w-full max-w-3xl mx-auto flex flex-col items-center text-center">
-          <div className="reveal mb-24 md:mb-32">
-            <span className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-green-500/20 bg-green-500/10 text-green-400 text-[10px] font-mono font-semibold tracking-wide mb-6">
-              ### casos-de-exito
-            </span>
-            <h2 className="text-4xl md:text-6xl font-black tracking-tighter mb-6 text-white">Resultados reales.</h2>
+      <section className="w-full py-32 px-6 relative z-10 border-t border-white/[0.05] bg-white/[0.01]">
+        <div className="w-full max-w-4xl mx-auto flex flex-col items-center text-center">
+          <div className="reveal mb-24">
+            <h2 className="text-3xl md:text-5xl font-semibold tracking-tighter mb-4 text-white">Producción comprobada.</h2>
+            <p className="text-zinc-400 text-lg max-w-lg mx-auto tracking-tight">
+              Métricas reales de operaciones optimizadas.
+            </p>
           </div>
 
-          <div className="flex flex-col gap-16 md:gap-24 w-full max-w-2xl text-left">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 w-full text-left">
             {TESTIMONIALS.map((t, i) => (
               <div
                 key={i}
-                className={`reveal delay-100 bg-[#050505] border border-white/10 rounded-2xl overflow-hidden hover:border-green-500/20 transition-all duration-500 shadow-2xl`}
+                className="reveal delay-100 bg-black border border-white/[0.08] rounded-xl p-8 hover:border-white/20 transition-all flex flex-col"
               >
-                <div className="bg-white/[0.02] border-b border-white/5 px-5 py-4 flex items-center gap-2">
-                  <div className="flex gap-1.5">
-                    <div className="w-3 h-3 rounded-full bg-red-500/70" />
-                    <div className="w-3 h-3 rounded-full bg-yellow-500/70" />
-                    <div className="w-3 h-3 rounded-full bg-green-500/70" />
-                  </div>
-                  <span className="ml-2 text-xs text-zinc-500 font-mono tracking-wider">
-                    balum_CLIENTE@root — resultado.log
-                  </span>
+                <div className="flex items-center gap-3 mb-6">
+                  <div className="w-2 h-2 rounded-full bg-[#3ECF8E] animate-pulse" />
+                  <span className="text-xs text-zinc-500 font-mono tracking-wider">STATUS: 200 OK</span>
                 </div>
-                <div className="p-8 md:p-10 font-mono space-y-6">
-                  <p className="text-zinc-300 text-sm md:text-base whitespace-pre-line leading-relaxed">
-                    {t.text}
-                  </p>
-                  <p className="text-zinc-500 text-sm">— {t.client}</p>
-                  <div className="pt-6 border-t border-white/5 space-y-2">
-                    <div className="flex items-center gap-3">
-                      <span className="w-2.5 h-2.5 rounded-full bg-green-400 pulse-green" />
-                      <span className="text-green-400 text-xs font-bold tracking-widest">STATUS: SISTEMA EN USO ✓</span>
-                    </div>
-                    <p className="text-zinc-400 text-xs tracking-widest pl-5">RESULTADO: <span className="text-white">{t.resultado}</span></p>
-                  </div>
+                <p className="text-zinc-300 text-sm leading-relaxed mb-8 flex-1 italic">
+                  {t.text}
+                </p>
+                <div className="pt-6 border-t border-white/[0.05]">
+                  <p className="text-zinc-500 text-xs mb-2">{t.client}</p>
+                  <p className="text-xs font-mono text-[#3ECF8E]">Metric: {t.resultado}</p>
                 </div>
               </div>
             ))}
@@ -295,34 +278,31 @@ export default function CodePage() {
       {/* ======================================
           SECTION 4 — TECH STACK
           ====================================== */}
-      <section className="w-full py-32 md:py-48 px-6 relative z-10 border-t border-white/[0.05]">
-        <div className="w-full max-w-3xl mx-auto flex flex-col items-center text-center">
-          <div className="reveal mb-24 md:mb-32">
-            <span className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-green-500/20 bg-green-500/10 text-green-400 text-[10px] font-mono font-semibold tracking-wide mb-6">
-              ### con-que-lo-construimos
-            </span>
-            <h2 className="text-3xl md:text-5xl font-black tracking-tighter mb-8 text-white leading-tight">
-              Vos no necesitás entender la tecnología — nosotros sí.
+      <section className="w-full py-32 px-6 relative z-10 border-t border-white/[0.05]">
+        <div className="w-full max-w-4xl mx-auto flex flex-col items-center text-center">
+          <div className="reveal mb-20">
+            <h2 className="text-3xl md:text-5xl font-semibold tracking-tighter mb-4 text-white">
+              Arquitectura Enterprise.
             </h2>
-            <p className="text-zinc-400 text-lg md:text-xl max-w-xl mx-auto font-medium tracking-tight leading-relaxed">
-              Usamos las mismas herramientas que las empresas más grandes del mundo.
+            <p className="text-zinc-400 text-lg max-w-xl mx-auto tracking-tight">
+              Construimos sobre los estándares abiertos más robustos del mercado, garantizando escalabilidad y nulo vendor lock-in.
             </p>
           </div>
 
-          <div className="flex flex-col gap-12 w-full max-w-xl">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 w-full">
             {TECH_STACK.map((group, i) => (
               <div
                 key={group.category}
-                className={`reveal delay-100 glass-panel rounded-3xl p-8 md:p-10 flex flex-col items-center shadow-2xl`}
+                className="reveal delay-100 bg-white/[0.02] border border-white/[0.06] rounded-xl p-8 flex flex-col items-start text-left hover:bg-white/[0.03] transition-colors"
               >
-                <h3 className="text-sm font-mono font-bold uppercase tracking-widest text-zinc-400 mb-6">
+                <h3 className="text-sm font-medium text-white mb-6">
                   {group.category}
                 </h3>
-                <div className="flex flex-wrap justify-center gap-3">
+                <div className="flex flex-wrap gap-2">
                   {group.items.map((item) => (
                     <span
                       key={item}
-                      className={`px-4 py-2 rounded-lg border text-sm font-mono font-semibold ${group.color}`}
+                      className={`px-3 py-1 rounded-md border text-xs font-mono ${group.color}`}
                     >
                       {item}
                     </span>
@@ -337,49 +317,31 @@ export default function CodePage() {
       {/* ======================================
           SECTION 5 — FINAL CTA
           ====================================== */}
-      <section className="w-full py-32 md:py-48 px-6 relative z-10 border-t border-white/[0.05]">
+      <section className="w-full py-32 px-6 relative z-10 border-t border-white/[0.05]">
         <div className="w-full max-w-3xl mx-auto flex flex-col items-center text-center">
-          <div className="reveal mb-16 md:mb-20">
-            <span className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-green-500/20 bg-green-500/10 text-green-400 text-[10px] font-mono font-semibold tracking-wide mb-6">
-              ### empeza-hoy
-            </span>
-            <h2 className="text-4xl md:text-6xl font-black tracking-tighter mb-8 text-white">
-              El primer paso es una charla.
+          <div className="reveal mb-12">
+            <h2 className="text-3xl md:text-5xl font-semibold tracking-tighter mb-6 text-white">
+              Iniciá la migración.
             </h2>
-            <p className="text-zinc-400 text-lg md:text-xl max-w-lg mx-auto font-medium tracking-tight leading-relaxed">
-              Sin costo, sin compromiso. Respondemos en menos de 24hs.
+            <p className="text-zinc-400 text-lg max-w-lg mx-auto tracking-tight">
+              Agenda una llamada técnica. Sin fricción.
             </p>
           </div>
 
-          <div className="reveal delay-100 w-full max-w-xl mb-16 text-left">
-            <TerminalCard
-              header="balum_CODE@root — primer-contacto.sh"
-              lines={[
-                { type: "cmd", text: "$ balum disponibilidad --check" },
-                { type: "log", text: "▸ Equipo disponible: SÍ" },
-                { type: "log", text: "▸ Lugares este mes: 2 proyectos" },
-                { type: "ok", text: "✓ LISTO PARA ESCUCHARTE" },
-              ]}
-              className="shadow-2xl shadow-green-500/5"
-            />
-          </div>
-
-          <div className="reveal delay-200 flex flex-col sm:flex-row gap-6 justify-center w-full sm:w-auto">
+          <div className="reveal delay-100 flex flex-col sm:flex-row gap-4 justify-center w-full sm:w-auto">
             <a
-              href={`https://wa.me/${WA_NUMBER}?text=${encodeURIComponent("Hola BALUMTech, quiero iniciar un proyecto con Balum CODE.")}`}
+              href={`https://wa.me/${WA_NUMBER}?text=${encodeURIComponent("Hola BALUMTech, busco agendar una llamada técnica.")}`}
               target="_blank"
               rel="noopener noreferrer"
-              className="px-10 py-5 bg-green-500 hover:bg-green-400 text-black rounded-2xl font-bold tracking-tight text-lg hover:scale-105 transition-all flex items-center justify-center gap-3 group shadow-2xl shadow-green-500/20"
+              className="px-8 py-3 bg-[#3ECF8E] hover:bg-[#34b27b] text-black rounded-md font-medium tracking-tight transition-all flex items-center justify-center gap-2 shadow-[0_0_20px_rgba(62,207,142,0.2)]"
             >
-              <MessageCircle size={22} />
-              Escribinos por WhatsApp
-              <ArrowRight size={22} className="group-hover:translate-x-1 transition-transform" />
+              Contactar equipo técnico
             </a>
             <a
               href="mailto:contacto@balumtech.com"
-              className="px-10 py-5 glass-panel text-zinc-300 rounded-2xl font-semibold tracking-tight text-lg hover:bg-white/5 hover:text-white transition-all flex items-center justify-center gap-3"
+              className="px-8 py-3 bg-white/[0.03] border border-white/[0.08] hover:bg-white/[0.06] text-zinc-300 rounded-md font-medium tracking-tight transition-all flex items-center justify-center gap-2"
             >
-              <Mail size={22} />
+              <Mail size={16} className="text-zinc-500" />
               contacto@balumtech.com
             </a>
           </div>
@@ -387,15 +349,13 @@ export default function CodePage() {
       </section>
 
       {/* FOOTER */}
-      <footer className="w-full pt-16 pb-12 px-6 border-t border-white/[0.05] relative z-10">
-        <div className="w-full max-w-5xl mx-auto flex flex-col md:flex-row justify-between items-center gap-8 text-center md:text-left">
-          <div className="text-zinc-500 font-mono text-sm">
-            balum_CODE — Sistemas a medida para empresas reales
+      <footer className="w-full py-8 px-6 border-t border-white/[0.05] bg-black relative z-10">
+        <div className="w-full max-w-5xl mx-auto flex flex-col md:flex-row justify-between items-center gap-4 text-center md:text-left">
+          <div className="text-zinc-500 font-mono text-[11px] tracking-wide">
+            balum_CODE // Enterprise Software
           </div>
-          <div className="flex flex-wrap justify-center gap-4 text-xs font-semibold tracking-wider text-zinc-600 uppercase">
-            <span>© {new Date().getFullYear()} BALUMTech</span>
-            <span className="hidden md:inline">•</span>
-            <span>Sarmiento, Chubut 🇦🇷</span>
+          <div className="text-zinc-600 text-[11px] tracking-wide">
+            © {new Date().getFullYear()} BALUMTech • Patagonia Argentina
           </div>
         </div>
       </footer>
