@@ -24,13 +24,20 @@ ENV NEXT_TELEMETRY_DISABLED=1
 ENV PORT=3000
 ENV HOSTNAME="0.0.0.0"
 
-# Copiar solo lo necesario para correr
-COPY --from=builder /app/public ./public
-COPY --from=builder /app/.next/standalone ./
-COPY --from=builder /app/.next/static ./.next/static
+# Crear usuario no root
+RUN addgroup --system --gid 1001 nodejs
+RUN adduser --system --uid 1001 nextjs
 
-# Copiar datos iniciales (el volumen de EasyPanel sobreescribe esto)
-COPY --from=builder /app/data ./data
+# Copiar solo lo necesario para correr y asignar owner
+COPY --from=builder /app/public ./public
+COPY --from=builder --chown=nextjs:nodejs /app/.next/standalone ./
+COPY --from=builder --chown=nextjs:nodejs /app/.next/static ./.next/static
+
+# Copiar datos iniciales y asegurar permisos
+COPY --from=builder --chown=nextjs:nodejs /app/data ./data
+
+# Cambiar al usuario no root
+USER nextjs
 
 EXPOSE 3000
 
