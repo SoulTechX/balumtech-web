@@ -150,7 +150,7 @@ export default function CodePage() {
   }, [])
 
   return (
-    <div className="w-full min-h-screen bg-black text-zinc-50 font-sans antialiased overflow-x-hidden relative selection:bg-[#3ECF8E]/30">
+    <div className="w-full min-h-screen bg-[#111111] text-zinc-50 font-sans antialiased overflow-x-hidden relative selection:bg-[#3ECF8E]/30">
       
       {/* GLOWS (SUTIL ESFERA ESTILO SUPABASE) */}
       <div className="fixed inset-0 z-0 pointer-events-none overflow-hidden flex items-center justify-center">
@@ -204,7 +204,7 @@ export default function CodePage() {
       {/* ======================================
           SECTION 2 — PROCESS
           ====================================== */}
-      <section id="proceso" className="w-full py-32 px-6 relative z-10 border-t border-white/[0.05]">
+      <section id="proceso" className="w-full py-40 md:py-56 px-6 relative z-10 border-t border-white/[0.05]">
         <div className="w-full max-w-4xl mx-auto flex flex-col items-center text-center">
           <div className="reveal mb-24 md:mb-32">
             <h2 className="text-3xl md:text-5xl font-semibold tracking-tighter mb-4 text-white">Metodología de despliegue.</h2>
@@ -243,29 +243,38 @@ export default function CodePage() {
       {/* ======================================
           SECTION 3 — SUCCESS CASES
           ====================================== */}
-      <section className="w-full py-32 px-6 relative z-10 border-t border-white/[0.05] bg-white/[0.01]">
-        <div className="w-full max-w-4xl mx-auto flex flex-col items-center text-center">
-          <div className="reveal mb-24">
+      <section className="w-full py-40 md:py-56 relative z-10 border-t border-white/[0.05]">
+        <div className="w-full max-w-4xl mx-auto flex flex-col items-center text-center px-6">
+          <div className="reveal mb-20 md:mb-24">
             <h2 className="text-3xl md:text-5xl font-semibold tracking-tighter mb-4 text-white">Producción comprobada.</h2>
             <p className="text-zinc-400 text-lg max-w-lg mx-auto tracking-tight">
               Métricas reales de operaciones optimizadas.
             </p>
           </div>
+        </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 w-full text-left">
-            {TESTIMONIALS.map((t, i) => (
+        {/* MARQUEE CAROUSEL */}
+        <div className="relative w-full overflow-hidden flex items-center">
+          {/* FADE GRADIENTS */}
+          <div className="absolute top-0 bottom-0 left-0 w-[15%] md:w-[10%] bg-gradient-to-r from-[#111111] to-transparent z-20 pointer-events-none" />
+          <div className="absolute top-0 bottom-0 right-0 w-[15%] md:w-[10%] bg-gradient-to-l from-[#111111] to-transparent z-20 pointer-events-none" />
+
+          <div className="animate-marquee flex gap-6 py-4 px-4">
+            {/* Duplicamos el array x4 para asegurar que el scroll sea infinito en monitores muy anchos */}
+            {[...TESTIMONIALS, ...TESTIMONIALS, ...TESTIMONIALS, ...TESTIMONIALS].map((t, i) => (
               <div
                 key={i}
-                className="reveal delay-100 bg-black border border-white/[0.08] rounded-xl p-8 hover:border-white/20 transition-all flex flex-col"
+                className="w-[320px] md:w-[400px] shrink-0 bg-black border border-white/[0.08] rounded-xl p-8 hover:border-white/20 transition-all flex flex-col group relative"
               >
-                <div className="flex items-center gap-3 mb-6">
+                <div className="absolute inset-0 bg-gradient-to-b from-[#3ECF8E]/[0.02] to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none rounded-xl" />
+                <div className="flex items-center gap-3 mb-6 relative z-10">
                   <div className="w-2 h-2 rounded-full bg-[#3ECF8E] animate-pulse" />
                   <span className="text-xs text-zinc-500 font-mono tracking-wider">STATUS: 200 OK</span>
                 </div>
-                <p className="text-zinc-300 text-sm leading-relaxed mb-8 flex-1 italic">
+                <p className="text-zinc-300 text-sm leading-relaxed mb-8 flex-1 italic relative z-10">
                   {t.text}
                 </p>
-                <div className="pt-6 border-t border-white/[0.05]">
+                <div className="pt-6 border-t border-white/[0.05] relative z-10">
                   <p className="text-zinc-500 text-xs mb-2">{t.client}</p>
                   <p className="text-xs font-mono text-[#3ECF8E]">Metric: {t.resultado}</p>
                 </div>
@@ -278,7 +287,7 @@ export default function CodePage() {
       {/* ======================================
           SECTION 4 — TECH STACK
           ====================================== */}
-      <section className="w-full py-32 px-6 relative z-10 border-t border-white/[0.05]">
+      <section className="w-full py-40 md:py-56 px-6 relative z-10 border-t border-white/[0.05]">
         <div className="w-full max-w-4xl mx-auto flex flex-col items-center text-center">
           <div className="reveal mb-20">
             <h2 className="text-3xl md:text-5xl font-semibold tracking-tighter mb-4 text-white">
@@ -293,7 +302,7 @@ export default function CodePage() {
             {TECH_STACK.map((group, i) => (
               <div
                 key={group.category}
-                className="reveal delay-100 bg-white/[0.02] border border-white/[0.06] rounded-xl p-8 flex flex-col items-start text-left hover:bg-white/[0.03] transition-colors"
+                className="reveal delay-100 bg-black border border-white/[0.08] rounded-xl p-8 flex flex-col items-start text-left hover:border-white/20 transition-colors"
               >
                 <h3 className="text-sm font-medium text-white mb-6">
                   {group.category}
@@ -317,7 +326,7 @@ export default function CodePage() {
       {/* ======================================
           SECTION 5 — FINAL CTA
           ====================================== */}
-      <section className="w-full py-32 px-6 relative z-10 border-t border-white/[0.05]">
+      <section className="w-full py-40 md:py-56 px-6 relative z-10 border-t border-white/[0.05]">
         <div className="w-full max-w-3xl mx-auto flex flex-col items-center text-center">
           <div className="reveal mb-12">
             <h2 className="text-3xl md:text-5xl font-semibold tracking-tighter mb-6 text-white">
@@ -349,7 +358,7 @@ export default function CodePage() {
       </section>
 
       {/* FOOTER */}
-      <footer className="w-full py-8 px-6 border-t border-white/[0.05] bg-black relative z-10">
+      <footer className="w-full py-8 px-6 border-t border-white/[0.05] bg-[#111111] relative z-10">
         <div className="w-full max-w-5xl mx-auto flex flex-col md:flex-row justify-between items-center gap-4 text-center md:text-left">
           <div className="text-zinc-500 font-mono text-[11px] tracking-wide">
             balum_CODE // Enterprise Software
