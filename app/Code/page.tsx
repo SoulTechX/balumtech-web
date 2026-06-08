@@ -99,9 +99,9 @@ function CodeBlockCard({ header, lines, className = "" }: {
   className?: string
 }) {
   return (
-    <div className={`bg-black border border-white/[0.08] rounded-xl overflow-hidden group relative transition-colors hover:border-[#3ECF8E]/30 ${className}`}>
+    <div className={`bg-[#1C1C1C] border border-white/[0.08] rounded-2xl overflow-hidden group relative transition-colors hover:border-[#3ECF8E]/30 ${className}`}>
       <div className="absolute inset-0 bg-gradient-to-b from-[#3ECF8E]/[0.02] to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none" />
-      <div className="bg-white/[0.01] border-b border-white/[0.05] px-4 py-3 flex items-center gap-3">
+      <div className="bg-white/[0.02] border-b border-white/[0.05] px-4 py-3 flex items-center gap-3">
         <Terminal size={14} className="text-zinc-600" />
         <span className="text-[11px] text-zinc-400 font-mono tracking-wide">{header}</span>
       </div>
@@ -160,7 +160,7 @@ export default function CodePage() {
       {/* BACK BUTTON */}
       <Link 
         href="/"
-        className="fixed top-6 left-6 md:top-8 md:left-8 z-50 flex items-center gap-2 text-zinc-400 hover:text-white transition-colors group text-xs font-mono tracking-widest bg-black/80 backdrop-blur-md px-4 py-2 rounded-md border border-white/[0.08]"
+        className="fixed top-6 left-6 md:top-8 md:left-8 z-50 flex items-center gap-2 text-zinc-400 hover:text-white transition-colors group text-xs font-mono tracking-widest bg-[#1C1C1C] backdrop-blur-md px-4 py-2 rounded-md border border-white/[0.08]"
       >
         <ArrowLeft size={14} className="group-hover:-translate-x-1 transition-transform" />
         Volver
@@ -170,7 +170,7 @@ export default function CodePage() {
           SECTION 1 — HERO
           ====================================== */}
       <section className="w-full relative flex flex-col items-center justify-center min-h-screen py-24 z-10 text-center px-6">
-        <div className="reveal inline-flex items-center gap-2 px-3 py-1 rounded-full border border-white/[0.08] bg-white/[0.02] text-[#3ECF8E] text-xs font-mono tracking-wide mb-8">
+        <div className="reveal inline-flex items-center gap-2 px-3 py-1 rounded-full border border-white/[0.08] bg-[#1C1C1C] text-[#3ECF8E] text-xs font-mono tracking-wide mb-8">
           <Code2 size={14} />
           <span>DevTools para Negocios</span>
         </div>
@@ -188,13 +188,13 @@ export default function CodePage() {
             href={`https://wa.me/${WA_NUMBER}?text=${encodeURIComponent("Hola BALUMTech, quiero desarrollar un producto de software.")}`}
             target="_blank"
             rel="noopener noreferrer"
-            className="px-6 py-3 bg-[#3ECF8E] hover:bg-[#34b27b] text-black rounded-md font-medium tracking-tight transition-all flex items-center justify-center gap-2 shadow-[0_0_20px_rgba(62,207,142,0.2)]"
+            className="px-6 py-3 bg-[#3ECF8E] hover:bg-[#34b27b] text-[#111111] rounded-md font-medium tracking-tight transition-all flex items-center justify-center gap-2 shadow-[0_0_20px_rgba(62,207,142,0.2)]"
           >
             Iniciar proyecto <ArrowRight size={16} />
           </a>
           <a
             href="#proceso"
-            className="px-6 py-3 bg-white/[0.03] border border-white/[0.08] hover:bg-white/[0.06] text-white rounded-md font-medium tracking-tight transition-all flex items-center justify-center"
+            className="px-6 py-3 bg-[#1C1C1C] border border-white/[0.08] hover:bg-white/[0.06] text-white rounded-md font-medium tracking-tight transition-all flex items-center justify-center"
           >
             Ver arquitectura
           </a>
@@ -204,7 +204,7 @@ export default function CodePage() {
       {/* ======================================
           SECTION 2 — PROCESS
           ====================================== */}
-      <section id="proceso" className="w-full py-40 md:py-56 px-6 relative z-10 border-t border-white/[0.05]">
+      <section id="proceso" className="w-full py-40 md:py-[200px] px-6 relative z-10 border-t border-white/[0.05]">
         <div className="w-full max-w-4xl mx-auto flex flex-col items-center text-center">
           <div className="reveal mb-24 md:mb-32">
             <h2 className="text-3xl md:text-5xl font-semibold tracking-tighter mb-4 text-white">Metodología de despliegue.</h2>
@@ -213,7 +213,7 @@ export default function CodePage() {
             </p>
           </div>
 
-          <div className="flex flex-col gap-24 w-full">
+          <div className="flex flex-col gap-32 md:gap-40 w-full">
             {PROCESS_STEPS.map((step, i) => (
               <div key={step.step} className={`reveal delay-100 flex flex-col items-center text-center gap-8`}>
                 <div className="flex flex-col items-center gap-3">
@@ -231,7 +231,7 @@ export default function CodePage() {
                   {step.description}
                 </p>
 
-                <div className="inline-flex items-center gap-2 px-4 py-2 rounded-md border border-white/[0.08] bg-white/[0.02] text-zinc-300 text-xs font-mono tracking-wide">
+                <div className="inline-flex items-center gap-2 px-4 py-2 rounded-md border border-white/[0.08] bg-[#1C1C1C] text-zinc-300 text-xs font-mono tracking-wide">
                   Output: <span className="text-[#3ECF8E]">{step.entregable}</span>
                 </div>
               </div>
@@ -243,7 +243,7 @@ export default function CodePage() {
       {/* ======================================
           SECTION 3 — SUCCESS CASES
           ====================================== */}
-      <section className="w-full py-40 md:py-56 relative z-10 border-t border-white/[0.05]">
+      <section className="w-full py-40 md:py-[200px] relative z-10 border-t border-white/[0.05]">
         <div className="w-full max-w-4xl mx-auto flex flex-col items-center text-center px-6">
           <div className="reveal mb-20 md:mb-24">
             <h2 className="text-3xl md:text-5xl font-semibold tracking-tighter mb-4 text-white">Producción comprobada.</h2>
@@ -253,20 +253,20 @@ export default function CodePage() {
           </div>
         </div>
 
-        {/* MARQUEE CAROUSEL */}
+        {/* MARQUEE CAROUSEL ESTILO SUPABASE (JOIN THE COMMUNITY) */}
         <div className="relative w-full overflow-hidden flex items-center">
-          {/* FADE GRADIENTS */}
-          <div className="absolute top-0 bottom-0 left-0 w-[15%] md:w-[10%] bg-gradient-to-r from-[#111111] to-transparent z-20 pointer-events-none" />
-          <div className="absolute top-0 bottom-0 right-0 w-[15%] md:w-[10%] bg-gradient-to-l from-[#111111] to-transparent z-20 pointer-events-none" />
+          {/* FADE GRADIENTS (GRANDE Y PROFUNDO) */}
+          <div className="absolute top-0 bottom-0 left-0 w-[20%] md:w-[30%] bg-gradient-to-r from-[#111111] via-[#111111]/90 to-transparent z-20 pointer-events-none" />
+          <div className="absolute top-0 bottom-0 right-0 w-[20%] md:w-[30%] bg-gradient-to-l from-[#111111] via-[#111111]/90 to-transparent z-20 pointer-events-none" />
 
-          <div className="animate-marquee flex gap-6 py-4 px-4">
+          <div className="animate-marquee flex gap-6 py-4 px-4 hover:[animation-play-state:paused]">
             {/* Duplicamos el array x4 para asegurar que el scroll sea infinito en monitores muy anchos */}
             {[...TESTIMONIALS, ...TESTIMONIALS, ...TESTIMONIALS, ...TESTIMONIALS].map((t, i) => (
               <div
                 key={i}
-                className="w-[320px] md:w-[400px] shrink-0 bg-black border border-white/[0.08] rounded-xl p-8 hover:border-white/20 transition-all flex flex-col group relative"
+                className="w-[320px] md:w-[420px] shrink-0 bg-[#1C1C1C] border border-white/[0.08] rounded-2xl p-8 hover:border-[#3ECF8E]/30 transition-colors flex flex-col group relative"
               >
-                <div className="absolute inset-0 bg-gradient-to-b from-[#3ECF8E]/[0.02] to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none rounded-xl" />
+                <div className="absolute inset-0 bg-gradient-to-b from-[#3ECF8E]/[0.02] to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none rounded-2xl" />
                 <div className="flex items-center gap-3 mb-6 relative z-10">
                   <div className="w-2 h-2 rounded-full bg-[#3ECF8E] animate-pulse" />
                   <span className="text-xs text-zinc-500 font-mono tracking-wider">STATUS: 200 OK</span>
@@ -287,7 +287,7 @@ export default function CodePage() {
       {/* ======================================
           SECTION 4 — TECH STACK
           ====================================== */}
-      <section className="w-full py-40 md:py-56 px-6 relative z-10 border-t border-white/[0.05]">
+      <section className="w-full py-40 md:py-[200px] px-6 relative z-10 border-t border-white/[0.05]">
         <div className="w-full max-w-4xl mx-auto flex flex-col items-center text-center">
           <div className="reveal mb-20">
             <h2 className="text-3xl md:text-5xl font-semibold tracking-tighter mb-4 text-white">
@@ -302,7 +302,7 @@ export default function CodePage() {
             {TECH_STACK.map((group, i) => (
               <div
                 key={group.category}
-                className="reveal delay-100 bg-black border border-white/[0.08] rounded-xl p-8 flex flex-col items-start text-left hover:border-white/20 transition-colors"
+                className="reveal delay-100 bg-[#1C1C1C] border border-white/[0.08] rounded-2xl p-8 flex flex-col items-start text-left hover:border-white/20 transition-colors"
               >
                 <h3 className="text-sm font-medium text-white mb-6">
                   {group.category}
@@ -326,7 +326,7 @@ export default function CodePage() {
       {/* ======================================
           SECTION 5 — FINAL CTA
           ====================================== */}
-      <section className="w-full py-40 md:py-56 px-6 relative z-10 border-t border-white/[0.05]">
+      <section className="w-full py-40 md:py-[200px] px-6 relative z-10 border-t border-white/[0.05]">
         <div className="w-full max-w-3xl mx-auto flex flex-col items-center text-center">
           <div className="reveal mb-12">
             <h2 className="text-3xl md:text-5xl font-semibold tracking-tighter mb-6 text-white">
@@ -342,13 +342,13 @@ export default function CodePage() {
               href={`https://wa.me/${WA_NUMBER}?text=${encodeURIComponent("Hola BALUMTech, busco agendar una llamada técnica.")}`}
               target="_blank"
               rel="noopener noreferrer"
-              className="px-8 py-3 bg-[#3ECF8E] hover:bg-[#34b27b] text-black rounded-md font-medium tracking-tight transition-all flex items-center justify-center gap-2 shadow-[0_0_20px_rgba(62,207,142,0.2)]"
+              className="px-8 py-3 bg-[#3ECF8E] hover:bg-[#34b27b] text-[#111111] rounded-md font-medium tracking-tight transition-all flex items-center justify-center gap-2 shadow-[0_0_20px_rgba(62,207,142,0.2)]"
             >
               Contactar equipo técnico
             </a>
             <a
               href="mailto:contacto@balumtech.com"
-              className="px-8 py-3 bg-white/[0.03] border border-white/[0.08] hover:bg-white/[0.06] text-zinc-300 rounded-md font-medium tracking-tight transition-all flex items-center justify-center gap-2"
+              className="px-8 py-3 bg-[#1C1C1C] border border-white/[0.08] hover:bg-white/[0.06] text-zinc-300 rounded-md font-medium tracking-tight transition-all flex items-center justify-center gap-2"
             >
               <Mail size={16} className="text-zinc-500" />
               contacto@balumtech.com
