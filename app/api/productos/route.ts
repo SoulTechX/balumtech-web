@@ -147,8 +147,15 @@ export async function GET() {
 
 export async function POST(request: Request) {
   try {
-    const newProduct = await request.json()
     const supabase = await createClient()
+    const { data: { user }, error: authError } = await supabase.auth.getUser()
+
+    if (authError || !user) {
+      return NextResponse.json({ success: false, error: 'No autorizado' }, { status: 401 })
+    }
+
+    const newProduct = await request.json()
+
 
     const dbData = mapToDatabase(newProduct)
 
@@ -177,12 +184,17 @@ export async function POST(request: Request) {
 
 export async function PUT(request: Request) {
   try {
+    const supabase = await createClient()
+    const { data: { user }, error: authError } = await supabase.auth.getUser()
+
+    if (authError || !user) {
+      return NextResponse.json({ success: false, error: 'No autorizado' }, { status: 401 })
+    }
+
     const updated = await request.json()
     if (!updated.id) {
       return NextResponse.json({ success: false, error: 'ID requerido' }, { status: 400 })
     }
-
-    const supabase = await createClient()
     const dbData = mapToDatabase(updated)
 
     const { data, error } = await supabase
@@ -205,14 +217,19 @@ export async function PUT(request: Request) {
 
 export async function DELETE(request: Request) {
   try {
+    const supabase = await createClient()
+    const { data: { user }, error: authError } = await supabase.auth.getUser()
+
+    if (authError || !user) {
+      return NextResponse.json({ success: false, error: 'No autorizado' }, { status: 401 })
+    }
+
     const { searchParams } = new URL(request.url)
     const id = parseInt(searchParams.get('id') || '0', 10)
 
     if (!id) {
       return NextResponse.json({ success: false, error: 'ID inválido' }, { status: 400 })
     }
-
-    const supabase = await createClient()
     const { error } = await supabase.from('productos').delete().eq('id', id)
 
     if (error) {
