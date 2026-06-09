@@ -175,11 +175,11 @@ export default function CodePage() {
           <span>DevTools para Negocios</span>
         </div>
 
-        <h1 className="reveal delay-100 text-5xl md:text-7xl font-semibold tracking-tighter leading-[1.1] mb-6 text-white max-w-4xl">
+        <h1 className="reveal delay-100 text-5xl md:text-6xl font-semibold tracking-tighter leading-[1.1] mb-8 text-white max-w-4xl">
           Construimos el sistema que tu operación necesita.
         </h1>
 
-        <p className="reveal delay-200 text-lg md:text-xl text-zinc-400 mb-12 max-w-2xl leading-relaxed tracking-tight">
+        <p className="reveal delay-200 text-lg md:text-xl text-zinc-400 mb-16 max-w-2xl leading-relaxed tracking-tight">
           Desarrollo de software a medida y agentes de Inteligencia Artificial para automatizar y escalar procesos sin fricción.
         </p>
 
@@ -204,10 +204,10 @@ export default function CodePage() {
       {/* ======================================
           SECTION 2 — PROCESS
           ====================================== */}
-      <section id="proceso" className="w-full py-40 md:py-[200px] px-6 relative z-10 border-t border-white/[0.05]">
+      <section id="proceso" className="w-full py-24 md:py-48 px-6 relative z-10 border-t border-white/[0.05]">
         <div className="w-full max-w-4xl mx-auto flex flex-col items-center text-center">
           <div className="reveal mb-24 md:mb-32">
-            <h2 className="text-3xl md:text-5xl font-semibold tracking-tighter mb-4 text-white">Metodología de despliegue.</h2>
+            <h2 className="text-3xl md:text-4xl font-semibold tracking-tighter mb-6 text-white">Metodología de despliegue.</h2>
             <p className="text-zinc-400 text-lg max-w-lg mx-auto tracking-tight">
               Un pipeline predecible y transparente desde el día uno.
             </p>
@@ -243,10 +243,10 @@ export default function CodePage() {
       {/* ======================================
           SECTION 3 — SUCCESS CASES
           ====================================== */}
-      <section className="w-full py-40 md:py-[200px] relative z-10 border-t border-white/[0.05]">
+      <section className="w-full py-24 md:py-48 relative z-10 border-t border-white/[0.05]">
         <div className="w-full max-w-4xl mx-auto flex flex-col items-center text-center px-6">
-          <div className="reveal mb-20 md:mb-24">
-            <h2 className="text-3xl md:text-5xl font-semibold tracking-tighter mb-4 text-white">Producción comprobada.</h2>
+          <div className="reveal mb-20 md:mb-32">
+            <h2 className="text-3xl md:text-4xl font-semibold tracking-tighter mb-6 text-white">Producción comprobada.</h2>
             <p className="text-zinc-400 text-lg max-w-lg mx-auto tracking-tight">
               Métricas reales de operaciones optimizadas.
             </p>
@@ -287,10 +287,10 @@ export default function CodePage() {
       {/* ======================================
           SECTION 4 — TECH STACK
           ====================================== */}
-      <section className="w-full py-40 md:py-[200px] px-6 relative z-10 border-t border-white/[0.05]">
+      <section className="w-full py-24 md:py-48 px-6 relative z-10 border-t border-white/[0.05]">
         <div className="w-full max-w-4xl mx-auto flex flex-col items-center text-center">
-          <div className="reveal mb-20">
-            <h2 className="text-3xl md:text-5xl font-semibold tracking-tighter mb-4 text-white">
+          <div className="reveal mb-20 md:mb-32">
+            <h2 className="text-3xl md:text-4xl font-semibold tracking-tighter mb-6 text-white">
               Arquitectura Enterprise.
             </h2>
             <p className="text-zinc-400 text-lg max-w-xl mx-auto tracking-tight">
@@ -326,10 +326,10 @@ export default function CodePage() {
       {/* ======================================
           SECTION 5 — FINAL CTA
           ====================================== */}
-      <section className="w-full py-40 md:py-[200px] px-6 relative z-10 border-t border-white/[0.05]">
+      <section className="w-full py-24 md:py-48 px-6 relative z-10 border-t border-white/[0.05]">
         <div className="w-full max-w-3xl mx-auto flex flex-col items-center text-center">
-          <div className="reveal mb-12">
-            <h2 className="text-3xl md:text-5xl font-semibold tracking-tighter mb-6 text-white">
+          <div className="reveal mb-16 md:mb-24">
+            <h2 className="text-3xl md:text-4xl font-semibold tracking-tighter mb-6 text-white">
               Iniciá la migración.
             </h2>
             <p className="text-zinc-400 text-lg max-w-lg mx-auto tracking-tight">
