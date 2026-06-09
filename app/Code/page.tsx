@@ -204,10 +204,10 @@ export default function CodePage() {
       {/* ======================================
           SECTION 2 — PROCESS
           ====================================== */}
-      <section id="proceso" className="w-full py-24 md:py-48 px-6 relative z-10 border-t border-white/[0.05]">
+      <section id="proceso" className="w-full px-6 relative z-10 border-t border-white/[0.05]" style={{ paddingTop: '150px', paddingBottom: '150px' }}>
         <div className="w-full max-w-4xl mx-auto flex flex-col items-center text-center">
-          <div className="reveal mb-24 md:mb-32">
-            <h2 className="text-3xl md:text-4xl font-semibold tracking-tighter mb-6 text-white">Metodología de despliegue.</h2>
+          <div className="reveal" style={{ marginBottom: '120px' }}>
+            <h2 className="text-2xl md:text-3xl font-semibold tracking-tighter mb-6 text-white">Metodología de despliegue.</h2>
             <p className="text-zinc-400 text-lg max-w-lg mx-auto tracking-tight">
               Un pipeline predecible y transparente desde el día uno.
             </p>
@@ -243,10 +243,10 @@ export default function CodePage() {
       {/* ======================================
           SECTION 3 — SUCCESS CASES
           ====================================== */}
-      <section className="w-full py-24 md:py-48 relative z-10 border-t border-white/[0.05]">
+      <section className="w-full relative z-10 border-t border-white/[0.05]" style={{ paddingTop: '180px', paddingBottom: '180px' }}>
         <div className="w-full max-w-4xl mx-auto flex flex-col items-center text-center px-6">
-          <div className="reveal mb-20 md:mb-32">
-            <h2 className="text-3xl md:text-4xl font-semibold tracking-tighter mb-6 text-white">Producción comprobada.</h2>
+          <div className="reveal" style={{ marginBottom: '140px' }}>
+            <h2 className="text-2xl md:text-3xl font-semibold tracking-tighter mb-6 text-white">Producción comprobada.</h2>
             <p className="text-zinc-400 text-lg max-w-lg mx-auto tracking-tight">
               Métricas reales de operaciones optimizadas.
             </p>
@@ -287,10 +287,10 @@ export default function CodePage() {
       {/* ======================================
           SECTION 4 — TECH STACK
           ====================================== */}
-      <section className="w-full py-24 md:py-48 px-6 relative z-10 border-t border-white/[0.05]">
+      <section className="w-full px-6 relative z-10 border-t border-white/[0.05]" style={{ paddingTop: '180px', paddingBottom: '180px' }}>
         <div className="w-full max-w-4xl mx-auto flex flex-col items-center text-center">
-          <div className="reveal mb-20 md:mb-32">
-            <h2 className="text-3xl md:text-4xl font-semibold tracking-tighter mb-6 text-white">
+          <div className="reveal" style={{ marginBottom: '120px' }}>
+            <h2 className="text-2xl md:text-3xl font-semibold tracking-tighter mb-6 text-white">
               Arquitectura Enterprise.
             </h2>
             <p className="text-zinc-400 text-lg max-w-xl mx-auto tracking-tight">
@@ -326,10 +326,10 @@ export default function CodePage() {
       {/* ======================================
           SECTION 5 — FINAL CTA
           ====================================== */}
-      <section className="w-full py-24 md:py-48 px-6 relative z-10 border-t border-white/[0.05]">
+      <section className="w-full px-6 relative z-10 border-t border-white/[0.05]" style={{ paddingTop: '180px', paddingBottom: '180px' }}>
         <div className="w-full max-w-3xl mx-auto flex flex-col items-center text-center">
-          <div className="reveal mb-16 md:mb-24">
-            <h2 className="text-3xl md:text-4xl font-semibold tracking-tighter mb-6 text-white">
+          <div className="reveal" style={{ marginBottom: '100px' }}>
+            <h2 className="text-2xl md:text-3xl font-semibold tracking-tighter mb-6 text-white">
               Iniciá la migración.
             </h2>
             <p className="text-zinc-400 text-lg max-w-lg mx-auto tracking-tight">
