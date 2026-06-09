@@ -223,7 +223,7 @@ export default function CodePage() {
                   <h3 className="text-white font-semibold tracking-tight text-2xl md:text-3xl">{step.title}</h3>
                 </div>
 
-                <div className="w-full max-w-2xl text-left">
+                <div className="w-full max-w-2xl mx-auto text-left">
                   <CodeBlockCard header={step.header} lines={step.lines} />
                 </div>
 
