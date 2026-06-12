@@ -1,0 +1,63 @@
+{
+  "@context": "https://schema.org",
+  "@type": ["LocalBusiness", "ProfessionalService"],
+  "name": "BALUMTech",
+  "url": "https://balumtech.site",
+  "logo": "https://balumtech.site/logo.png",
+  "image": "https://balumtech.site/logo.png",
+  "description": "Estudio tecnológico en Sarmiento, Chubut. Desarrollo de software a medida, automatización con agentes de IA, ciberseguridad, redes industriales y hardware IT para empresas de la Patagonia.",
+  "telephone": "+5492974779978",
+  "email": "contacto@balumtech.com",
+  "address": {
+    "@type": "PostalAddress",
+    "addressLocality": "Sarmiento",
+    "addressRegion": "Chubut",
+    "addressCountry": "AR",
+    "postalCode": "9020"
+  },
+  "geo": {
+    "@type": "GeoCoordinates",
+    "latitude": -45.5833,
+    "longitude": -69.0833
+  },
+  "areaServed": [
+    {
+      "@type": "State",
+      "name": "Chubut"
+    },
+    {
+      "@type": "GeoCircle",
+      "geoMidpoint": {
+        "@type": "GeoCoordinates",
+        "latitude": -45.5833,
+        "longitude": -69.0833
+      },
+      "geoRadius": "300000"
+    }
+  ],
+  "serviceType": [
+    "Desarrollo de software a medida",
+    "Automatización con inteligencia artificial",
+    "Agentes de IA con n8n",
+    "Ciberseguridad y CCTV industrial",
+    "Redes empresariales y Mesh",
+    "Hardware IT pre-configurado",
+    "Soporte técnico IT"
+  ],
+  "priceRange": "$$",
+  "sameAs": [],
+  "openingHoursSpecification": [
+    {
+      "@type": "OpeningHoursSpecification",
+      "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+      "opens": "09:00",
+      "closes": "18:00"
+    },
+    {
+      "@type": "OpeningHoursSpecification",
+      "dayOfWeek": "Saturday",
+      "opens": "09:00",
+      "closes": "13:00"
+    }
+  ]
+}
