@@ -93,10 +93,9 @@ export const metadata: Metadata = {
     canonical: "https://balumtech.site",
   },
 
-  // Google Search Console — reemplazá XXXX con tu código real después de verificar:
-  // verification: {
-  //   google: "XXXX",
-  // },
+  verification: {
+    google: "sGi5-jmS8BYLRN0k6Cf0Rwr06DaE2bxdnn47ZgtL0L0",
+  },
 };
 
 /* ──────────────────────────────────
