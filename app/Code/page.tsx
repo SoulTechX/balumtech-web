@@ -2,6 +2,7 @@
 import { useEffect } from "react"
 import Link from "next/link"
 import { ArrowLeft, ArrowRight, MessageCircle, Mail, Code2, Terminal } from "lucide-react"
+import GlobeBackground from "@/components/GlobeBackground"
 
 /* ——————————————————————————————————
    DATA
@@ -156,6 +157,9 @@ export default function CodePage() {
       <div className="fixed inset-0 z-0 pointer-events-none overflow-hidden flex items-center justify-center">
         <div className="absolute top-[-20%] right-[-10%] w-[500px] h-[500px] bg-[#3ECF8E]/[0.07] blur-[150px] rounded-full mix-blend-screen" />
       </div>
+
+      {/* 3D GLOBE BACKGROUND */}
+      <GlobeBackground />
 
       {/* BACK BUTTON */}
       <Link 
